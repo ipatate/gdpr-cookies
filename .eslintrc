@@ -1,0 +1,18 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "plugins": ["flowtype", "jest", "promise"],
+  "extends": [
+    "eslint:recommended",
+    "eslint-config-prettier",
+    "plugin:flowtype/recommended",
+    "plugin:jest/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "jest/globals": true,
+    "node": true
+  }
+}
