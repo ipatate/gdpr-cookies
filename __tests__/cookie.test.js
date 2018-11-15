@@ -1,4 +1,4 @@
-import Cookie from '../src/utils/Cookie';
+import Cookie from '../src/utils/Cookie.js';
 
 test('cookie get all value', () => {
   const _cookie = new Cookie();

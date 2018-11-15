@@ -1,5 +1,5 @@
-import Cookie from '../src/utils/Cookie';
-import Grpd from '../src/Grpd';
+import Cookie from '../src/utils/Cookie.js';
+import Grpd from '../src/Grpd.js';
 
 test('test get option value', () => {
   const grpd = new Grpd({name: 'lol'});
