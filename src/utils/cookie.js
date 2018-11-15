@@ -1,18 +1,48 @@
 // @flow
-import * as Cook from 'js-cookie';
+import typeof Cookie from 'js-cookie';
+import JSCookie from 'js-cookie';
 
-const cookie = () => {
-  const getAll = () => Cook.get();
-  const get = (name: string) => Cook.get(name);
-  const set = (name: string, value: string) => Cook.set(name, value);
-  const remove = (name: string) => Cook.remove(name);
+class CookieWrapper {
+  cookie: Cookie;
 
-  return {
-    getAll,
-    get,
-    set,
-    remove,
-  };
-};
+  constructor() {
+    this.cookie = JSCookie;
+  }
+  /**
+   * @description get all cookies
+   * @return {object}
+   */
+  getAll(): Object {
+    return this.cookie.get();
+  }
 
-export default cookie;
+  /**
+   * @description get cookie by name
+   * @param {string} name
+   * @return {string | void}
+   */
+  get(name: string): ?string {
+    return this.cookie.get(name);
+  }
+
+  /**
+   * @description set cookie by name and value
+   * @param {string} name
+   * @param {string} value
+   * @return {void}
+   */
+  set(name: string, value: string): void {
+    return this.cookie.set(name, value);
+  }
+
+  /**
+   * @description remove cookie by name
+   * @param {string} name
+   * @return {void}
+   */
+  remove(name: string): void {
+    return this.cookie.remove(name);
+  }
+}
+
+export default CookieWrapper;
