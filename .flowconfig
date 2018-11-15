@@ -6,7 +6,7 @@ __tests__
 [include]
 
 [libs]
-
+flow-typed/types.js
 [lints]
 
 [options]
