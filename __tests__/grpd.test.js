@@ -1,4 +1,4 @@
-import Cookie from '../src/utils/Cookie.js';
+import CookieWrapper from '../src/utils/Cookie.js';
 import Grpd from '../src/Grpd.js';
 
 test('test get option value', () => {
@@ -10,7 +10,7 @@ test('test get option value', () => {
 test('test cookie rgpd exist', () => {
   const grpd = new Grpd();
   const optionName = grpd.getOption('name');
-  const _cookie = new Cookie();
+  const _cookie = new CookieWrapper();
   _cookie.remove(optionName);
   expect(grpd.getCookie()).toBeUndefined();
 });
@@ -35,7 +35,7 @@ test('update value default grpd cookie', () => {
 test('get value return undefined', () => {
   const grpd = new Grpd();
   const optionName = grpd.getOption('name');
-  const _cookie = new Cookie();
+  const _cookie = new CookieWrapper();
   _cookie.remove(optionName);
   expect(grpd.getCookie()).toBeUndefined();
 });
