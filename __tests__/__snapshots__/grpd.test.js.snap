@@ -9,7 +9,7 @@ Object {
 
 exports[`verify value default grpd cookie 1`] = `
 Object {
-  "ads": false,
-  "stats": false,
+  "ads": true,
+  "stats": true,
 }
 `;

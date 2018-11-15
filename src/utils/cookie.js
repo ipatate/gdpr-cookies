@@ -21,7 +21,7 @@ class CookieWrapper {
    * @param {string} name
    * @return {string | void}
    */
-  get(name: string): ?string {
+  get(name: string): string | void {
     return this.cookie.get(name);
   }
 
