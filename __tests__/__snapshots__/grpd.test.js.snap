@@ -2,7 +2,7 @@
 
 exports[`verify value default grpd cookie 1`] = `
 Object {
-  "ads": true,
-  "stats": true,
+  "ads": false,
+  "stats": false,
 }
 `;

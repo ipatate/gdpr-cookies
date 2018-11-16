@@ -35,4 +35,18 @@ export default class GrpdCookie {
     const stringifyValue = JSON.stringify(value);
     return this.cookie.set(this.name, stringifyValue);
   }
+
+  /**
+   * @description remove cookie exclude name in cookie array and name of cookie rgpd
+   * @param {array} keepCookie
+   * @return {void}
+   */
+  removeAll(keepCookie: Array<string> = []): void {
+    const cookies = this.cookie.getAll();
+    for (const cookie in cookies) {
+      if (keepCookie.indexOf(cookie) === -1 && cookie !== this.name) {
+        this.cookie.remove(cookie);
+      }
+    }
+  }
 }

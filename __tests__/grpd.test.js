@@ -13,7 +13,7 @@ test('verify value default grpd cookie', () => {
 
 test('verify update value with old setting grpd cookie', () => {
   const grpd = new Grpd({type: ['ads', 'stats']});
-  const activated = grpd.createActivatedObject({ads: false, foo: 'lol'});
-  expect(activated.ads).toBeFalsy();
-  expect(activated.stats).toBeTruthy();
+  const activated = grpd.createActivatedObject({ads: true, foo: 'lol'});
+  expect(activated.ads).toBeTruthy();
+  expect(activated.stats).toBeFalsy();
 });

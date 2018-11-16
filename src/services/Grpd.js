@@ -1,6 +1,7 @@
 // @flow
 import merge from 'deepmerge';
 import GrpdCookie from './GrpdCookie';
+import GrpdObservable from './GrpdObservable';
 
 export default class Grpd {
   options: OptionsGrpd = {
@@ -8,6 +9,7 @@ export default class Grpd {
     keepCookies: ['plop'],
     types: ['ads', 'stats'],
   };
+  GrpdObservable: GrpdObservable;
   cookie: GrpdCookie;
   activated: Object;
 
@@ -21,6 +23,20 @@ export default class Grpd {
     this.cookie = new GrpdCookie(this.options.name);
     // init activated object and save in cookie
     this.initCookie();
+    this.GrpdObservable = new GrpdObservable(
+      this.getGlobalGrpd(),
+      this.options.types,
+    );
+    this.activeService();
+  }
+
+  /**
+   * @description get global _gdpr array
+   * @return {array}
+   */
+  getGlobalGrpd(): ObserverGrpd {
+    const _gdpr = global._gdpr || [];
+    return _gdpr;
   }
 
   /**
@@ -36,11 +52,36 @@ export default class Grpd {
   }
 
   /**
+   * @description each activated for active or unactive service
+   * @return {void}
+   */
+  activeService(): void {
+    for (const key in this.activated) {
+      const value = this.activated[key];
+      if (value === true) {
+        this.GrpdObservable.active(key);
+      }
+    }
+  }
+
+  /**
+   * @description clear cookie if cookie gdpr not exist
+   * @param {object|void} _c
+   * @return {void}
+   */
+  clearCookies(_c: Object | void): void {
+    if (_c === undefined) {
+      this.cookie.removeAll(this.options.keepCookies);
+    }
+  }
+
+  /**
    * @description init cookie settings if not exist
    * @return {void}
    */
   initCookie(): void {
     const _c = this.cookie.getCookie();
+    this.clearCookies(_c);
     const value = this.createActivatedObject(_c);
     this.cookie.updateCookie(value);
   }
@@ -60,7 +101,7 @@ export default class Grpd {
       types.forEach(name => {
         // old value or true by default
         newActivated[name] =
-          oldActivated[name] !== undefined ? oldActivated[name] : true;
+          oldActivated[name] !== undefined ? oldActivated[name] : false;
       });
     }
     this.activated = newActivated;

@@ -1,4 +1,6 @@
 // @flow
+import {createScript} from '../utils/CallbackBase';
+
 class GrpdObservable {
   observers: ObservableGrpd = {};
   typesAllowed: Array<string> = [];
@@ -11,7 +13,7 @@ class GrpdObservable {
    */
   constructor(
     observerGrpd: ObserverGrpd = [],
-    typesAllowed: Array<string>,
+    typesAllowed: Array<string> = [],
   ): void {
     this.typesAllowed = typesAllowed;
     this.setObservers(observerGrpd);
@@ -37,7 +39,8 @@ class GrpdObservable {
             // create array if not exist for this key
             this.observers[key] =
               this.observers[key] !== undefined ? this.observers[key] : [];
-            this.observers[key].push(o[2]);
+            const func = o[2];
+            this.observers[key].push(func);
           }
         }
       }
@@ -51,7 +54,7 @@ class GrpdObservable {
    */
   active(type: string): void {
     if (this.observers[type] !== undefined) {
-      this.observers[type].forEach(observer => observer());
+      this.observers[type].forEach(observer => observer(createScript));
     }
   }
 }
