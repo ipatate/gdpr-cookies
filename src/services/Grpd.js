@@ -1,13 +1,14 @@
 // @flow
 import merge from 'deepmerge';
-import CookieWrapper from './utils/Cookie';
-class Grpd {
+import GrpdCookie from './GrpdCookie';
+
+export default class Grpd {
   options: OptionsGrpd = {
     name: 'grpd_cookie',
     keepCookies: ['plop'],
     types: ['ads', 'stats'],
   };
-  cookie: CookieWrapper;
+  cookie: GrpdCookie;
   activated: Object;
 
   /**
@@ -17,8 +18,21 @@ class Grpd {
    */
   constructor(options: ?OptionsGrpd = {name: 'grpd_cookie'}): void {
     this.options = merge.all([this.options, options]);
-    this.cookie = new CookieWrapper();
+    this.cookie = new GrpdCookie(this.options.name);
+    // init activated object and save in cookie
     this.initCookie();
+  }
+
+  /**
+   * @description get value in options by name
+   * @param {string} name
+   * @return {void}
+   */
+  getOption(name: string): void {
+    if (this.options[name] !== undefined) {
+      return this.options[name];
+    }
+    return undefined;
   }
 
   /**
@@ -26,9 +40,9 @@ class Grpd {
    * @return {void}
    */
   initCookie(): void {
-    const _c = this.getCookie();
+    const _c = this.cookie.getCookie();
     const value = this.createActivatedObject(_c);
-    this.updateCookie(value);
+    this.cookie.updateCookie(value);
   }
 
   /**
@@ -52,41 +66,4 @@ class Grpd {
     this.activated = newActivated;
     return this.activated;
   }
-
-  /**
-   * @description get cookie with grpd settings
-   * @return {string|void}
-   */
-  getCookie(): Object | void {
-    const {name} = this.options;
-    const stringifyValue = this.cookie.get(name);
-    return stringifyValue !== undefined
-      ? JSON.parse(stringifyValue)
-      : stringifyValue;
-  }
-
-  /**
-   * @description update grpd setting in cookie
-   * @param {string} value to insert in cookie
-   * @return {string}
-   */
-  updateCookie(value: Object): ?string {
-    const {name} = this.options;
-    const stringifyValue = JSON.stringify(value);
-    return this.cookie.set(name, stringifyValue);
-  }
-
-  /**
-   * @description get value in options by name
-   * @param {string} name
-   * @return {void}
-   */
-  getOption(name: string): void {
-    if (this.options[name] !== undefined) {
-      return this.options[name];
-    }
-    return undefined;
-  }
 }
-
-export default Grpd;

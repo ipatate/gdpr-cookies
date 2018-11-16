@@ -1,4 +1,4 @@
-import CookieWrapper from '../src/utils/Cookie';
+import CookieWrapper from '../src/services/CookieWrapper';
 
 test('cookie get all value', () => {
   const _cookie = new CookieWrapper();
