@@ -1,7 +1,18 @@
-import Grpd from './services/Grpd';
+import Observable from './services/Observable';
+// import Grpd from './services/Grpd';
+var _grpd = _grpd || [];
 
-const options = {
-  keepCookies: ['tarteaucitron', 'test'],
+var t = function() {
+  console.log('hello'); // eslint-disable-line
 };
 
-const gdpr = new Grpd(options); // eslint-disable-line
+_grpd.push(['ads', 'Google Map', t]);
+
+const o = new Observable(_grpd);
+o.active('ads');
+debugger;
+// const options = {
+//   keepCookies: ['tarteaucitron', 'test'],
+// };
+
+// const gdpr = new Grpd(options); // eslint-disable-line
