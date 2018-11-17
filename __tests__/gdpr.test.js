@@ -25,7 +25,7 @@ test('verify update value with old setting gdpr cookie', () => {
 });
 
 test('recup global rgpd', () => {
-  window._gdpr = [['foo', 'bar', () => {}]]; // eslint-disable-line
+  window._gdpr = [[{type: 'foo', name: 'bar'}, () => {}]]; // eslint-disable-line
   const gdpr = new Gdpr({type: ['ads', 'stats']});
   expect(gdpr.getGlobalGdpr()).toMatchSnapshot();
 });

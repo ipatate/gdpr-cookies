@@ -3,8 +3,10 @@
 exports[`recup global rgpd 1`] = `
 Array [
   Array [
-    "foo",
-    "bar",
+    Object {
+      "name": "bar",
+      "type": "foo",
+    },
     [Function],
   ],
 ]

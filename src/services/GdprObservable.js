@@ -27,20 +27,21 @@ class GdprObservable {
   setObservers(observerGdpr: ObserverGdpr): void {
     observerGdpr.forEach(o => {
       // if array and has 3 elements
-      if (Array.isArray(o) === true && o.length > 2) {
-        if (
-          typeof o[0] === 'string' &&
-          typeof o[1] === 'string' &&
-          typeof o[2] === 'function'
-        ) {
-          const key = o[0];
+      if (Array.isArray(o) === true && o.length > 1) {
+        if (typeof o[0] === 'object' && typeof o[1] === 'function') {
+          const desc = o[0];
+          const func = o[1];
+          const {name, type} = desc;
           // type is allowed
-          if (this.typesAllowed.indexOf(key) > -1) {
+          if (
+            type !== undefined &&
+            name !== undefined &&
+            this.typesAllowed.indexOf(type) > -1
+          ) {
             // create array if not exist for this key
-            this.observers[key] =
-              this.observers[key] !== undefined ? this.observers[key] : [];
-            const func = o[2];
-            this.observers[key].push(func);
+            this.observers[type] =
+              this.observers[type] !== undefined ? this.observers[type] : [];
+            this.observers[type].push(func);
           }
         }
       }
