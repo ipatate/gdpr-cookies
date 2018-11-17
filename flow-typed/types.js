@@ -1,11 +1,11 @@
-declare type OptionsGrpd = {
+declare type OptionsGdpr = {
   name: string,
   keepCookies?: Array<string>,
   types?: Array<string>,
 };
 
-declare type ObserverGrpd = Array<[string, string, Function]>;
+declare type ObserverGdpr = Array<[string, string, Function]>;
 
-declare type ObservableGrpd = {
+declare type ObservableGdpr = {
   [string]: Array<Function>,
 };

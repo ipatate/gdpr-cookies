@@ -1,7 +1,7 @@
 // @flow
 import CookieWrapper from './CookieWrapper';
 
-export default class GrpdCookie {
+export default class GdprCookie {
   name: string;
   cookie: CookieWrapper;
 
@@ -10,13 +10,13 @@ export default class GrpdCookie {
    * @param {object} options
    * @return {void}
    */
-  constructor(name: string = 'grpd_cookie'): void {
+  constructor(name: string = 'gdpr_cookie'): void {
     this.name = name;
     this.cookie = new CookieWrapper();
   }
 
   /**
-   * @description get cookie with grpd settings
+   * @description get cookie with gdpr settings
    * @return {string|void}
    */
   getCookie(): Object | void {
@@ -27,7 +27,7 @@ export default class GrpdCookie {
   }
 
   /**
-   * @description update grpd setting in cookie
+   * @description update gdpr setting in cookie
    * @param {string} value to insert in cookie
    * @return {string}
    */

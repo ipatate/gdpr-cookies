@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`recup global rgpd 1`] = `
+Array [
+  Array [
+    "foo",
+    "bar",
+    [Function],
+  ],
+]
+`;
+
+exports[`verify value default gdpr cookie 1`] = `
+Object {
+  "ads": false,
+  "stats": false,
+}
+`;

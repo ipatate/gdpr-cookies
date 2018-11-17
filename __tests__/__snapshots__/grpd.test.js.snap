@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`verify value default grpd cookie 1`] = `
-Object {
-  "ads": false,
-  "stats": false,
-}
-`;

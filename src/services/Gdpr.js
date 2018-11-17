@@ -1,16 +1,16 @@
 // @flow
 import merge from 'deepmerge';
-import GrpdCookie from './GrpdCookie';
-import GrpdObservable from './GrpdObservable';
+import GdprCookie from './GdprCookie';
+import GdprObservable from './GdprObservable';
 
-export default class Grpd {
-  options: OptionsGrpd = {
-    name: 'grpd_cookie',
+export default class Gdpr {
+  options: OptionsGdpr = {
+    name: 'gdpr_cookie',
     keepCookies: ['plop'],
     types: ['ads', 'stats'],
   };
-  GrpdObservable: GrpdObservable;
-  cookie: GrpdCookie;
+  GdprObservable: GdprObservable;
+  cookie: GdprCookie;
   activated: Object;
 
   /**
@@ -18,23 +18,22 @@ export default class Grpd {
    * @param {object} options
    * @return {void}
    */
-  constructor(options: ?OptionsGrpd = {name: 'grpd_cookie'}): void {
+  constructor(options: ?OptionsGdpr = {name: 'gdpr_cookie'}): void {
     this.options = merge.all([this.options, options]);
-    this.cookie = new GrpdCookie(this.options.name);
+    this.cookie = new GdprCookie(this.options.name);
     // init activated object and save in cookie
     this.initCookie();
-    this.GrpdObservable = new GrpdObservable(
-      this.getGlobalGrpd(),
+    this.GdprObservable = new GdprObservable(
+      this.getGlobalGdpr(),
       this.options.types,
     );
-    this.activeService();
   }
 
   /**
    * @description get global _gdpr array
    * @return {array}
    */
-  getGlobalGrpd(): ObserverGrpd {
+  getGlobalGdpr(): ObserverGdpr {
     const _gdpr = global._gdpr || [];
     return _gdpr;
   }
@@ -59,19 +58,8 @@ export default class Grpd {
     for (const key in this.activated) {
       const value = this.activated[key];
       if (value === true) {
-        this.GrpdObservable.active(key);
+        this.GdprObservable.active(key);
       }
-    }
-  }
-
-  /**
-   * @description clear cookie if cookie gdpr not exist
-   * @param {object|void} _c
-   * @return {void}
-   */
-  clearCookies(_c: Object | void): void {
-    if (_c === undefined) {
-      this.cookie.removeAll(this.options.keepCookies);
     }
   }
 
@@ -81,9 +69,22 @@ export default class Grpd {
    */
   initCookie(): void {
     const _c = this.cookie.getCookie();
-    this.clearCookies(_c);
+    // if not cookie rgpd clear cookie
+    if (_c === undefined) {
+      this.clearCookies();
+    }
+    // create cookie object
     const value = this.createActivatedObject(_c);
+    // save
     this.cookie.updateCookie(value);
+  }
+
+  /**
+   * @description clear cookie
+   * @return {void}
+   */
+  clearCookies(): void {
+    this.cookie.removeAll(this.options.keepCookies);
   }
 
   /**

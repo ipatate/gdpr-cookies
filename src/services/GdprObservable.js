@@ -1,22 +1,22 @@
 // @flow
 import {createScript} from '../utils/CallbackBase';
 
-class GrpdObservable {
-  observers: ObservableGrpd = {};
+class GdprObservable {
+  observers: ObservableGdpr = {};
   typesAllowed: Array<string> = [];
 
   /**
    *
-   * @param {array} observerGrpd
+   * @param {array} observerGdpr
    * @param {array} typesAllowed
    * @return {void}
    */
   constructor(
-    observerGrpd: ObserverGrpd = [],
+    observerGdpr: ObserverGdpr = [],
     typesAllowed: Array<string> = [],
   ): void {
     this.typesAllowed = typesAllowed;
-    this.setObservers(observerGrpd);
+    this.setObservers(observerGdpr);
   }
 
   /**
@@ -24,8 +24,8 @@ class GrpdObservable {
    * @param {array} cb
    * @return {void}
    */
-  setObservers(observerGrpd: ObserverGrpd): void {
-    observerGrpd.forEach(o => {
+  setObservers(observerGdpr: ObserverGdpr): void {
+    observerGdpr.forEach(o => {
       // if array and has 3 elements
       if (Array.isArray(o) === true && o.length > 2) {
         if (
@@ -59,4 +59,4 @@ class GrpdObservable {
   }
 }
 
-export default GrpdObservable;
+export default GdprObservable;
