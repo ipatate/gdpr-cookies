@@ -12,6 +12,7 @@ projectFilesBackup
 .dist
 .tmp
 .env
+.vscode
 
 coverage
 dist/
