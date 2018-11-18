@@ -17,9 +17,9 @@ export default class GdprCookie {
 
   /**
    * @description get cookie with gdpr settings
-   * @return {string|void}
+   * @return {Map}
    */
-  getCookie(): Map<string, boolean> | void {
+  getCookie(): Map<string, boolean> {
     const stringifyValue = this.cookie.get(this.name);
     const value = stringifyValue !== undefined ? stringifyValue : '[]';
     return new Map(JSON.parse(value));
@@ -27,7 +27,7 @@ export default class GdprCookie {
 
   /**
    * @description update gdpr setting in cookie
-   * @param {string} value to insert in cookie
+   * @param {Map} value to insert in cookie
    * @return {string}
    */
   updateCookie(value: Map<string, boolean>): ?string {

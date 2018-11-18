@@ -97,7 +97,7 @@ export default class Gdpr {
   }
 
   /**
-   * @description create object activated with old value if exist
+   * @description create map activated with old value if exist
    * @param {object | void} _c
    * @return {object}
    */
