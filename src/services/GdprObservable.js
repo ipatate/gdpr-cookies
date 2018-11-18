@@ -2,7 +2,7 @@
 import * as helpers from '../utils/CallbackBase';
 
 class GdprObservable {
-  observers: ObservableGdpr = {};
+  observers: ObservableGdpr;
   typesAllowed: Array<string> = [];
 
   /**
@@ -16,6 +16,7 @@ class GdprObservable {
     typesAllowed: Array<string> = [],
   ): void {
     this.typesAllowed = typesAllowed;
+    this.observers = new Map();
     this.setObservers(observerGdpr);
   }
 
@@ -38,10 +39,12 @@ class GdprObservable {
             name !== undefined &&
             this.typesAllowed.indexOf(type) > -1
           ) {
-            // create array if not exist for this key
-            this.observers[type] =
-              this.observers[type] !== undefined ? this.observers[type] : [];
-            this.observers[type].push(func);
+            // create Set if not exist for this key
+            if (this.observers.has(type) === false) {
+              this.observers.set(type, new Set([]));
+            }
+            const temp = this.observers.get(type);
+            if (temp) temp.add(func);
           }
         }
       }
@@ -54,8 +57,11 @@ class GdprObservable {
    * @return {void}
    */
   active(type: string): void {
-    if (this.observers[type] !== undefined) {
-      this.observers[type].forEach(observer => observer(helpers));
+    if (this.observers.has(type)) {
+      const funcSet = this.observers.get(type);
+      if (funcSet) {
+        funcSet.forEach(observer => observer(helpers));
+      }
     }
   }
 }

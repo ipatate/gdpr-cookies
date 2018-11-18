@@ -7,11 +7,13 @@ export default class Gdpr {
   options: OptionsGdpr = {
     name: 'gdpr_cookie',
     keepCookies: ['plop'],
-    types: ['ads', 'stats'],
+    types: ['ads', 'stats', 'others'],
   };
   GdprObservable: GdprObservable;
   cookie: GdprCookie;
-  activated: Object;
+  activated: Map<string, boolean>;
+  cookieExist: boolean = true;
+  globalGdpr: ObserverGdpr;
 
   /**
    * @description constructor !
@@ -21,10 +23,12 @@ export default class Gdpr {
   constructor(options: ?OptionsGdpr = {name: 'gdpr_cookie'}): void {
     this.options = merge.all([this.options, options]);
     this.cookie = new GdprCookie(this.options.name);
+    this.activated = new Map();
     // init activated object and save in cookie
     this.initCookie();
+    this.globalGdpr = this.getGlobalGdpr();
     this.GdprObservable = new GdprObservable(
-      this.getGlobalGdpr(),
+      this.globalGdpr,
       this.options.types,
     );
   }
@@ -50,13 +54,17 @@ export default class Gdpr {
     return undefined;
   }
 
+  isFirstVisit(): boolean {
+    return this.cookieExist;
+  }
+
   /**
    * @description each activated for active or unactive service
    * @return {void}
    */
   activeService(): void {
-    for (const key in this.activated) {
-      const value = this.activated[key];
+    for (const key of this.activated.keys()) {
+      const value = this.activated.get(key);
       if (value === true) {
         this.GdprObservable.active(key);
       }
@@ -70,7 +78,8 @@ export default class Gdpr {
   initCookie(): void {
     const _c = this.cookie.getCookie();
     // if not cookie rgpd clear cookie
-    if (_c === undefined) {
+    this.cookieExist = _c === undefined;
+    if (this.cookieExist) {
       this.clearCookies();
     }
     // create cookie object
@@ -92,20 +101,17 @@ export default class Gdpr {
    * @param {object | void} _c
    * @return {object}
    */
-  createActivatedObject(_c: Object | void): Object {
+  createActivatedObject(_c: Map<string, boolean> | void): Object {
     const {types} = this.options;
     // old value in cookie if exist
-    const oldActivated = _c !== undefined ? _c : {};
-    const newActivated = {};
+    const oldActivated = new Map(_c);
     // if type is array
     if (types !== undefined && Array.isArray(types)) {
       types.forEach(name => {
-        // old value or true by default
-        newActivated[name] =
-          oldActivated[name] !== undefined ? oldActivated[name] : false;
+        const o = oldActivated.get(name);
+        this.activated.set(name, o !== undefined ? o : true);
       });
     }
-    this.activated = newActivated;
     return this.activated;
   }
 }

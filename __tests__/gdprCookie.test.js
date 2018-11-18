@@ -4,14 +4,14 @@ import GdprCookie from '../src/services/GdprCookie';
 test('get exist value cookie', () => {
   const gdprCookie = new GdprCookie();
   const cookieWrapper = new CookieWrapper();
-  cookieWrapper.set(gdprCookie.name, {foo: 'bar'});
+  cookieWrapper.set(gdprCookie.name, [['foo', 'bar']]);
   expect(gdprCookie.getCookie()).toMatchSnapshot();
 });
 
 test('update value cookie', () => {
   const gdprCookie = new GdprCookie();
   const cookieWrapper = new CookieWrapper();
-  gdprCookie.updateCookie({lol: true, plop: false});
+  gdprCookie.updateCookie(new Map([['lol', true], ['plop', false]]));
   expect(cookieWrapper.get(gdprCookie.name)).toMatchSnapshot();
 });
 
@@ -21,5 +21,5 @@ test('get not exist value', () => {
 
   const optionName = gdprCookie.name;
   cookieWrapper.remove(optionName);
-  expect(gdprCookie.getCookie()).toBeUndefined();
+  expect(gdprCookie.getCookie().size).toBe(0);
 });

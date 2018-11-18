@@ -19,11 +19,10 @@ export default class GdprCookie {
    * @description get cookie with gdpr settings
    * @return {string|void}
    */
-  getCookie(): Object | void {
+  getCookie(): Map<string, boolean> | void {
     const stringifyValue = this.cookie.get(this.name);
-    return stringifyValue !== undefined
-      ? JSON.parse(stringifyValue)
-      : stringifyValue;
+    const value = stringifyValue !== undefined ? stringifyValue : '[]';
+    return new Map(JSON.parse(value));
   }
 
   /**
@@ -31,8 +30,8 @@ export default class GdprCookie {
    * @param {string} value to insert in cookie
    * @return {string}
    */
-  updateCookie(value: Object): ?string {
-    const stringifyValue = JSON.stringify(value);
+  updateCookie(value: Map<string, boolean>): ?string {
+    const stringifyValue = JSON.stringify([...value]);
     return this.cookie.set(this.name, stringifyValue);
   }
 

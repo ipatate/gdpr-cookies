@@ -19,9 +19,12 @@ test('verify value default gdpr cookie', () => {
 
 test('verify update value with old setting gdpr cookie', () => {
   const gdpr = new Gdpr({type: ['ads', 'stats']});
-  const activated = gdpr.createActivatedObject({ads: true, foo: 'lol'});
-  expect(activated.ads).toBeTruthy();
-  expect(activated.stats).toBeFalsy();
+  const activated = gdpr.createActivatedObject([
+    ['ads', false],
+    ['foo', 'lol'],
+  ]);
+  expect(activated.get('ads')).toBeFalsy();
+  expect(activated.get('stats')).toBeTruthy();
 });
 
 test('recup global rgpd', () => {

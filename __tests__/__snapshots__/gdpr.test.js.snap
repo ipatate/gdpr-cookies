@@ -13,8 +13,9 @@ Array [
 `;
 
 exports[`verify value default gdpr cookie 1`] = `
-Object {
-  "ads": false,
-  "stats": false,
+Map {
+  "ads" => true,
+  "stats" => true,
+  "others" => true,
 }
 `;

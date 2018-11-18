@@ -6,6 +6,4 @@ declare type OptionsGdpr = {
 
 declare type ObserverGdpr = Array<[string, string, Function]>;
 
-declare type ObservableGdpr = {
-  [string]: Array<Function>,
-};
+declare type ObservableGdpr = Map<string, Set<Function>>;

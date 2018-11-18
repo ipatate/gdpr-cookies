@@ -27,7 +27,7 @@
           zoom: 8
         });
       }
-      _gdpr.push([{ type: 'stats', name: 'Google Map'}, function(helpers) {
+      _gdpr.push([{ type: 'others', name: 'Google Map'}, function(helpers) {
         helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
     }]);
     </script>
