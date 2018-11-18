@@ -1,5 +1,5 @@
 // @flow
-import {createScript} from '../utils/CallbackBase';
+import * as helpers from '../utils/CallbackBase';
 
 class GdprObservable {
   observers: ObservableGdpr = {};
@@ -55,7 +55,7 @@ class GdprObservable {
    */
   active(type: string): void {
     if (this.observers[type] !== undefined) {
-      this.observers[type].forEach(observer => observer(createScript));
+      this.observers[type].forEach(observer => observer(helpers));
     }
   }
 }

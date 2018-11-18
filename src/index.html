@@ -6,17 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>var _gdpr = _gdpr || [];</script>
     <script>
-      _gdpr.push([{ type: 'stats', name: 'Google Map'}, function(createScript) {
-        createScript('https://www.googletagmanager.com/gtag/js?id=UA-84018166-1');
+      _gdpr.push([{ type: 'stats', name: 'Google Tag'}, function(helpers) {
+        helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
         window.dataLayer = window.dataLayer || [];
         function gtag() {
-          dataLayer.push(arguments);
+          dataLayer.push(arguments)
         }
         gtag('js', new Date());
 
         gtag('config', 'UA-84018166-1');
       }
       ]);
+    </script>
+    <div id="map" style="width: 100%;height:400px"></div>
+    <script>
+        var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+      _gdpr.push([{ type: 'stats', name: 'Google Map'}, function(helpers) {
+        helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
+    }]);
     </script>
 </head>
   <body>

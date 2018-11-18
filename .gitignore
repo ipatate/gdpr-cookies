@@ -13,6 +13,7 @@ projectFilesBackup
 .tmp
 .env
 .vscode
+src/keys_api.js
 
 coverage
 dist/
