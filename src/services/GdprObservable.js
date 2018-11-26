@@ -40,10 +40,10 @@ class GdprObservable {
             this.typesAllowed.indexOf(type) > -1
           ) {
             // create Set if not exist for this key
-            if (this.observers.has(type) === false) {
-              this.observers.set(type, new Set([]));
+            if (this.observers.has(name) === false) {
+              this.observers.set(name, new Set([]));
             }
-            const temp = this.observers.get(type);
+            const temp = this.observers.get(name);
             if (temp) temp.add(func);
           }
         }

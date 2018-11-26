@@ -3,7 +3,7 @@ import GdprObservable from '../src/services/GdprObservable';
 test('set observer', () => {
   const _gdpr = [[{type: 'ads', name: 'Mon super service'}, () => 'hello']];
   const g = new GdprObservable(_gdpr, ['ads']);
-  const ads = g.observers.get('ads');
+  const ads = g.observers.get('Mon super service');
   expect(ads).toBeDefined();
   expect(ads.size).toBe(1);
 });
@@ -42,7 +42,8 @@ test('test call callback', () => {
     [{type: 'stats', name: 'bar'}, nocall],
   ];
   const g = new GdprObservable(_gdpr, ['ads', 'stats']);
-  g.active('ads');
+  g.active('wtf');
+  g.active('hello');
   expect(call1).toHaveBeenCalledTimes(1);
   expect(call2).toHaveBeenCalledTimes(1);
   expect(nocall).toHaveBeenCalledTimes(0);
