@@ -34,12 +34,12 @@ export default class Gdpr {
   }
 
   /**
-   * @description get global _gdpr array
+   * @description get global _gdpr array and freeze for bloc modification
    * @return {array}
    */
   getGlobalGdpr(): ObserverGdpr {
     const _gdpr = global._gdpr || [];
-    return _gdpr;
+    return Object.freeze(_gdpr);
   }
 
   /**
