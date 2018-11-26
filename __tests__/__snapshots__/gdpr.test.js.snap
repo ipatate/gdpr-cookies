@@ -12,10 +12,4 @@ Array [
 ]
 `;
 
-exports[`verify value default gdpr cookie 1`] = `
-Map {
-  "ads" => true,
-  "stats" => true,
-  "others" => true,
-}
-`;
+exports[`verify value default gdpr cookie 1`] = `Map {}`;

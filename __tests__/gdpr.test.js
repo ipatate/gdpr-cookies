@@ -18,13 +18,16 @@ test('verify value default gdpr cookie', () => {
 });
 
 test('verify update value with old setting gdpr cookie', () => {
-  const gdpr = new Gdpr({type: ['ads', 'stats']});
-  const activated = gdpr.createActivatedObject([
-    ['ads', false],
-    ['foo', 'lol'],
-  ]);
-  expect(activated.get('ads')).toBeFalsy();
-  expect(activated.get('stats')).toBeTruthy();
+  window._gdpr = [
+    [{type: 'other', name: 'service map'}, () => {}],
+    [{type: 'ads', name: 'service ads'}, () => {}],
+  ];
+  const gdpr = new Gdpr({type: ['ads', 'other']});
+  const activated = gdpr.createActivatedObject(
+    new Map([['service map', false], ['service ads', true]]),
+  );
+  expect(activated.get('service map')).toBeFalsy();
+  expect(activated.get('service ads')).toBeTruthy();
 });
 
 test('recup global rgpd', () => {

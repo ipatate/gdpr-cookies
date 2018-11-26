@@ -12,6 +12,6 @@ const gdpr = new Gdpr(options); // eslint-disable-line
 
 // show popup
 gdpr.isFirstVisit();
+// debugger;
 // active service allowed
 // gdpr.activeService();
-// debugger;

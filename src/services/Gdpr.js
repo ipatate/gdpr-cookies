@@ -2,6 +2,7 @@
 import merge from 'deepmerge';
 import GdprCookie from './GdprCookie';
 import GdprObservable from './GdprObservable';
+import {validGdprArray} from '../utils/Validator';
 
 export default class Gdpr {
   options: OptionsGdpr = {
@@ -23,10 +24,13 @@ export default class Gdpr {
   constructor(options: ?OptionsGdpr = {name: 'gdpr_cookie'}): void {
     this.options = merge.all([this.options, options]);
     this.cookie = new GdprCookie(this.options.name);
+    // stock name of service and bool for active or not
     this.activated = new Map();
+    // stock global service generated in html
+    this.globalGdpr = this.getGlobalGdpr();
     // init activated object and save in cookie
     this.initCookie();
-    this.globalGdpr = this.getGlobalGdpr();
+    // service callback observer
     this.GdprObservable = new GdprObservable(
       this.globalGdpr,
       this.options.types,
@@ -78,7 +82,7 @@ export default class Gdpr {
   initCookie(): void {
     const _c = this.cookie.getCookie();
     // if not cookie rgpd clear cookie
-    this.cookieExist = _c === undefined;
+    this.cookieExist = _c.size === 0;
     if (this.cookieExist) {
       this.clearCookies();
     }
@@ -98,18 +102,22 @@ export default class Gdpr {
 
   /**
    * @description create map activated with old value if exist
-   * @param {object | void} _c
+   * @param {object} _c
    * @return {object}
    */
-  createActivatedObject(_c: Map<string, boolean> | void): Object {
+  createActivatedObject(_c: Map<string, boolean>): Object {
     const {types} = this.options;
     // old value in cookie if exist
-    const oldActivated = new Map(_c);
+    const services = this.globalGdpr;
+
     // if type is array
     if (types !== undefined && Array.isArray(types)) {
-      types.forEach(name => {
-        const o = oldActivated.get(name);
-        this.activated.set(name, o !== undefined ? o : true);
+      services.forEach(service => {
+        if (validGdprArray(service, types)) {
+          const {name} = service[0];
+          const old = _c.get(name);
+          this.activated.set(name, old !== undefined ? old : true);
+        }
       });
     }
     return this.activated;
