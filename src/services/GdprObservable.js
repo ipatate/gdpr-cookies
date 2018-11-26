@@ -44,13 +44,13 @@ class GdprObservable {
   }
 
   /**
-   * @description launch all cb with type in argument
-   * @param {string} type
+   * @description launch all cb with name in argument
+   * @param {string} name
    * @return {void}
    */
-  active(type: string): void {
-    if (this.observers.has(type)) {
-      const funcSet = this.observers.get(type);
+  active(name: string): void {
+    if (this.observers.has(name)) {
+      const funcSet = this.observers.get(name);
       if (funcSet) {
         funcSet.forEach(observer => observer(helpers));
       }

@@ -122,4 +122,14 @@ export default class Gdpr {
     }
     return this.activated;
   }
+
+  /**
+   * @description get list of service by type and name
+   */
+  getListServices() {}
+
+  /**
+   * @description update activated Map
+   */
+  updateActivated() {}
 }
