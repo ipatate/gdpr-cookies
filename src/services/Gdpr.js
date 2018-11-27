@@ -42,8 +42,26 @@ export default class Gdpr {
    * @return {array}
    */
   getGlobalGdpr(): ObserverGdpr {
-    const _gdpr = global._gdpr || [];
-    return Object.freeze(_gdpr);
+    const _gdpr =
+      global._gdpr !== undefined && Array.isArray(global._gdpr)
+        ? global._gdpr
+        : [];
+    const validGdpr = this.validGlobalGdpr(_gdpr);
+    return Object.freeze(validGdpr);
+  }
+
+  /**
+   * @description valid global gdpr array
+   * @param {Object} globalGdpr
+   * @return {Object} globalGdpr
+   */
+  validGlobalGdpr(globalGdpr: ObserverGdpr): ObserverGdpr {
+    const {types} = this.options;
+    // if type is array
+    if (types !== undefined && Array.isArray(types)) {
+      return globalGdpr.filter(service => validGdprArray(service, types));
+    }
+    return [];
   }
 
   /**
@@ -106,27 +124,31 @@ export default class Gdpr {
    * @return {object}
    */
   createActivatedObject(_c: Map<string, boolean>): Object {
-    const {types} = this.options;
-    // old value in cookie if exist
     const services = this.globalGdpr;
 
-    // if type is array
-    if (types !== undefined && Array.isArray(types)) {
-      services.forEach(service => {
-        if (validGdprArray(service, types)) {
-          const {name} = service[0];
-          const old = _c.get(name);
-          this.activated.set(name, old !== undefined ? old : true);
-        }
-      });
-    }
+    services.forEach(service => {
+      const {name} = service[0];
+      const old = _c.get(name);
+      this.activated.set(name, old !== undefined ? old : true);
+    });
     return this.activated;
   }
 
   /**
    * @description get list of service by type and name
    */
-  getListServices() {}
+  getListServices(): ServiceList {
+    return this.globalGdpr.map(service => {
+      const {name, description, type} = service[0];
+      const state = this.activated.get(name);
+      return {
+        name,
+        description: description || '',
+        type: type,
+        state: state || true,
+      };
+    });
+  }
 
   /**
    * @description update activated Map

@@ -1,15 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`recup global rgpd 1`] = `
+exports[`Test get global Gdpr method global gdpr 1`] = `
 Array [
   Array [
     Object {
-      "name": "bar",
-      "type": "foo",
+      "name": "service ads",
+      "type": "ads",
     },
     [Function],
   ],
 ]
 `;
+
+exports[`Test get global Gdpr method global gdpr not exist 1`] = `Array []`;
+
+exports[`Test get global Gdpr method global gdpr with object 1`] = `Array []`;
+
+exports[`Test get global Gdpr method valid global gdpr method 1`] = `
+Array [
+  Array [
+    Object {
+      "name": "service tags",
+      "type": "others",
+    },
+    [Function],
+  ],
+  Array [
+    Object {
+      "name": "service map",
+      "type": "stats",
+    },
+    [Function],
+  ],
+]
+`;
+
+exports[`get list for display 1`] = `
+Array [
+  Object {
+    "description": "my nice description",
+    "name": "service map",
+    "state": true,
+    "type": "others",
+  },
+  Object {
+    "description": "",
+    "name": "service tags",
+    "state": true,
+    "type": "others",
+  },
+  Object {
+    "description": "",
+    "name": "service ads",
+    "state": true,
+    "type": "ads",
+  },
+]
+`;
+
+exports[`recup global rgpd 1`] = `Array []`;
 
 exports[`verify value default gdpr cookie 1`] = `Map {}`;

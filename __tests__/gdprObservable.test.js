@@ -26,12 +26,6 @@ test('set observer with only two elements', () => {
   expect(g.observers.get('wtf')).toBeUndefined();
 });
 
-test('set observer with 3 elements but element 3 is string', () => {
-  const _gdpr = [[{type: 'wtf', name: 'wtf'}, 'wtf']];
-  const g = new GdprObservable(_gdpr, ['ads']);
-  expect(g.observers.get('wtf')).toBeUndefined();
-});
-
 test('test call callback', () => {
   const call1 = jest.fn();
   const call2 = jest.fn();

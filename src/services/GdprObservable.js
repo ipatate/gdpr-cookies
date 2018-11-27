@@ -1,6 +1,5 @@
 // @flow
 import * as helpers from '../utils/CallbackBase';
-import {validGdprArray} from '../utils/Validator';
 class GdprObservable {
   observers: ObservableGdpr;
   typesAllowed: Array<string> = [];
@@ -27,19 +26,14 @@ class GdprObservable {
    */
   setObservers(observerGdpr: ObserverGdpr): void {
     observerGdpr.forEach(o => {
-      // if array and has 3 elements
-      if (Array.isArray(o) === true && o.length > 1) {
-        if (validGdprArray(o, this.typesAllowed)) {
-          const {name} = o[0];
-          const func = o[1];
-          // create Set if not exist for this key
-          if (this.observers.has(name) === false) {
-            this.observers.set(name, new Set([]));
-          }
-          const temp = this.observers.get(name);
-          if (temp) temp.add(func);
-        }
+      const {name} = o[0];
+      const func = o[1];
+      // create Set if not exist for this key
+      if (this.observers.has(name) === false) {
+        this.observers.set(name, new Set([]));
       }
+      const temp = this.observers.get(name);
+      if (temp) temp.add(func);
     });
   }
 
