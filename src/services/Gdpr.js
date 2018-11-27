@@ -31,10 +31,7 @@ export default class Gdpr {
     // init activated object and save in cookie
     this.initCookie();
     // service callback observer
-    this.GdprObservable = new GdprObservable(
-      this.globalGdpr,
-      this.options.types,
-    );
+    this.GdprObservable = new GdprObservable(this.globalGdpr);
   }
 
   /**
@@ -78,19 +75,6 @@ export default class Gdpr {
 
   isFirstVisit(): boolean {
     return this.cookieExist;
-  }
-
-  /**
-   * @description each activated for active or unactive service
-   * @return {void}
-   */
-  activeService(): void {
-    for (const key of this.activated.keys()) {
-      const value = this.activated.get(key);
-      if (value === true) {
-        this.GdprObservable.active(key);
-      }
-    }
   }
 
   /**
@@ -138,20 +122,61 @@ export default class Gdpr {
    * @description get list of service by type and name
    */
   getListServices(): ServiceList {
-    return this.globalGdpr.map(service => {
+    const arr = this.globalGdpr.map(service => {
       const {name, description, type} = service[0];
       const state = this.activated.get(name);
       return {
         name,
         description: description || '',
         type: type,
-        state: state || true,
+        state: state !== undefined ? state : true,
       };
+    });
+    // sort by type
+    return arr.sort((a, b) => {
+      if (a.type < b.type) return -1;
+      else if (a.type > b.type) return 1;
+      return 0;
     });
   }
 
   /**
-   * @description update activated Map
+   * @description update activated Map by name
+   * @param {string} name
+   * @param {boolean} state
+   * @return { void }
    */
-  updateActivated() {}
+  updateServiceByName(name: string, state: boolean): void {
+    if (this.activated.has(name) && typeof state === 'boolean') {
+      this.activated.set(name, state);
+    }
+  }
+
+  /**
+   * @description update activated Map by type
+   * @param {string} type
+   * @param {boolean} state
+   * @return { void }
+   */
+  updateServiceByType(typeOfService: string, state: boolean): void {
+    this.globalGdpr.forEach(service => {
+      const {name, type} = service[0];
+      if (typeOfService === type && typeof state === 'boolean') {
+        this.activated.set(name, state);
+      }
+    });
+  }
+
+  /**
+   * @description each activated for active or unactive service
+   * @return {void}
+   */
+  toggleService(): void {
+    for (const key of this.activated.keys()) {
+      const value = this.activated.get(key);
+      if (value === true) {
+        this.GdprObservable.active(key);
+      }
+    }
+  }
 }

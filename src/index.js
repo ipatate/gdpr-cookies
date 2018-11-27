@@ -12,6 +12,15 @@ const gdpr = new Gdpr(options); // eslint-disable-line
 
 // show popup
 gdpr.isFirstVisit();
-// debugger;
+
+// gdpr.updateServiceByName('Google Tag', false);
+gdpr.updateServiceByType('stats', false);
+
 // active service allowed
-// gdpr.activeService();
+gdpr.toggleService();
+
+const services = gdpr.getListServices();
+
+services.forEach(service => {
+  console.log(service.name, service.type, service.state); // eslint-disable-line
+});

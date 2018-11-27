@@ -38,6 +38,12 @@ Array [
 exports[`get list for display 1`] = `
 Array [
   Object {
+    "description": "",
+    "name": "service ads",
+    "state": true,
+    "type": "ads",
+  },
+  Object {
     "description": "my nice description",
     "name": "service map",
     "state": true,
@@ -48,12 +54,6 @@ Array [
     "name": "service tags",
     "state": true,
     "type": "others",
-  },
-  Object {
-    "description": "",
-    "name": "service ads",
-    "state": true,
-    "type": "ads",
   },
 ]
 `;

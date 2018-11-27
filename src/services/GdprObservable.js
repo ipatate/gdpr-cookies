@@ -2,19 +2,13 @@
 import * as helpers from '../utils/CallbackBase';
 class GdprObservable {
   observers: ObservableGdpr;
-  typesAllowed: Array<string> = [];
 
   /**
    *
    * @param {array} observerGdpr
-   * @param {array} typesAllowed
    * @return {void}
    */
-  constructor(
-    observerGdpr: ObserverGdpr = [],
-    typesAllowed: Array<string> = [],
-  ): void {
-    this.typesAllowed = typesAllowed;
+  constructor(observerGdpr: ObserverGdpr = []): void {
     this.observers = new Map();
     this.setObservers(observerGdpr);
   }
