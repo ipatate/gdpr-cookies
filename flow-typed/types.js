@@ -4,6 +4,21 @@ declare type OptionsGdpr = {
   types?: Array<string>,
 };
 
-declare type ObserverGdpr = Array<[string, string, Function]>;
+declare type ServiceDescription = {
+  name: string,
+  type: string,
+  description?: string,
+};
+
+declare type ServiceGlobal = [ServiceDescription, Function];
+
+declare type ObserverGdpr = Array<ServiceGlobal>;
 
 declare type ObservableGdpr = Map<string, Set<Function>>;
+
+declare type ServiceList = Array<{
+  name: string,
+  type: string,
+  description?: string,
+  state: boolean,
+}>;
