@@ -1,12 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoader = require('vue-loader');
+const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // eslint-disable-line
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
-  mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -44,30 +44,18 @@ module.exports = {
     ],
   },
   resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js',
-    },
     extensions: ['*', '.js', '.vue', '.json'],
-  },
-  devServer: {
-    hot: true,
-    inline: true,
-    stats: {
-      colors: true,
-    },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
   },
   plugins: [
     new VueLoader.VueLoaderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+    }),
+    new UglifyjsWebpackPlugin({
+      sourceMap: true,
     }),
   ],
 };

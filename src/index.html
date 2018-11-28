@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <title>Webpack App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>var _gdpr = _gdpr || [];</script>
+  </head>
+  <body>
+  <script>var _gdpr = _gdpr || [];
+    var _gdpr_lang = 'fr';
+  </script>
     <script>
       _gdpr.push([{ type: 'stats', name: 'Google test'}, () => true]);
       _gdpr.push([{ type: 'stats', name: 'Google Tag'}, function(helpers) {
@@ -32,6 +36,6 @@
         helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
     }]);
     </script>
-</head>
-  <body>
+      <div id="gdpr-cookie"></div>
+    </body>
 </html>
