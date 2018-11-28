@@ -16,6 +16,8 @@ exports[`Test get global Gdpr method global gdpr not exist 1`] = `Array []`;
 
 exports[`Test get global Gdpr method global gdpr with object 1`] = `Array []`;
 
+exports[`Test get global Gdpr method recup global rgpd 1`] = `Array []`;
+
 exports[`Test get global Gdpr method valid global gdpr method 1`] = `
 Array [
   Array [
@@ -35,7 +37,7 @@ Array [
 ]
 `;
 
-exports[`get list for display 1`] = `
+exports[`test get List for display get list for display 1`] = `
 Array [
   Object {
     "description": "",
@@ -57,7 +59,3 @@ Array [
   },
 ]
 `;
-
-exports[`recup global rgpd 1`] = `Array []`;
-
-exports[`verify value default gdpr cookie 1`] = `Map {}`;

@@ -1,6 +1,12 @@
 import Gdpr from '../src/services/Gdpr';
 
 describe('Test get global Gdpr method', () => {
+  test('recup global rgpd', () => {
+    window._gdpr = [[{type: 'foo', name: 'bar'}, () => {}]]; // eslint-disable-line
+    const gdpr = new Gdpr({types: ['ads', 'stats']});
+    expect(gdpr.getGlobalGdpr()).toMatchSnapshot();
+  });
+
   test('global gdpr', () => {
     const arr = [
       [{type: 'other', name: 'service map'}, () => {}],
@@ -53,41 +59,88 @@ describe('Test option pass to Gdpr class', () => {
   });
 });
 
-test('verify value default gdpr cookie', () => {
-  const gdpr = new Gdpr();
-  expect(gdpr.createActivatedObject()).toMatchSnapshot();
+describe('test update service state with cookie value', () => {
+  test('verify update value with old setting gdpr cookie', () => {
+    window._gdpr = [
+      [{type: 'other', name: 'service map'}, () => {}],
+      [{type: 'ads', name: 'service ads'}, () => {}],
+    ];
+    const gdpr = new Gdpr({type: ['ads', 'other']});
+    const activated = gdpr.createActivatedObject(
+      new Map([['service map', false], ['service ads', true]]),
+    );
+    expect(activated.get('service map')).toBeFalsy();
+    expect(activated.get('service ads')).toBeTruthy();
+  });
 });
 
-test('verify update value with old setting gdpr cookie', () => {
-  window._gdpr = [
-    [{type: 'other', name: 'service map'}, () => {}],
-    [{type: 'ads', name: 'service ads'}, () => {}],
-  ];
-  const gdpr = new Gdpr({type: ['ads', 'other']});
-  const activated = gdpr.createActivatedObject(
-    new Map([['service map', false], ['service ads', true]]),
-  );
-  expect(activated.get('service map')).toBeFalsy();
-  expect(activated.get('service ads')).toBeTruthy();
+describe('test get List for display', () => {
+  test('get list for display', () => {
+    window._gdpr = [
+      [
+        {
+          type: 'others',
+          description: 'my nice description',
+          name: 'service map',
+        },
+        () => {},
+      ],
+      [{type: 'others', name: 'service tags'}, () => {}],
+      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'fake', name: 'service fake'}, () => {}],
+    ];
+    const gdpr = new Gdpr({types: ['ads', 'other']});
+    const list = gdpr.getListServices();
+    expect(list).toMatchSnapshot();
+  });
 });
 
-test('recup global rgpd', () => {
-  window._gdpr = [[{type: 'foo', name: 'bar'}, () => {}]]; // eslint-disable-line
-  const gdpr = new Gdpr({type: ['ads', 'stats']});
-  expect(gdpr.getGlobalGdpr()).toMatchSnapshot();
-});
+describe('test updating service', () => {
+  test('update service by name', () => {
+    window._gdpr = [
+      [{type: 'other', name: 'service map'}, () => {}],
+      [{type: 'ads', name: 'service ads'}, () => {}],
+    ];
+    const gdpr = new Gdpr({types: ['ads', 'other']});
+    gdpr.updateServiceByName('service map', false);
+    expect(gdpr.activated.get('service map')).toBeFalsy();
+    expect(gdpr.activated.get('service ads')).toBeTruthy();
+  });
 
-test('get list for display', () => {
-  window._gdpr = [
-    [
-      {type: 'others', description: 'my nice description', name: 'service map'},
-      () => {},
-    ],
-    [{type: 'others', name: 'service tags'}, () => {}],
-    [{type: 'ads', name: 'service ads'}, () => {}],
-    [{type: 'fake', name: 'service fake'}, () => {}],
-  ];
-  const gdpr = new Gdpr({type: ['ads', 'other']});
-  const list = gdpr.getListServices();
-  expect(list).toMatchSnapshot();
+  test('update service by fake name', () => {
+    window._gdpr = [
+      [{type: 'other', name: 'service map'}, () => {}],
+      [{type: 'ads', name: 'service ads'}, () => {}],
+    ];
+    const gdpr = new Gdpr({types: ['ads', 'other']});
+    gdpr.updateServiceByName('service fake', false);
+    expect(gdpr.activated.get('service map')).toBeTruthy();
+    expect(gdpr.activated.get('service ads')).toBeTruthy();
+  });
+
+  test('update service by type', () => {
+    window._gdpr = [
+      [{type: 'other', name: 'service map'}, () => {}],
+      [{type: 'other', name: 'service tag'}, () => {}],
+      [{type: 'ads', name: 'service ads'}, () => {}],
+    ];
+    const gdpr = new Gdpr({types: ['ads', 'other']});
+    gdpr.updateServiceByType('other', false);
+    expect(gdpr.activated.get('service map')).toBeFalsy();
+    expect(gdpr.activated.get('service tag')).toBeFalsy();
+    expect(gdpr.activated.get('service ads')).toBeTruthy();
+  });
+
+  test('update service by fake type', () => {
+    window._gdpr = [
+      [{type: 'other', name: 'service map'}, () => {}],
+      [{type: 'other', name: 'service tag'}, () => {}],
+      [{type: 'ads', name: 'service ads'}, () => {}],
+    ];
+    const gdpr = new Gdpr({types: ['ads', 'other']});
+    gdpr.updateServiceByType('fake', false);
+    expect(gdpr.activated.get('service map')).toBeTruthy();
+    expect(gdpr.activated.get('service tag')).toBeTruthy();
+    expect(gdpr.activated.get('service ads')).toBeTruthy();
+  });
 });
