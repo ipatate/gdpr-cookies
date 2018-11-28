@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const VueLoader = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
@@ -25,12 +24,7 @@ module.exports = {
         },
       },
       {
-        test: /\.vue$/,
-        exclude: /node_modules/,
-        loader: 'vue-loader',
-      },
-      {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -44,10 +38,7 @@ module.exports = {
     ],
   },
   resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js',
-    },
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['*', '.js', '.json'],
   },
   devServer: {
     hot: true,
@@ -60,7 +51,6 @@ module.exports = {
     },
   },
   plugins: [
-    new VueLoader.VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),

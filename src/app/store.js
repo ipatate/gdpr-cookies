@@ -1,14 +1,12 @@
-import Vuex from 'vuex';
 import Gdpr from '../services/Gdpr';
-
+let gdpr;
 export const createStore = options => {
-  const gdpr = new Gdpr(options);
+  if (gdpr === undefined) {
+    gdpr = new Gdpr(options);
+  }
 
-  return new Vuex.Store({
-    state: {
-      listService: gdpr.getListServices(),
-      isFirstVisit: gdpr.isFirstVisit(),
-    },
-    mutations: {},
-  });
+  return {
+    listService: gdpr.getListServices(),
+    isFirstVisit: gdpr.isFirstVisit(),
+  };
 };

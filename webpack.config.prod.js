@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const VueLoader = require('vue-loader');
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // eslint-disable-line
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -25,12 +24,7 @@ module.exports = {
         },
       },
       {
-        test: /\.vue$/,
-        exclude: /node_modules/,
-        loader: 'vue-loader',
-      },
-      {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -44,10 +38,9 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['*', '.js', '.json'],
   },
   plugins: [
-    new VueLoader.VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
