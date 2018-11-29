@@ -4,7 +4,7 @@
             "eslint"
         ],
         "**/*.+(js|jsx||json|yml|yaml|ts|tsx|graphql|vue|mjs)": [
-            "prettier --write --config ./.prettierrc",
+            "prettier --write",
             "git add"
         ]
     }
