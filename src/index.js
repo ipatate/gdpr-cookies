@@ -1,8 +1,8 @@
 import {h, render} from 'preact';
+import {Provider} from 'redux-zero/preact';
+import initStore from './UI/Store';
 import messages from '../locales/messages';
-import {createStore} from './app/store';
-import Banner from './app/components/Banner';
-
+import App from './UI/App';
 import keys_api from './keys_api';
 
 global.keys_api = keys_api;
@@ -11,13 +11,19 @@ const options = {
   keepCookies: [],
 };
 
-createStore(options);
-
 // language
-let locale = window._gdpr_lang || 'en';
-const t = string => messages[locale][string] || string;
+const locale = window._gdpr_lang || 'en';
 
-render(<Banner t={t} />, document.body);
+const main = locale => {
+  render(
+    <Provider store={initStore(options)}>
+      <App locale={locale} messages={messages} />
+    </Provider>,
+    document.getElementById('gdpr-cookie'),
+  );
+};
+
+main(locale);
 
 // show popup
 // gdpr.isFirstVisit();

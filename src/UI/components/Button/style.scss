@@ -1,0 +1,22 @@
+.gdpr_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  text-align: center;
+
+  &-success {
+    background: #48c1a0;
+  }
+
+  &-default {
+    background: #cecece;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

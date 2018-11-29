@@ -21,7 +21,8 @@
   "dependencies": {
     "deepmerge": "^2.2.1",
     "js-cookie": "^2.2.0",
-    "preact": "^8.3.1"
+    "preact": "^8.3.1",
+    "redux-zero": "^4.15.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

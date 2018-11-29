@@ -1,0 +1,24 @@
+.gdpr_banner {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: #454d5d;
+  color: #fff;
+  font-size: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+  z-index: 2147483645;
+
+  &-text {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem;
+  }
+}
