@@ -22,6 +22,7 @@
     "deepmerge": "^2.2.1",
     "js-cookie": "^2.2.0",
     "preact": "^8.3.1",
+    "preact-compat": "^3.18.4",
     "redux-zero": "^4.15.0"
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@babel/plugin-transform-react-jsx": "^7.1.6",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "autoprefixer": "^9.3.1",
     "babel-core": "^7.0.0-bridge.0",
@@ -41,6 +43,7 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.5",
     "css-loader": "^1.0.1",
+    "desvg-loader": "^0.1.0",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-standard-preact": "^1.1.6",
@@ -48,7 +51,7 @@
     "eslint-plugin-flowtype": "^3.0.0",
     "eslint-plugin-jest": "^21.26.1",
     "eslint-plugin-promise": "^4.0.1",
-    "flow-bin": "^0.84.0",
+    "flow-bin": "^0.81.0",
     "flow-remove-types": "^1.2.3",
     "flow-typed": "^2.5.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -67,12 +70,13 @@
     "rollup-plugin-uglify": "^6.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^1.0.0",
+    "svg-loader": "0.0.2",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
-    "stylelint": "^9.5.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^1.0.0"
+    "webpack-dev-server": "^3.1.10"
   }
 }

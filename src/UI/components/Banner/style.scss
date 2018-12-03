@@ -1,3 +1,15 @@
+@import '../../variables.scss';
+
+@keyframes slide {
+    from {
+        bottom: -100%;
+    }
+
+    to {
+        bottom: 0;
+    }
+}
+
 .gdpr_banner {
     display: flex;
     position: fixed;
@@ -10,15 +22,20 @@
     left: 0;
     width: 100vw;
     padding: 0;
-    background: #454D5D;
+    background: $bg-banner;
     font-size: 1rem;
-    color: #FFF;
+    color: $font-white;
     text-align: center;
     z-index: 2147483645;
+    animation: slide .5s;
 
     &-text {
         display: flex;
         align-items: center;
         padding: 1rem 1rem;
+    }
+
+    .gdpr_btn {
+        font-size: 1.1rem;
     }
 }

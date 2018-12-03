@@ -1,14 +1,20 @@
 [ignore]
 ./dist
 ./node_modules
+/node_modules/preact/dist/preact.js.flow
 index.js
 __tests__
 [include]
 
 [libs]
-flow-typed/types.js
+flow-typed
 [lints]
 
 [options]
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.file_ext=.scss
 
 [strict]

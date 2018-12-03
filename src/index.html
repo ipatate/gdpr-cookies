@@ -5,7 +5,9 @@
     <title>Webpack App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    font-family: arial;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
   </style>
   </head>
   <body>
@@ -14,7 +16,7 @@
   </script>
     <script>
       _gdpr.push([{ type: 'stats', name: 'Google test'}, () => true]);
-      _gdpr.push([{ type: 'stats', name: 'Google Tag'}, function(helpers) {
+      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, function(helpers) {
         helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
         window.dataLayer = window.dataLayer || [];
         function gtag() {

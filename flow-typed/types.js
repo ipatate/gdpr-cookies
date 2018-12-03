@@ -16,9 +16,28 @@ declare type ObserverGdpr = Array<ServiceGlobal>;
 
 declare type ObservableGdpr = Map<string, Set<Function>>;
 
-declare type ServiceList = Array<{
+declare type Service = {
   name: string,
   type: string,
   description?: string,
   state: boolean,
-}>;
+};
+
+declare type ServiceList = Array<Service>;
+
+declare type StoreType = {
+  showModal: boolean,
+  listService: ServiceList,
+  isFirstVisit: boolean,
+};
+
+declare type AppProps = {
+  t: Function,
+  store: Object,
+  showModal: boolean,
+  listService: ServiceList,
+  isFirstVisit: boolean,
+  toggleModal: Function,
+  toggleBanner: Function,
+  toggleServiceByType: Function,
+};

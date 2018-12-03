@@ -35,10 +35,18 @@ module.exports = {
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: ['desvg-loader/preact', 'svg-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.json'],
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat',
+    },
+    extensions: ['*', '.js', '.json', '.svg'],
   },
   devServer: {
     hot: true,

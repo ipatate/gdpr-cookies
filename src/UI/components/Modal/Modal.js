@@ -1,27 +1,90 @@
+// @flow @jsx h
 import {h, Component} from 'preact';
-import {connect} from 'redux-zero/preact';
-import actions from '../../Actions';
-import Button from '../Button/Button';
+import Button from '../Button';
+import ListElement from '../ListElement';
+import BtActions from '../BtActions';
+import Close from './close.svg';
+import Arrow from './arrow-left.svg';
 import './style.scss';
 
-export class Modal extends Component {
+export default class Modal extends Component<AppProps> {
+  closeAndSave = (): void => {
+    const {toggleModal} = this.props;
+    toggleModal(false);
+  };
+
+  getStatusForType = (type: string): boolean | null => {
+    const {listService} = this.props;
+    const ok = [];
+    const ko = [];
+    listService.forEach(service => {
+      if (service.type === type && service.state === true) {
+        ok.push(service);
+      } else if (service.type === type && service.state === false) {
+        ko.push(service);
+      }
+    });
+    let status = null;
+    if (ok.length > 0 && ko.length === 0) {
+      status = true;
+    } else if (ok.length === 0 && ko.length > 0) {
+      status = false;
+    }
+    return status;
+  };
+
+  getListElement = (): Array<any> => {
+    const {listService, toggleServiceByType, t} = this.props;
+    let type = '';
+    return listService.map(service => {
+      let r = [];
+      if (service.type !== type) {
+        r.push(
+          <div key={service.type} class="gdpr_modal_list-head">
+            <div className="gdpr_modal_list-head-text">
+              <Arrow width="24px" height="24px" />
+              {t(service.type)}
+            </div>
+            <BtActions
+              t={t}
+              // status={this.getStatusForType(service.type)}
+              onChange={state => {
+                return toggleServiceByType({type: service.type, state});
+              }}
+            />
+          </div>,
+        );
+      }
+      r.push(<ListElement key={service.name} t={t} service={service} />);
+      type = service.type;
+      return r;
+    });
+  };
+
   render() {
-    if (this.props.showModal === false) return null;
+    // if (this.props.showModal === false) return null;
+    const {t} = this.props;
     return (
       <div className="gdpr_modal">
-        <div className="gdpr_modal-list">{this.props.t('alert_text')}</div>
-
-        <Button
-          className="gdpr_btn-success"
-          text={this.props.t('modal_valid')}
-        />
+        <div className="gdpr_modal_content">
+          <div className="gdpr_modal_list">
+            <header>
+              <strong>{t('modal_header_txt')}</strong>
+              <Button className="" onClick={this.closeAndSave}>
+                <Close width="20px" height="20px" />
+              </Button>
+            </header>
+            <div className="gdpr_modal_list-content">
+              {this.getListElement()}
+            </div>
+          </div>
+          <div className="gdpr_modal_action">
+            <Button className="gdpr_btn-success" onClick={this.closeAndSave}>
+              {t('modal_valid')}
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
 }
-const mapToProps = ({showModal}) => ({showModal});
-
-export default connect(
-  mapToProps,
-  actions,
-)(Modal);

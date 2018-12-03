@@ -1,0 +1,23 @@
+@import '../../variables.scss';
+
+.gdpr_liste_element {
+    display: flex;
+    margin: 1px 0;
+    padding: .5rem;
+    min-height: 3rem;
+    background: #FFF;
+}
+
+.gdpr_liste_element-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    padding: .5rem;
+
+    p {
+        font-size: .9rem;
+        color: $font-gray;
+    }
+}

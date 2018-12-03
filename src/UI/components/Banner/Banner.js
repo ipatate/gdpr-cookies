@@ -1,33 +1,40 @@
+// @flow @jsx h
 import {h, Component} from 'preact';
-import {connect} from 'redux-zero/preact';
-import actions from '../../Actions';
-import Button from '../Button/Button';
+import Button from '../Button';
 import './style.scss';
 
-export class Banner extends Component {
+export default class Banner extends Component<AppProps> {
+  closeAndSave = (): void => {
+    const {toggleModal, toggleBanner} = this.props;
+    toggleBanner(false);
+    toggleModal(false);
+  };
+
   render() {
-    // if (this.props.store.isFirstVisit === false) return null;
+    if (this.props.isFirstVisit === false) return null;
+    const {t, toggleModal} = this.props;
     return (
       <div className="gdpr_banner">
-        <div className="gdpr_banner-text">{this.props.t('alert_text')}</div>
+        <div className="gdpr_banner-text">{t('alert_text')}</div>
         <Button
           className="gdpr_btn-success"
-          text={this.props.t('banner_ok_bt')}
-        />
+          onClick={e => {
+            e.preventDefault();
+            this.closeAndSave();
+          }}
+        >
+          {t('banner_ok_bt')}
+        </Button>
         <Button
           className="gdpr_btn-default"
           onClick={e => {
             e.preventDefault();
-            this.props.toggleModal(true);
+            toggleModal(true);
           }}
-          text={this.props.t('banner_custom_bt')}
-        />
+        >
+          {t('banner_custom_bt')}
+        </Button>
       </div>
     );
   }
 }
-
-export default connect(
-  null,
-  actions,
-)(Banner);

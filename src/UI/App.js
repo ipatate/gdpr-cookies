@@ -1,20 +1,21 @@
+// @flow @jsx h
 import {h, Component} from 'preact';
 import {connect} from 'redux-zero/preact';
 import actions from './Actions';
-import Banner from './components/Banner/Banner';
-import Modal from './components/Modal/Modal';
+import Banner from './components/Banner';
+import Modal from './components/Modal';
 
-export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.store = this.props.store;
-    this.translate = this.translate.bind(this);
-  }
-  translate(string) {
+type initProps = {
+  messages: Object,
+  locale: string,
+};
+export class App extends Component<initProps> {
+  translate = (string: string) => {
     const {messages, locale} = this.props;
     if (messages === undefined || locale === undefined) return string;
     return messages[locale][string] || string;
-  }
+  };
+
   render() {
     return (
       <div>

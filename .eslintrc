@@ -3,13 +3,13 @@
   "parserOptions": {
     "ecmaVersion": 2018
   },
-  "plugins": ["flowtype", "jest", "promise", "react"],
+  "plugins": ["flowtype", "jest", "promise"],
   "extends": [
     "eslint:recommended",
     "eslint-config-prettier",
+    "standard-preact",
     "plugin:flowtype/recommended",
-    "plugin:jest/recommended",
-    "standard-preact"
+    "plugin:jest/recommended"
   ],
   "env": {
     "browser": true,

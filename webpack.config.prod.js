@@ -42,10 +42,18 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['desvg-loader/preact', 'svg-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.json'],
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat',
+    },
+    extensions: ['*', '.js', '.json', '.svg'],
   },
   plugins: [
     new webpack.DefinePlugin({

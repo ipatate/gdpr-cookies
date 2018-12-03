@@ -1,19 +1,31 @@
+@import '../../variables.scss';
+
 .gdpr_btn {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: .5rem 2rem;
-    color: #333;
+    border: 0;
+    color: $font-white;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
 
+    &-round {
+        border-radius: $radius-bt;
+    }
+
     &-success {
-        background: #48C1A0;
+        background: $color-success;
+    }
+
+    &-error {
+        background: $color-danger;
     }
 
     &-default {
-        background: #CECECE;
+        background: $color-muted;
+        color: $font-black;
     }
 
     &:hover {

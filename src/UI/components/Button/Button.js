@@ -1,20 +1,23 @@
+// @flow @jsx h
 import {h, Component} from 'preact';
 import './style.scss';
 
-export class Button extends Component {
+type BtProps = {
+  onClick: ?Function,
+  t: Function,
+  className: string,
+  children: Node,
+};
+export default class Button extends Component<BtProps> {
   defaultProps = {
     onClick: () => true,
   };
   render() {
+    const {className, onClick, children} = this.props;
     return (
-      <button
-        className={`gdpr_btn ${this.props.className}`}
-        onClick={this.props.onClick}
-      >
-        {this.props.text}
+      <button className={`gdpr_btn ${className}`} onClick={onClick}>
+        {children}
       </button>
     );
   }
 }
-
-export default Button;
