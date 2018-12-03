@@ -1,4 +1,1 @@
-module.exports = {
-  setupTestFrameworkScriptFile: require.resolve('./test/setup-test.js'),
-  collectCoverageFrom: ['**/src/**/*js'],
-};
+module.exports = require('./test/setup-test.js');

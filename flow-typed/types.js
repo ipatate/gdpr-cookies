@@ -1,5 +1,5 @@
 declare type OptionsGdpr = {
-  name: string,
+  name?: string,
   keepCookies?: Array<string>,
   types?: Array<string>,
 };

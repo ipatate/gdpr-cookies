@@ -63,6 +63,7 @@
     "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
+    "preact-testing-library": "^0.3.0",
     "precss": "^4.0.0",
     "prettier": "^1.14.3",
     "rollup-plugin-babel": "^4.0.3",

@@ -4,13 +4,13 @@ import './style.scss';
 
 type BtProps = {
   onClick: ?Function,
-  t: Function,
   className: string,
   children: Node,
 };
 export default class Button extends Component<BtProps> {
-  defaultProps = {
+  static defaultProps = {
     onClick: () => true,
+    className: '',
   };
   render() {
     const {className, onClick, children} = this.props;
