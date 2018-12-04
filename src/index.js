@@ -4,9 +4,9 @@ import {Provider} from 'redux-zero/preact';
 import initStore from './UI/Store';
 import messagesDefault from '../locales/messages';
 import App from './UI/App';
-import keys_api from './keys_api';
+// import keys_api from './keys_api';
 
-global.keys_api = keys_api;
+// global.keys_api = keys_api;
 
 // language
 const locale = window._gdpr_lang || 'en';

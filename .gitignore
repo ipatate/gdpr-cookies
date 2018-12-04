@@ -16,4 +16,4 @@ projectFilesBackup
 src/keys_api.js
 
 coverage
-dist/
+# dist/

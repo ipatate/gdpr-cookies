@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/ipatate/gdpr-cookies.svg?branch=develop)](https://travis-ci.org/ipatate/gdpr-cookies)
 
-### System GDPR cookie for website. Informs the visitor of the use of cookies and gives the possibility to refuse cookies
+# Beta version.
+
+### 🍪 System GDPR cookie for website. Informs the visitor of the use of cookies and gives the possibility to refuse cookies
 
 ### ℹ️ On the first visit, the banner is show. If visitor click on link or button for navigate, the cookie is accepted by default.
 
@@ -107,7 +109,8 @@ var _gdpr_lang = 'fr';
 
 ## i18n messages
 
-You can create object for messages, ex :
+The message by default exists for fr, en and es.
+If you want to add or define your messages, you can create a messages in your html, ex :
 
 ```js
 var _gdpr_messages = {
@@ -124,8 +127,25 @@ var _gdpr_messages = {
   }
 ```
 
-# Add link for open modal (sorry for the onclick 😅)
+## Add link for open modal (sorry for the onclick 😅)
 
 ```html
 <a href="#" onclick="window.showModal();return false;">Show modal</a>
 ```
+
+
+# 🤓 Dev
+
+The code use :
+- ES2018
+- Webpack
+- Flow
+- Babel
+
+
+For UI :
+
+- Preact
+- Redux Zero
+- Sass
+- Jest
