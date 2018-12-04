@@ -65,20 +65,21 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `gdpr-cookie.css`,
     }),
-  ],
-  optimization: {
-    minimizer: [
-      new UglifyjsWebpackPlugin({
-        sourceMap: true,
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-          output: {
-            comments: false,
-          },
+    new MiniCssExtractPlugin({
+      filename: `gdpr-cookie.source.css`,
+    }),
+    new UglifyjsWebpackPlugin({
+      sourceMap: true,
+      cache: true,
+      parallel: true,
+      uglifyOptions: {
+        output: {
+          comments: false,
         },
-      }),
-      new OptimizeCssAssetsPlugin({}),
-    ],
-  },
+      },
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /gdpr-cookie\.css$/g,
+    }),
+  ],
 };
