@@ -9,8 +9,9 @@ import './style.scss';
 
 export default class Modal extends Component<AppProps> {
   closeAndSave = (): void => {
-    const {toggleModal} = this.props;
+    const {toggleModal, saveStateInGdpr} = this.props;
     toggleModal(false);
+    saveStateInGdpr();
   };
 
   getStatusForType = (type: string): boolean | null => {
@@ -62,7 +63,7 @@ export default class Modal extends Component<AppProps> {
   };
 
   render() {
-    // if (this.props.showModal === false) return null;
+    if (this.props.showModal === false) return null;
     const {t} = this.props;
     return (
       <div className="gdpr_modal">

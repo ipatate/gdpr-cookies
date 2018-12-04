@@ -5,14 +5,16 @@ import './style.scss';
 
 export default class Banner extends Component<AppProps> {
   closeAndSave = (): void => {
-    const {toggleModal, toggleBanner} = this.props;
+    const {toggleModal, toggleBanner, saveStateInGdpr} = this.props;
     toggleBanner(false);
     toggleModal(false);
+    saveStateInGdpr();
   };
 
   render() {
-    if (this.props.isFirstVisit === false) return null;
-    const {t, toggleModal} = this.props;
+    const {isFirstVisit} = this.props;
+    if (isFirstVisit === false) return null;
+    const {t, toggleModal, toggleBanner} = this.props;
     return (
       <div className="gdpr_banner">
         <div className="gdpr_banner-text">{t('alert_text')}</div>
@@ -30,6 +32,7 @@ export default class Banner extends Component<AppProps> {
           onClick={e => {
             e.preventDefault();
             toggleModal(true);
+            toggleBanner(false);
           }}
         >
           {t('banner_custom_bt')}

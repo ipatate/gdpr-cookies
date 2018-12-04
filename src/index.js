@@ -8,15 +8,14 @@ import keys_api from './keys_api';
 
 global.keys_api = keys_api;
 
-const options = {
-  keepCookies: [],
-};
-
 // language
 const locale = window._gdpr_lang || 'en';
+const options = window._gdpr_options || {};
+// target element
+const target = document.getElementById('gdpr-cookie');
 
+// init app
 const main = locale => {
-  const target = document.getElementById('gdpr-cookie');
   if (target) {
     render(
       <Provider store={initStore(options)}>
@@ -29,8 +28,10 @@ const main = locale => {
 
 main(locale);
 
-// gdpr.updateServiceByName('Google Tag', false);
-// gdpr.updateServiceByType('stats', false);
-
-// active service allowed
-// gdpr.toggleService();
+// change lang
+global.changeLangGdpr = locale => {
+  if (target) {
+    target.innerHTML = '';
+  }
+  main(locale);
+};

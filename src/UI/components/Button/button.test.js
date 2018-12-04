@@ -2,7 +2,7 @@ import {h} from 'preact';
 import {render, fireEvent} from 'preact-testing-library';
 import Button from './Button';
 
-test('test', () => {
+test('test button with click and class name', () => {
   const onClick = jest.fn();
   const tree = render(
     <Button onClick={onClick} className="test">

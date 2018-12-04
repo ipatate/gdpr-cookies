@@ -32,6 +32,24 @@ const actions = () => ({
     );
     return {listService};
   },
+  saveStateInGdpr: (state: StoreType) => {
+    const {gdpr, listService, isFirstVisit} = state;
+    // update activated in gdpr class
+    listService.forEach((value: Service) => {
+      gdpr.updateServiceByName(value.name, value.state);
+    });
+    // clear all cookie
+    gdpr.clearCookies();
+    // save new state of service in cookie
+    gdpr.updateCookie();
+    // if fist visit not reload
+    if (isFirstVisit === true) {
+      gdpr.toggleService();
+    } else {
+      window.location.reload();
+    }
+    return {listService: gdpr.getListServices()};
+  },
 });
 
 export default actions;

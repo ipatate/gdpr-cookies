@@ -31,9 +31,10 @@ class CookieWrapper {
    * @param {string} value
    * @return {void}
    */
-  set(name: string, value: string): void {
-    // todo add expire { expires: 395 }
-    return this.cookie.set(name, value);
+  set(name: string, value: string, expires: ?number): void {
+    let options = {};
+    if (expires) options = {expires};
+    return this.cookie.set(name, value, options);
   }
 
   /**

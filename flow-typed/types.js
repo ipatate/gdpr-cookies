@@ -1,7 +1,10 @@
+import Gdpr from '../src/services/Gdpr';
+
 declare type OptionsGdpr = {
   name?: string,
   keepCookies?: Array<string>,
   types?: Array<string>,
+  expires?: number,
 };
 
 declare type ServiceDescription = {
@@ -26,6 +29,7 @@ declare type Service = {
 declare type ServiceList = Array<Service>;
 
 declare type StoreType = {
+  gdpr: Gdpr,
   showModal: boolean,
   listService: ServiceList,
   isFirstVisit: boolean,
@@ -40,4 +44,5 @@ declare type AppProps = {
   toggleModal: Function,
   toggleBanner: Function,
   toggleServiceByType: Function,
+  saveStateInGdpr: Function,
 };
