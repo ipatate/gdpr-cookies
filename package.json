@@ -1,6 +1,6 @@
 {
   "name": "gdpr-cookies",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "System for website. informs the visitor of the use of cookies and gives the possibility to refuse cookies",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "deepmerge": "^2.2.1",
     "js-cookie": "^2.2.0",
     "preact": "^8.3.1",

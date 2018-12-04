@@ -8,6 +8,9 @@
 
 ### Use files in dist directory
 
+gdpr-cookie.css 5ko (1ko gzip)
+gdpr-cookie.js 42ko (10ko gzip)
+
 ## Add script in page
 
 ```html
@@ -133,6 +136,9 @@ var _gdpr_messages = {
 <a href="#" onclick="window.showModal();return false;">Show modal</a>
 ```
 
+# Exemple
+
+[![Edit static](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/0335pjp28n)
 
 # 🤓 Dev
 
