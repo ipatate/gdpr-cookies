@@ -8,6 +8,9 @@
 
 ### Use files in dist directory
 
+gdpr-cookie.css 5ko (1ko gzip)
+gdpr-cookie.js 42ko (10ko gzip)
+
 ## Add script in page
 
 ```html
