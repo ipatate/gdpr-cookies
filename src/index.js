@@ -2,7 +2,7 @@
 import {h, render} from 'preact';
 import {Provider} from 'redux-zero/preact';
 import initStore from './UI/Store';
-import messages from '../locales/messages';
+import messagesDefault from '../locales/messages';
 import App from './UI/App';
 import keys_api from './keys_api';
 
@@ -11,6 +11,8 @@ global.keys_api = keys_api;
 // language
 const locale = window._gdpr_lang || 'en';
 const options = window._gdpr_options || {};
+const messages = window._gdpr_messages || messagesDefault;
+
 // target element
 const target = document.getElementById('gdpr-cookie');
 

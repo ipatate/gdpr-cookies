@@ -1,7 +1,7 @@
 // @flow
 import createStore from 'redux-zero';
 
-import Gdpr from '../services/Gdpr';
+import Gdpr from '../../services/Gdpr';
 let gdpr;
 export default (options: ?OptionsGdpr) => {
   if (gdpr === undefined) {
@@ -24,6 +24,7 @@ export default (options: ?OptionsGdpr) => {
 
   const store = createStore(initialState);
 
+  // if first visit detect click change page or action
   if (isFirstVisit === true) {
     listenClick(store);
   }

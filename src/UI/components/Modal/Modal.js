@@ -8,7 +8,8 @@ import Arrow from './arrow-left.svg';
 import './style.scss';
 
 export default class Modal extends Component<AppProps> {
-  closeAndSave = (): void => {
+  closeAndSave = (e: Event): void => {
+    e.preventDefault();
     const {toggleModal, saveStateInGdpr} = this.props;
     toggleModal(false);
     saveStateInGdpr();
@@ -63,7 +64,8 @@ export default class Modal extends Component<AppProps> {
   };
 
   render() {
-    if (this.props.showModal === false) return null;
+    const {toggleModal, showModal} = this.props;
+    if (showModal === false) return null;
     const {t} = this.props;
     return (
       <div className="gdpr_modal">
@@ -71,7 +73,13 @@ export default class Modal extends Component<AppProps> {
           <div className="gdpr_modal_list">
             <header>
               <strong>{t('modal_header_txt')}</strong>
-              <Button className="" onClick={this.closeAndSave}>
+              <Button
+                className=""
+                onClick={e => {
+                  e.preventDefault();
+                  toggleModal(false);
+                }}
+              >
                 <Close width="20px" height="20px" />
               </Button>
             </header>

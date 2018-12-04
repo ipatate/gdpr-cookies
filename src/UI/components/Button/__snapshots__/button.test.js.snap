@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test 1`] = `
+exports[`test button with click and class name 1`] = `
 <button
   class="gdpr_btn test"
 >
