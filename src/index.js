@@ -4,6 +4,7 @@ import {Provider} from 'redux-zero/preact';
 import initStore from './UI/Store';
 import messagesDefault from '../locales/messages';
 import App from './UI/App';
+
 if (process.env.NODE_ENV === 'development') {
   const keys_api = require('./keys_api').default;
 

@@ -42,8 +42,9 @@ const listenClick = store => {
   // target a and button
   const a = document.getElementsByTagName('a');
   const button = document.getElementsByTagName('button');
-
-  [...button, ...a].forEach(val => {
+  const arrayOfA = a ? Array.from(a) : [];
+  const arrayOfButton = button ? Array.from(button) : [];
+  [...arrayOfA, ...arrayOfButton].forEach(val => {
     val.addEventListener('click', () => {
       // active service
       gdpr.toggleService();

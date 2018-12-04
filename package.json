@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "deepmerge": "^2.2.1",
     "js-cookie": "^2.2.0",
     "preact": "^8.3.1",
