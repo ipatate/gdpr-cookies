@@ -30,9 +30,9 @@ export default class GdprCookie {
    * @param {Map} value to insert in cookie
    * @return {string}
    */
-  updateCookie(value: Map<string, boolean>): ?string {
+  updateCookie(value: Map<string, boolean>, expires: ?number): ?string {
     const stringifyValue = JSON.stringify([...value]);
-    return this.cookie.set(this.name, stringifyValue);
+    return this.cookie.set(this.name, stringifyValue, expires);
   }
 
   /**

@@ -1,15 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // eslint-disable-line
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
-  mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'gdpr-cookie.js',
   },
   module: {
     rules: [
@@ -33,7 +35,12 @@ module.exports = {
       {
         test: /\.(scss|css)/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.svg$/,
@@ -48,24 +55,30 @@ module.exports = {
     },
     extensions: ['*', '.js', '.json', '.svg'],
   },
-  devServer: {
-    hot: true,
-    inline: true,
-    stats: {
-      colors: true,
-    },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
+    new MiniCssExtractPlugin({
+      filename: `gdpr-cookie.css`,
+    }),
   ],
+  optimization: {
+    minimizer: [
+      new UglifyjsWebpackPlugin({
+        sourceMap: true,
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
+      new OptimizeCssAssetsPlugin({}),
+    ],
+  },
 };

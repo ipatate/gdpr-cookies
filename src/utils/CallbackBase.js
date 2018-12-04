@@ -10,3 +10,14 @@ export const createScript = (src: string): void => {
     parent.insertBefore(tag, s);
   }
 };
+
+export const createStyle = (href: string): void => {
+  const tag: HTMLLinkElement = document.createElement('link');
+  tag.type = 'text/css';
+  tag.rel = 'stylesheet';
+  tag.href = href;
+  const head: HTMLHeadElement = document.getElementsByTagName('head')[0];
+  if (head) {
+    head.appendChild(tag);
+  }
+};

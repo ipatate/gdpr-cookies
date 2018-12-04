@@ -1,26 +1,39 @@
-import Gdpr from './services/Gdpr';
+// @flow @jsx h
+import {h, render} from 'preact';
+import {Provider} from 'redux-zero/preact';
+import initStore from './UI/Store';
+import messagesDefault from '../locales/messages';
+import App from './UI/App';
 import keys_api from './keys_api';
 
 global.keys_api = keys_api;
 
-// debugger;
-const options = {
-  keepCookies: [],
+// language
+const locale = window._gdpr_lang || 'en';
+const options = window._gdpr_options || {};
+const messages = window._gdpr_messages || messagesDefault;
+
+// target element
+const target = document.getElementById('gdpr-cookie');
+
+// init app
+const main = locale => {
+  if (target) {
+    render(
+      <Provider store={initStore(options)}>
+        <App locale={locale} messages={messages} />
+      </Provider>,
+      target,
+    );
+  }
 };
 
-const gdpr = new Gdpr(options); // eslint-disable-line
+main(locale);
 
-// show popup
-gdpr.isFirstVisit();
-
-// gdpr.updateServiceByName('Google Tag', false);
-gdpr.updateServiceByType('stats', false);
-
-// active service allowed
-gdpr.toggleService();
-
-const services = gdpr.getListServices();
-
-services.forEach(service => {
-  console.log(service.name, service.type, service.state); // eslint-disable-line
-});
+// change lang
+global.changeLangGdpr = locale => {
+  if (target) {
+    target.innerHTML = '';
+  }
+  main(locale);
+};

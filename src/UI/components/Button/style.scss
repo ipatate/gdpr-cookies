@@ -1,0 +1,34 @@
+@import '../../variables.scss';
+
+.gdpr_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 2rem;
+    border: 0;
+    color: $font-white;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+
+    &-round {
+        border-radius: $radius-bt;
+    }
+
+    &-success {
+        background: $color-success;
+    }
+
+    &-error {
+        background: $color-danger;
+    }
+
+    &-default {
+        background: $color-muted;
+        color: $font-black;
+    }
+
+    &:hover {
+        opacity: .8;
+    }
+}

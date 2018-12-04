@@ -9,6 +9,8 @@ export default class Gdpr {
     name: 'gdpr_cookie',
     keepCookies: ['plop'],
     types: ['ads', 'stats', 'others'],
+    // in days
+    expires: 395,
   };
   GdprObservable: GdprObservable;
   cookie: GdprCookie;
@@ -77,6 +79,10 @@ export default class Gdpr {
     return this.cookieExist;
   }
 
+  updateCookie(): void {
+    this.cookie.updateCookie(this.activated, this.options.expires);
+  }
+
   /**
    * @description init cookie settings if not exist
    * @return {void}
@@ -89,9 +95,9 @@ export default class Gdpr {
       this.clearCookies();
     }
     // create cookie object
-    const value = this.createActivatedObject(_c);
+    this.createActivatedObject(_c);
     // save
-    this.cookie.updateCookie(value);
+    // this.updateCookie();
   }
 
   /**

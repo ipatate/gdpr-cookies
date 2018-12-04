@@ -4,10 +4,39 @@
     <meta charset="utf-8">
     <title>Webpack App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>var _gdpr = _gdpr || [];</script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+  </style>
+  <script>
+    document.cookie
+  </script>
+  </head>
+  <body>
+    <a href="#" >Un lien</a>
+    <button>Un button</button>
+  <script>var _gdpr = _gdpr || [];
+    var _gdpr_lang = 'fr';
+    var _gdpr_options = {
+      keepCookies: ['TEST'],
+    };
+    /** var _gdpr_messages = {
+      es: {
+        alert_text:
+          'Si continúa navegando en este sitio web, está permitiendo todos los servicios de terceros.',
+        banner_ok_bt: 'Ok acepta todo',
+        banner_custom_bt: 'Personalizar',
+        modal_header_txt: 'Preferencia por todos los servicios.',
+        service_accept: 'Permiso',
+        service_bloc: 'Prohibir',
+        modal_valid: 'Guardar',
+      },
+    }*/
+  </script>
     <script>
       _gdpr.push([{ type: 'stats', name: 'Google test'}, () => true]);
-      _gdpr.push([{ type: 'stats', name: 'Google Tag'}, function(helpers) {
+      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, function(helpers) {
         helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -32,6 +61,8 @@
         helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
     }]);
     </script>
-</head>
-  <body>
+
+    <a href="#" onclick="window.showModal();return false;">Show modal</a>
+    <div id="gdpr-cookie"></div>
+    </body>
 </html>
