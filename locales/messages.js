@@ -6,7 +6,7 @@ export default {
     banner_custom_bt: 'Personalize',
     modal_header_txt: 'Preference for all services',
     service_accept: 'Allow',
-    service_bloc: 'Prohibit',
+    service_bloc: 'Refuse',
     modal_valid: 'Save',
   },
   fr: {

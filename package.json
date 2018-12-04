@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build:clean": "rimraf ./dist",
-    "build": "rollup -c",
+    "build": "webpack --config webpack.config.prod.js",
     "start": "npm run build:clean && webpack-dev-server",
     "prepublishOnly": "npm run build",
     "lint": "eslint src",
@@ -66,9 +66,6 @@
     "preact-testing-library": "^0.3.0",
     "precss": "^4.0.0",
     "prettier": "^1.14.3",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-uglify": "^6.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.5.0",
