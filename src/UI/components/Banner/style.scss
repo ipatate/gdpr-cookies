@@ -1,0 +1,70 @@
+@import '../../variables.scss';
+
+@keyframes slide {
+    from {
+        bottom: -100%;
+    }
+
+    to {
+        bottom: 0;
+    }
+}
+
+.gdpr_banner {
+    display: flex;
+    position: fixed;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 0;
+    background: $bg-banner;
+    font-size: 1rem;
+    color: $font-white;
+    text-align: center;
+    z-index: 2147483645;
+    animation: slide .5s;
+}
+
+.gdpr_banner-content {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+    max-width: 990px;
+
+    @media screen and (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.gdpr_banner-text {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem;
+    text-align: left;
+
+    @media screen and (max-width: $medium) {
+        text-align: center;
+    }
+}
+
+.gdpr_banner-actions {
+    display: flex;
+    flex: 1;
+
+    button {
+        white-space: nowrap;
+        padding: .5rem 1rem;
+        font-size: 1.1rem;
+
+        @media screen and (max-width: $medium) {
+            flex: 1;
+            padding: 1rem;
+        }
+    }
+}

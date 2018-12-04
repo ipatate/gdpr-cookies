@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`get exist value cookie 1`] = `
+Map {
+  "foo" => "bar",
+}
+`;
+
+exports[`update value cookie 1`] = `"[[\\"lol\\",true],[\\"plop\\",false]]"`;

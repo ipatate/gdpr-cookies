@@ -1,0 +1,3 @@
+**/*.twig
+**/*.svg
+node_modules

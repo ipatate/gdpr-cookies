@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cookie get all value 1`] = `
+Object {
+  "plop": "ok",
+}
+`;
+
+exports[`cookie set value 1`] = `
+Object {
+  "plop": "ok",
+}
+`;

@@ -1,0 +1,108 @@
+@import '../../variables.scss';
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.gdpr_modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: show .4s;
+    background: $bg-mask;
+}
+
+.gdpr_modal_content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: $bg-modal;
+    box-shadow: 0 0 15px $shadow-modal;
+
+    @media screen and (max-width: $medium) {
+        width: 85%;
+    }
+
+    @media screen and (max-width: $small) {
+        width: 95%;
+    }
+}
+
+.gdpr_modal_list header {
+    display: flex;
+    max-height: 3rem;
+    padding: 1rem .5rem;
+    background: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid $color-border;
+
+    strong {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        padding: 0 .5rem;
+        text-transform: uppercase;
+    }
+
+    .gdpr_btn {
+        padding: .5rem;
+        justify-self: flex-end;
+    }
+}
+
+.gdpr_modal_list-head {
+    display: flex;
+    align-items: center;
+    padding: .3rem .5rem;
+    background: $bg-head-modal;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $font-gray;
+    text-transform: capitalize;
+
+    svg {
+        fill: $font-gray;
+    }
+}
+
+.gdpr_modal_list-head-text {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.gdpr_modal_list-content {
+    max-height: calc(70vh - 6rem);
+    overflow: scroll;
+    background: $color-border;
+
+    @media screen and (max-width: $small) {
+        max-height: calc(80vh - 6rem);
+    }
+}
+
+.gdpr_modal_action {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    height: 3rem;
+    padding: 1rem .5rem;
+    border-top: 1px solid $color-border;
+
+    button {
+        border-radius: $radius-bt;
+        margin-right: .5rem;
+        font-size: 1.1rem;
+    }
+}
