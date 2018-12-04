@@ -5,7 +5,7 @@
         ],
         "**/*.+(js|jsx||json|yml|yaml|ts|tsx|graphql|vue|mjs)": [
             "prettier --write",
-            "git add"
+            "git add",
         ]
     },
     "ignore": ["**/dist/*"]

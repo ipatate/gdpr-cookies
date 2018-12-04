@@ -29,12 +29,21 @@
     width: 80%;
     background: $bg-modal;
     box-shadow: 0 0 15px $shadow-modal;
+
+    @media screen and (max-width: $medium) {
+        width: 85%;
+    }
+
+    @media screen and (max-width: $small) {
+        width: 95%;
+    }
 }
 
 .gdpr_modal_list header {
     display: flex;
     max-height: 3rem;
     padding: 1rem .5rem;
+    background: none;
     font-size: 1.2rem;
     border-bottom: 1px solid $color-border;
 
@@ -77,6 +86,10 @@
     max-height: calc(70vh - 6rem);
     overflow: scroll;
     background: $color-border;
+
+    @media screen and (max-width: $small) {
+        max-height: calc(80vh - 6rem);
+    }
 }
 
 .gdpr_modal_action {
@@ -87,7 +100,7 @@
     padding: 1rem .5rem;
     border-top: 1px solid $color-border;
 
-    .gdpr_btn {
+    button {
         border-radius: $radius-bt;
         margin-right: .5rem;
         font-size: 1.1rem;

@@ -8,7 +8,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: .5rem 2rem;
+  padding: .5rem 1rem;
   border: 0;
   color: #FFF;
   cursor: pointer;
@@ -67,16 +67,57 @@
   z-index: 2147483645;
   -webkit-animation: slide .5s;
           animation: slide .5s; }
-  .gdpr_banner-text {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 1rem 1rem; }
-  .gdpr_banner .gdpr_btn {
+
+.gdpr_banner-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  max-width: 990px; }
+  @media screen and (max-width: 768px) {
+    .gdpr_banner-content {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; } }
+
+.gdpr_banner-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 1rem;
+  text-align: left; }
+  @media screen and (max-width: 768px) {
+    .gdpr_banner-text {
+      text-align: center; } }
+
+.gdpr_banner-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+  .gdpr_banner-actions button {
+    white-space: nowrap;
+    padding: .5rem 1rem;
     font-size: 1.1rem; }
+    @media screen and (max-width: 768px) {
+      .gdpr_banner-actions button {
+        -webkit-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        padding: 1rem; } }
 
 .gdpr_element-action {
   display: -webkit-box;
@@ -91,7 +132,7 @@
   .gdpr_element-action .gdpr_btn {
     margin: .5rem; }
 
-.gdpr_liste_element {
+.gdpr_list_element {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,8 +140,14 @@
   padding: .5rem;
   min-height: 3rem;
   background: #FFF; }
+  @media screen and (max-width: 576px) {
+    .gdpr_list_element {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; } }
 
-.gdpr_liste_element-desc {
+.gdpr_list_element-desc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,9 +165,15 @@
       -ms-flex: 1;
           flex: 1;
   padding: .5rem; }
-  .gdpr_liste_element-desc p {
+  .gdpr_list_element-desc p {
     font-size: .9rem;
     color: #666; }
+
+@media screen and (max-width: 576px) {
+  .gdpr_list_element .gdpr_element-action {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; } }
 
 @-webkit-keyframes show {
   from {
@@ -165,6 +218,12 @@
   background: #FEFEFE;
   -webkit-box-shadow: 0 0 15px #454D5D;
           box-shadow: 0 0 15px #454D5D; }
+  @media screen and (max-width: 768px) {
+    .gdpr_modal_content {
+      width: 85%; } }
+  @media screen and (max-width: 576px) {
+    .gdpr_modal_content {
+      width: 95%; } }
 
 .gdpr_modal_list header {
   display: -webkit-box;
@@ -172,6 +231,7 @@
   display: flex;
   max-height: 3rem;
   padding: 1rem .5rem;
+  background: none;
   font-size: 1.2rem;
   border-bottom: 1px solid #E3E3E3; }
   .gdpr_modal_list header strong {
@@ -221,6 +281,9 @@
   max-height: calc(70vh - 6rem);
   overflow: scroll;
   background: #E3E3E3; }
+  @media screen and (max-width: 576px) {
+    .gdpr_modal_list-content {
+      max-height: calc(80vh - 6rem); } }
 
 .gdpr_modal_action {
   display: -webkit-box;
@@ -235,7 +298,7 @@
   height: 3rem;
   padding: 1rem .5rem;
   border-top: 1px solid #E3E3E3; }
-  .gdpr_modal_action .gdpr_btn {
+  .gdpr_modal_action button {
     border-radius: 5px;
     margin-right: .5rem;
     font-size: 1.1rem; }

@@ -64,7 +64,7 @@ export default class Modal extends Component<AppProps> {
   };
 
   render() {
-    const {toggleModal, showModal} = this.props;
+    const {showModal} = this.props;
     if (showModal === false) return null;
     const {t} = this.props;
     return (
@@ -73,13 +73,7 @@ export default class Modal extends Component<AppProps> {
           <div className="gdpr_modal_list">
             <header>
               <strong>{t('modal_header_txt')}</strong>
-              <Button
-                className=""
-                onClick={e => {
-                  e.preventDefault();
-                  toggleModal(false);
-                }}
-              >
+              <Button className="" onClick={this.closeAndSave}>
                 <Close width="20px" height="20px" />
               </Button>
             </header>

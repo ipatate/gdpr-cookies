@@ -14,10 +14,10 @@ export default class ListElement extends Component<ListElementProps> {
     const {t, service, toggleServiceByName} = this.props;
     const {name, description, state} = service;
     return (
-      <div className="gdpr_liste_element">
-        <div className="gdpr_liste_element-desc">
+      <div className="gdpr_list_element">
+        <div className="gdpr_list_element-desc">
           <strong>{name}</strong>
-          <p>{description}</p>
+          {description ? <p>{description}</p> : null}
         </div>
         <BtActions
           status={state}

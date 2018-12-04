@@ -28,14 +28,43 @@
     text-align: center;
     z-index: 2147483645;
     animation: slide .5s;
+}
 
-    &-text {
-        display: flex;
-        align-items: center;
-        padding: 1rem 1rem;
+.gdpr_banner-content {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+    max-width: 990px;
+
+    @media screen and (max-width: $medium) {
+        flex-wrap: wrap;
     }
+}
 
-    .gdpr_btn {
+.gdpr_banner-text {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem;
+    text-align: left;
+
+    @media screen and (max-width: $medium) {
+        text-align: center;
+    }
+}
+
+.gdpr_banner-actions {
+    display: flex;
+    flex: 1;
+
+    button {
+        white-space: nowrap;
+        padding: .5rem 1rem;
         font-size: 1.1rem;
+
+        @media screen and (max-width: $medium) {
+            flex: 1;
+            padding: 1rem;
+        }
     }
 }
