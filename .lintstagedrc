@@ -7,5 +7,6 @@
             "prettier --write",
             "git add"
         ]
-    }
+    },
+    "ignore": ["**/dist/*"]
 }
