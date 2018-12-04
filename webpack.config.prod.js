@@ -70,7 +70,7 @@ module.exports = {
     }),
     new UglifyjsWebpackPlugin({
       sourceMap: true,
-      cache: true,
+      // cache: true,
       parallel: true,
       uglifyOptions: {
         output: {
