@@ -18,6 +18,8 @@ export default (options: ?OptionsGdpr) => {
   const initialState: StoreType = {
     gdpr: gdpr,
     showModal: false,
+    // previous state list service for compare on save
+    prevListService: gdpr.getListServices(),
     listService: gdpr.getListServices(),
     isFirstVisit,
   };

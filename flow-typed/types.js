@@ -31,6 +31,7 @@ declare type ServiceList = Array<Service>;
 declare type StoreType = {
   gdpr: Gdpr,
   showModal: boolean,
+  prevListService: ServiceList,
   listService: ServiceList,
   isFirstVisit: boolean,
 };

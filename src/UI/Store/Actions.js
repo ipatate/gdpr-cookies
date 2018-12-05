@@ -33,7 +33,7 @@ const actions = () => ({
     return {listService};
   },
   saveStateInGdpr: (state: StoreType) => {
-    const {gdpr, listService, isFirstVisit} = state;
+    const {gdpr, listService, isFirstVisit, prevListService} = state;
     // update activated in gdpr class
     listService.forEach((value: Service) => {
       gdpr.updateServiceByName(value.name, value.state);
@@ -42,14 +42,35 @@ const actions = () => ({
     gdpr.clearCookies();
     // save new state of service in cookie
     gdpr.updateCookie();
-    // if fist visit not reload
-    if (isFirstVisit === true) {
-      gdpr.toggleService();
-    } else {
+
+    // if state pass to true to false in service => reload page for delete cookie
+    const reload = reloadIsNeeded(prevListService, listService);
+    // if fist visit, not reload because cookie not exist
+    if (reload === true && isFirstVisit === false) {
       window.location.reload();
+    } else {
+      gdpr.toggleService();
     }
-    return {listService: gdpr.getListServices()};
+    return {
+      listService: gdpr.getListServices(),
+      prevListService: gdpr.getListServices(),
+    };
   },
 });
+
+export const reloadIsNeeded = (
+  oldState: ServiceList,
+  newState: ServiceList,
+): boolean => {
+  let result = false;
+  newState.forEach(service => {
+    const {name, state} = service;
+    const old = oldState.find(service => service.name === name);
+    if (old !== undefined && old.state === true && state === false) {
+      result = true;
+    }
+  });
+  return result;
+};
 
 export default actions;
