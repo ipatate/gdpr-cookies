@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Script 1`] = `
+<script
+  src="myscript.js"
+  type="text/javascript"
+/>
+`;
+
+exports[`test Style 1`] = `
+<link
+  href="mystyle.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+`;
+
+exports[`test iframe 1`] = `
+<iframe
+  href="lol"
+  width="200px"
+/>
+`;
