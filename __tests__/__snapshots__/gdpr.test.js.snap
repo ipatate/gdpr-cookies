@@ -7,7 +7,9 @@ Array [
       "name": "service ads",
       "type": "ads",
     },
-    [Function],
+    Array [
+      [Function],
+    ],
   ],
 ]
 `;
@@ -25,14 +27,18 @@ Array [
       "name": "service tags",
       "type": "others",
     },
-    [Function],
+    Array [
+      [Function],
+    ],
   ],
   Array [
     Object {
       "name": "service map",
       "type": "stats",
     },
-    [Function],
+    Array [
+      [Function],
+    ],
   ],
 ]
 `;

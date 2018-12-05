@@ -35,8 +35,9 @@
     }*/
   </script>
     <script>
-      _gdpr.push([{ type: 'stats', name: 'Google test'}, () => true]);
-      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, function(helpers) {
+      var gTest = [];
+      _gdpr.push([{ type: 'stats', name: 'Google test'}, gTest]);
+      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, [function(helpers) {
         helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -46,7 +47,7 @@
 
         gtag('config', '###');
       }
-      ]);
+      ]]);
     </script>
     <div id="map" style="width: 100%;height:400px"></div>
     <script>
@@ -57,9 +58,11 @@
           zoom: 8
         });
       }
-      _gdpr.push([{ type: 'others', name: 'Google Map'}, function(helpers) {
+      _gdpr.push([{ type: 'others', name: 'Google Map'}, [function(helpers) {
         helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
-    }]);
+    }]]);
+
+    gTest.push(() => console.log('hello google test func'));
     </script>
 
     <a href="#" onclick="window.showModal();return false;">Show modal</a>

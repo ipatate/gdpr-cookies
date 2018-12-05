@@ -5,7 +5,7 @@ export const validGdprArray = (
 ): boolean => {
   if (
     typeof serviceDescription[0] === 'object' &&
-    typeof serviceDescription[1] === 'function'
+    Array.isArray(serviceDescription[1])
   ) {
     const desc = serviceDescription[0];
     const {name, type} = desc;

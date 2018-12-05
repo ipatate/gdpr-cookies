@@ -2,15 +2,15 @@ import Gdpr from '../src/services/Gdpr';
 
 describe('Test get global Gdpr method', () => {
   test('recup global rgpd', () => {
-    window._gdpr = [[{type: 'foo', name: 'bar'}, () => {}]]; // eslint-disable-line
+    window._gdpr = [[{type: 'foo', name: 'bar'}, [() => {}]]]; // eslint-disable-line
     const gdpr = new Gdpr({types: ['ads', 'stats']});
     expect(gdpr.getGlobalGdpr()).toMatchSnapshot();
   });
 
   test('global gdpr', () => {
     const arr = [
-      [{type: 'other', name: 'service map'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'other', name: 'service map'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
     ];
     window._gdpr = arr;
     const gdpr = new Gdpr();
@@ -35,9 +35,9 @@ describe('Test get global Gdpr method', () => {
   test('valid global gdpr method', () => {
     const _gdpr = [
       [{type: 'others'}, () => {}],
-      [{type: 'others', name: 'service tags'}, () => {}],
+      [{type: 'others', name: 'service tags'}, [() => {}]],
       [{type: 'ads', name: 'service ads'}],
-      [{type: 'stats', name: 'service map'}, () => {}],
+      [{type: 'stats', name: 'service map'}, [() => {}]],
     ];
     const gdpr = new Gdpr();
     const globalGdpr = gdpr.validGlobalGdpr(_gdpr);
@@ -62,8 +62,8 @@ describe('Test option pass to Gdpr class', () => {
 describe('test update service state with cookie value', () => {
   test('verify update value with old setting gdpr cookie', () => {
     window._gdpr = [
-      [{type: 'other', name: 'service map'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'other', name: 'service map'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
     ];
     const gdpr = new Gdpr({type: ['ads', 'other']});
     const activated = gdpr.createActivatedObject(
@@ -83,11 +83,11 @@ describe('test get List for display', () => {
           description: 'my nice description',
           name: 'service map',
         },
-        () => {},
+        [() => {}],
       ],
-      [{type: 'others', name: 'service tags'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
-      [{type: 'fake', name: 'service fake'}, () => {}],
+      [{type: 'others', name: 'service tags'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
+      [{type: 'fake', name: 'service fake'}, [() => {}]],
     ];
     const gdpr = new Gdpr({types: ['ads', 'other']});
     const list = gdpr.getListServices();
@@ -98,8 +98,8 @@ describe('test get List for display', () => {
 describe('test updating service', () => {
   test('update service by name', () => {
     window._gdpr = [
-      [{type: 'other', name: 'service map'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'other', name: 'service map'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
     ];
     const gdpr = new Gdpr({types: ['ads', 'other']});
     gdpr.updateServiceByName('service map', false);
@@ -109,8 +109,8 @@ describe('test updating service', () => {
 
   test('update service by fake name', () => {
     window._gdpr = [
-      [{type: 'other', name: 'service map'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'other', name: 'service map'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
     ];
     const gdpr = new Gdpr({types: ['ads', 'other']});
     gdpr.updateServiceByName('service fake', false);
@@ -120,9 +120,9 @@ describe('test updating service', () => {
 
   test('update service by type', () => {
     window._gdpr = [
-      [{type: 'other', name: 'service map'}, () => {}],
-      [{type: 'other', name: 'service tag'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'other', name: 'service map'}, [() => {}]],
+      [{type: 'other', name: 'service tag'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
     ];
     const gdpr = new Gdpr({types: ['ads', 'other']});
     gdpr.updateServiceByType('other', false);
@@ -133,9 +133,9 @@ describe('test updating service', () => {
 
   test('update service by fake type', () => {
     window._gdpr = [
-      [{type: 'other', name: 'service map'}, () => {}],
-      [{type: 'other', name: 'service tag'}, () => {}],
-      [{type: 'ads', name: 'service ads'}, () => {}],
+      [{type: 'other', name: 'service map'}, [() => {}]],
+      [{type: 'other', name: 'service tag'}, [() => {}]],
+      [{type: 'ads', name: 'service ads'}, [() => {}]],
     ];
     const gdpr = new Gdpr({types: ['ads', 'other']});
     gdpr.updateServiceByType('fake', false);
