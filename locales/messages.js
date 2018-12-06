@@ -8,6 +8,9 @@ export default {
     service_accept: 'Allow',
     service_bloc: 'Refuse',
     modal_valid: 'Save',
+    ads: 'Advertising',
+    stats: 'Statistics',
+    others: 'Other services',
   },
   fr: {
     alert_text:
@@ -18,6 +21,9 @@ export default {
     service_accept: 'Autoriser',
     service_bloc: 'Interdire',
     modal_valid: 'Sauvegarder',
+    ads: 'Publicités',
+    stats: 'Statistiques',
+    others: 'Autres services',
   },
   es: {
     alert_text:
@@ -28,5 +34,8 @@ export default {
     service_accept: 'Permiso',
     service_bloc: 'Prohibir',
     modal_valid: 'Guardar',
+    ads: 'Anuncios',
+    stats: 'Estadística',
+    others: 'Otros servicios',
   },
 };

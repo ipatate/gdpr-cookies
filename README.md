@@ -152,6 +152,9 @@ var _gdpr_messages = {
       service_accept: 'Autoriser',
       service_bloc: 'Interdire',
       modal_valid: 'Sauvegarder',
+      ads: 'Publicités',
+      stats: 'Statistiques',
+      others: 'Autres services',
     },
   }
 ```
