@@ -38,14 +38,15 @@
       var fbVideo = [];
       _gdpr.push([{ type: 'others', name: 'Facebook Video'}, fbVideo]);
       _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, [function(helpers) {
-        helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments)
-        }
-        gtag('js', new Date());
+        helpers.createScript('https://www.googletagmanager.com/gtag/js?id=UA-130600368-1');
 
-        gtag('config', '###');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-130600368-1');
+    </script>
+
       }
       ]]);
     </script>
