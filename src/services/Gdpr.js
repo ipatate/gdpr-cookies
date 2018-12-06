@@ -174,13 +174,19 @@ export default class Gdpr {
   }
 
   /**
+   * @param {ServiceList} previousState compare with old state
    * @description each activated for active or unactive service
    * @return {void}
    */
-  toggleService(): void {
+  toggleService(previousState: ?ServiceList): void {
     for (const key of this.activated.keys()) {
+      let oldValue = false;
+      if (previousState) {
+        const oldState = previousState.find(service => service.name === key);
+        oldValue = oldState ? oldState.state : false;
+      }
       const value = this.activated.get(key);
-      if (value === true) {
+      if (value === true && oldValue === false) {
         this.GdprObservable.active(key);
       }
     }

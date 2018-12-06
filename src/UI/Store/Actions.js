@@ -49,7 +49,7 @@ const actions = () => ({
     if (reload === true && isFirstVisit === false) {
       window.location.reload();
     } else {
-      gdpr.toggleService();
+      gdpr.toggleService(prevListService);
     }
     return {
       listService: gdpr.getListServices(),
