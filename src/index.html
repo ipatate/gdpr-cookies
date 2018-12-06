@@ -35,20 +35,21 @@
     }*/
   </script>
     <script>
-      _gdpr.push([{ type: 'stats', name: 'Google test'}, () => true]);
-      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, function(helpers) {
-        helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments)
-        }
-        gtag('js', new Date());
+      var fbVideo = [];
+      _gdpr.push([{ type: 'others', name: 'Facebook Video'}, fbVideo]);
+      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, [function(helpers) {
+        helpers.createScript('https://www.googletagmanager.com/gtag/js?id=UA-130600368-1');
 
-        gtag('config', '###');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-130600368-1');
+
       }
-      ]);
+      ]]);
     </script>
-    <div id="map" style="width: 100%;height:400px"></div>
+    <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%;height:400px"></div>
     <script>
         var map;
       function initMap() {
@@ -57,11 +58,25 @@
           zoom: 8
         });
       }
-      _gdpr.push([{ type: 'others', name: 'Google Map'}, function(helpers) {
+      _gdpr.push([{ type: 'others', name: 'Google Map'}, [function(helpers) {
         helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
-    }]);
-    </script>
+    }]]);
 
+    fbVideo.push((helpers) => {
+      helpers.createIframe('video-fb', {
+        src:"https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fspecializedfrance%2Fvideos%2F342893482955428%2F&width=500&show_text=false&appId=416327418410138&height=280",
+        width: "500",
+        height:"280",
+        style:"border:none;overflow:hidden",
+        scrolling:"no",
+        frameborder:"0",
+        allowTransparency:"true",
+        allow:"encrypted-media",
+        allowFullScreen:"true"
+      })
+    });
+    </script>
+    <div id="video-fb" class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;"></div>
     <a href="#" onclick="window.showModal();return false;">Show modal</a>
     <div id="gdpr-cookie"></div>
     </body>

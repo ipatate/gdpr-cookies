@@ -1,7 +1,7 @@
 import GdprObservable from '../src/services/GdprObservable';
 
 test('set observer', () => {
-  const _gdpr = [[{type: 'ads', name: 'Mon super service'}, () => 'hello']];
+  const _gdpr = [[{type: 'ads', name: 'Mon super service'}, [() => 'hello']]];
   const g = new GdprObservable(_gdpr, ['ads']);
   const ads = g.observers.get('Mon super service');
   expect(ads).toBeDefined();
@@ -9,13 +9,15 @@ test('set observer', () => {
 });
 
 test('set observer with type not allowed', () => {
-  const _gdpr = [[{type: 'no type', name: 'Mon super service'}, () => 'hello']];
+  const _gdpr = [
+    [{type: 'no type', name: 'Mon super service'}, [() => 'hello']],
+  ];
   const g = new GdprObservable(_gdpr, ['ads']);
   expect(g.observers.get('no type')).toBeUndefined();
 });
 
 test('set observer with only one element', () => {
-  const _gdpr = [[{type: 'wtf'}, () => 'hello']];
+  const _gdpr = [[{type: 'wtf'}, [() => 'hello']]];
   const g = new GdprObservable(_gdpr, ['ads']);
   expect(g.observers.has('wtf')).toBeFalsy();
 });
@@ -31,9 +33,9 @@ test('test call callback', () => {
   const call2 = jest.fn();
   const nocall = jest.fn();
   const _gdpr = [
-    [{type: 'ads', name: 'wtf'}, call1],
-    [{type: 'ads', name: 'hello'}, call2],
-    [{type: 'stats', name: 'bar'}, nocall],
+    [{type: 'ads', name: 'wtf'}, [call1]],
+    [{type: 'ads', name: 'hello'}, [call2]],
+    [{type: 'stats', name: 'bar'}, [nocall]],
   ];
   const g = new GdprObservable(_gdpr, ['ads', 'stats']);
   g.active('wtf');

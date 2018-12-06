@@ -21,13 +21,13 @@ class GdprObservable {
   setObservers(observerGdpr: ObserverGdpr): void {
     observerGdpr.forEach(o => {
       const {name} = o[0];
-      const func = o[1];
+      const arrayOfFunc = o[1];
       // create Set if not exist for this key
       if (this.observers.has(name) === false) {
         this.observers.set(name, new Set([]));
       }
       const temp = this.observers.get(name);
-      if (temp) temp.add(func);
+      if (temp) temp.add(arrayOfFunc);
     });
   }
 
@@ -39,8 +39,11 @@ class GdprObservable {
   active(name: string): void {
     if (this.observers.has(name)) {
       const funcSet = this.observers.get(name);
+
       if (funcSet) {
-        funcSet.forEach(observer => observer(helpers));
+        funcSet.forEach(arrOfFunc =>
+          arrOfFunc.forEach(observer => observer(helpers)),
+        );
       }
     }
   }

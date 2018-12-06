@@ -1,0 +1,28 @@
+@import '../../variables.scss';
+
+.gdpr-mask {
+    position: relative;
+}
+
+.gdpr_mask-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    background: #F7F7F7;
+}
+
+.gdpr_mask-desc {
+    margin: 1rem 0;
+}
+
+.gdpr_list_element .gdpr_element-action {
+    @media screen and (max-width: $small) {
+        justify-content: center;
+    }
+}

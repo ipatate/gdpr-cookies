@@ -1,9 +1,9 @@
 // @flow
 import createStore from 'redux-zero';
-
 import Gdpr from '../../services/Gdpr';
+
 let gdpr;
-export default (options: ?OptionsGdpr) => {
+export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
   if (gdpr === undefined) {
     gdpr = new Gdpr(options);
   }
@@ -18,6 +18,10 @@ export default (options: ?OptionsGdpr) => {
   const initialState: StoreType = {
     gdpr: gdpr,
     showModal: false,
+    locale,
+    messages,
+    // previous state list service for compare on save
+    prevListService: gdpr.getListServices(),
     listService: gdpr.getListServices(),
     isFirstVisit,
   };

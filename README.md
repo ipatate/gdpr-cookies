@@ -8,8 +8,9 @@
 
 ### Use files in dist directory
 
-gdpr-cookie.css 5ko (1ko gzip)
-gdpr-cookie.js 42ko (10ko gzip)
+gdpr-cookie.css 5ko (~1ko gzip)
+
+gdpr-cookie.js 42ko (~10ko gzip)
 
 ## Add script in page
 
@@ -23,7 +24,7 @@ gdpr-cookie.js 42ko (10ko gzip)
 <link href="path/gdpr-cookie.css" rel="stylesheet">
 ```
 
-## Init Grpd Cookie
+## Init Gdpr Cookie
 
 Set this code in the head of your html
 
@@ -39,7 +40,7 @@ Set this code in the head of your html
 
 ## Declare external script
 
-Push array in _grpd array.
+Push array in _gdpr array.
 
 ```js
 _gdpr.push([
@@ -48,7 +49,7 @@ _gdpr.push([
     type: '',
     description: ''
   },
-  callback
+  [callback, callback,..]
 ])
 ```
 
@@ -57,13 +58,14 @@ First element is object:
 - type : string (type of service) default: Stats | Ads | Others
 - description : string (text for describe service)
 
-Second element is Function
+Second element is Array of Functions
 
-The callback function called if service is allowed
+All the callback function called if service is allowed
 
 You can use argument helpers in function.
 - ```createScript(src)``` for create script tag in head
 - ```createStyle(href)``` for create style tag in head
+- ```createIframe('id', {href: '', width: '200px'});``` for create iframe tag in target element. Add attribute for iframe with second argument options object
 
 #### Exemple for google tag
 
@@ -74,22 +76,46 @@ _gdpr.push([
     type: 'stats',
     name: 'Google Tag',
     description: 'Service pour statistique des visites'},
-    function(helpers) {
-      // use helpers
-      helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
+    [
+      function(helpers) {
+        // use helpers
+        helpers.createScript('https://www.googletagmanager.com/gtag/js?id=' + keys_api.gtag);
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments)
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date());
+        gtag('config', '########');
       }
-      gtag('js', new Date());
-      gtag('config', '########');
-    }
+    ]
   ]);
 </script>
 ```
 
-# Options
+### If you want add multiple callback, create var for push callback after.
+
+```js
+var myCB = [];
+// declare service
+_gdpr.push([
+  {
+    type: 'stats',
+    name: 'Google Tag',
+    description: 'Service pour statistique des visites'},
+    myCB
+  }
+]);
+
+// ...
+// on the page
+<script type="text/javascript">
+myCB.push(function(helpers){ return true;});
+</script>
+```
+
+
+# Options for init Gdpr Cookie
 
 ## language
 
@@ -99,7 +125,7 @@ You can define lang with (default is fr):
 var _gdpr_lang = 'fr';
 ```
 
-## options Gpdr Service
+## options Gdpr Service
 
 ```js
   var _gdpr_options = {
@@ -126,6 +152,9 @@ var _gdpr_messages = {
       service_accept: 'Autoriser',
       service_bloc: 'Interdire',
       modal_valid: 'Sauvegarder',
+      ads: 'Publicités',
+      stats: 'Statistiques',
+      others: 'Autres services',
     },
   }
 ```
@@ -135,6 +164,16 @@ var _gdpr_messages = {
 ```html
 <a href="#" onclick="window.showModal();return false;">Show modal</a>
 ```
+
+## Add Mask with buttons for service disabled
+
+Add just class (gdpr-mask) and name of service with data-grpd. Ex:
+
+```html
+ <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
+ ```
+
+class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;"
 
 # Exemple
 
