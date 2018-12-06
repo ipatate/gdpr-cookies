@@ -8,6 +8,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0;
   padding: .5rem 1rem;
   border: 0;
   color: #FFF;
@@ -248,7 +249,8 @@
     text-transform: uppercase; }
   .gdpr_modal_list header .gdpr_btn {
     padding: .5rem;
-    justify-self: flex-end; }
+    justify-self: flex-end;
+    background: none; }
 
 .gdpr_modal_list-head {
   display: -webkit-box;

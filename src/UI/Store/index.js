@@ -43,22 +43,33 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
 // listen click on page for accept on first visit
 const listenClick = store => {
   const {gdpr} = store.getState();
+  // stock element listened
+  const elementListen = [];
   // target a and button
   const a = document.getElementsByTagName('a');
   const button = document.getElementsByTagName('button');
   const arrayOfA = a ? Array.from(a) : [];
   const arrayOfButton = button ? Array.from(button) : [];
-  [...arrayOfA, ...arrayOfButton].forEach(val => {
-    val.addEventListener('click', () => {
-      // active service
-      gdpr.toggleService();
-      // save cookie
-      gdpr.updateCookie();
-      // close all
-      store.setState({
-        showModal: false,
-        isFirstVisit: false,
-      });
+
+  // function for accept cookie
+  const acceptCookie = () => {
+    // active service
+    gdpr.toggleService();
+    // save cookie
+    gdpr.updateCookie();
+    // close all
+    store.setState({
+      showModal: false,
+      isFirstVisit: false,
     });
+    // remove listener
+    elementListen.forEach(val => {
+      val.removeEventListener('click', acceptCookie);
+    });
+  };
+
+  [...arrayOfA, ...arrayOfButton].forEach(val => {
+    val.addEventListener('click', acceptCookie);
+    elementListen.push(val);
   });
 };
