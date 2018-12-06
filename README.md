@@ -10,7 +10,7 @@
 
 gdpr-cookie.css 5ko (~1ko gzip)
 
-gdpr-cookie.js 42ko (~10ko gzip)
+gdpr-cookie.js 45ko (~11ko gzip)
 
 ## Add script in page
 
@@ -155,6 +155,8 @@ var _gdpr_messages = {
       ads: 'Publicités',
       stats: 'Statistiques',
       others: 'Autres services',
+      mask_text_start: 'The service',
+      mask_text_end: 'is disabled',
     },
   }
 ```
@@ -177,7 +179,7 @@ class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;
 
 # Exemple
 
-[![Edit static](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/0335pjp28n)
+[https://gdpr-cookies-exemple-7yiutwt8p.now.sh](https://gdpr-cookies-exemple-7yiutwt8p.now.sh])
 
 # 🤓 Dev
 
