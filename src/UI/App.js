@@ -31,7 +31,9 @@ export class App extends Component<initProps> {
   }
 }
 
+const mapToProps = ({locale, messages}) => ({locale, messages});
+
 export default connect(
-  null,
+  mapToProps,
   actions,
 )(App);

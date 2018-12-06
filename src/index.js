@@ -4,6 +4,7 @@ import {Provider} from 'redux-zero/preact';
 import initStore from './UI/Store';
 import messagesDefault from '../locales/messages';
 import App from './UI/App';
+import {createMask} from './UI/Mask';
 
 if (process.env.NODE_ENV === 'development') {
   const keys_api = require('./keys_api').default;
@@ -22,12 +23,14 @@ const target = document.getElementById('gdpr-cookie');
 // init app
 const main = locale => {
   if (target) {
+    const store = initStore(options, locale, messages);
     render(
-      <Provider store={initStore(options)}>
-        <App locale={locale} messages={messages} />
+      <Provider store={store}>
+        <App />
       </Provider>,
       target,
     );
+    createMask(store);
   }
 };
 

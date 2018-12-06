@@ -11,6 +11,8 @@ export default {
     ads: 'Advertising',
     stats: 'Statistics',
     others: 'Other services',
+    mask_text_start: 'The service',
+    mask_text_end: 'is disabled',
   },
   fr: {
     alert_text:
@@ -24,6 +26,8 @@ export default {
     ads: 'Publicités',
     stats: 'Statistiques',
     others: 'Autres services',
+    mask_text_start: 'Le service',
+    mask_text_end: 'est désactivé',
   },
   es: {
     alert_text:
@@ -37,5 +41,7 @@ export default {
     ads: 'Anuncios',
     stats: 'Estadística',
     others: 'Otros servicios',
+    mask_text_start: 'El servicio',
+    mask_text_end: 'esta deshabilitado',
   },
 };
