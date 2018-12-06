@@ -7,6 +7,7 @@ type ListElementProps = {
   toggleServiceByName: Function,
   saveStateInGdpr: Function,
   service: {name: string, description?: string, type: string, state: boolean},
+  listService: ServiceList,
   messages: Object,
   locale: string,
 };
@@ -24,10 +25,18 @@ export default class Mask extends Component<ListElementProps> {
   };
 
   render() {
-    const {service, toggleServiceByName, saveStateInGdpr} = this.props;
-    const {name, state} = service;
+    const {
+      service,
+      listService,
+      toggleServiceByName,
+      saveStateInGdpr,
+    } = this.props;
     const t = this.translate;
-    if (state === true) return null;
+    const {name} = service;
+    // find service for update
+    const serviceState = listService.find(service => service.name === name);
+    if (!serviceState || serviceState.state === true) return null;
+    const {state} = serviceState;
     return (
       <div className="gdpr_mask-content">
         <div className="gdpr_mask-desc">
