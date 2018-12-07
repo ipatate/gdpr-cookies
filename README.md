@@ -199,4 +199,4 @@ For UI :
 
 ## Browsers tested with [https://www.browserstack.com](https://www.browserstack.com)
 
-[![browserstack](https://raw.githubusercontent.com/ipatate/gdpr-cookies/master/Browserstack-logo.svg)](https://www.browserstack.com)
+[![browserstack](https://raw.githubusercontent.com/ipatate/gdpr-cookies/master/Browserstack-logo@2x.png)](https://www.browserstack.com)
