@@ -42,8 +42,16 @@ class CookieWrapper {
    * @param {string} name
    * @return {void}
    */
-  remove(name: string): void {
-    return this.cookie.remove(name);
+  remove(
+    name: string,
+    options: {
+      expires?: number,
+      secure?: boolean,
+      path?: string,
+      domain?: string,
+    },
+  ): void {
+    return this.cookie.remove(name, options);
   }
 }
 

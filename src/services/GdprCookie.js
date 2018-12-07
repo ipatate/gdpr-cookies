@@ -44,7 +44,27 @@ export default class GdprCookie {
     const cookies = this.cookie.getAll();
     for (const cookie in cookies) {
       if (keepCookie.indexOf(cookie) === -1 && cookie !== this.name) {
-        this.cookie.remove(cookie);
+        // domain
+        const hostCplt = window.location.hostname;
+        // remove sub domain
+        const host = location.hostname
+          .split('.')
+          .slice(-2)
+          .join('.');
+        // remove without domain
+        this.cookie.remove(cookie, {
+          path: '/',
+        });
+        // remove with domain complete
+        this.cookie.remove(cookie, {
+          path: '/',
+          domain: hostCplt,
+        });
+        // remove with domain without subdomain
+        this.cookie.remove(cookie, {
+          path: '/',
+          domain: host,
+        });
       }
     }
   }
