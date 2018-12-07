@@ -1,7 +1,7 @@
 // @flow
 const actions = () => ({
   toggleBanner: (state: StoreType, payload: boolean) => ({
-    isFirstVisit: payload,
+    showBanner: payload,
   }),
   toggleModal: (state: StoreType, payload: boolean) => ({showModal: payload}),
   toggleServiceByName: (
@@ -42,16 +42,16 @@ const actions = () => ({
     gdpr.clearCookies();
     // save new state of service in cookie
     gdpr.updateCookie();
-
     // if state pass to true to false in service => reload page for delete cookie
     const reload = reloadIsNeeded(prevListService, listService);
     // if fist visit, not reload because cookie not exist
     if (reload === true && isFirstVisit === false) {
       window.location.reload();
     } else {
-      gdpr.toggleService(prevListService);
+      gdpr.toggleService(prevListService, isFirstVisit);
     }
     return {
+      isFirstVisit: false,
       listService: gdpr.getListServices(),
       prevListService: gdpr.getListServices(),
     };

@@ -178,7 +178,10 @@ export default class Gdpr {
    * @description each activated for active or unactive service
    * @return {void}
    */
-  toggleService(previousState: ?ServiceList): void {
+  toggleService(
+    previousState: ?ServiceList,
+    isFirstVisit: boolean = false,
+  ): void {
     for (const key of this.activated.keys()) {
       let oldValue = false;
       if (previousState) {
@@ -186,7 +189,11 @@ export default class Gdpr {
         oldValue = oldState ? oldState.state : false;
       }
       const value = this.activated.get(key);
-      if (value === true && oldValue === false) {
+      // if is first visit active service
+      if (
+        (value === true && oldValue === false) ||
+        (value === true && isFirstVisit === true)
+      ) {
         this.GdprObservable.active(key);
       }
     }

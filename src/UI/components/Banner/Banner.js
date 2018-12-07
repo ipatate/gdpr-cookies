@@ -12,8 +12,8 @@ export default class Banner extends Component<AppProps> {
   };
 
   render() {
-    const {isFirstVisit} = this.props;
-    if (isFirstVisit === false) return null;
+    const {showBanner} = this.props;
+    if (showBanner === false) return null;
     const {t, toggleModal, toggleBanner} = this.props;
     return (
       <div className="gdpr_banner">

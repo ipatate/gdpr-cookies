@@ -5,6 +5,7 @@ import './style.scss';
 
 type BtActionsProps = {
   onChange: ?Function,
+  showDisable: boolean,
   t: Function,
   status: ?boolean,
 };
@@ -12,6 +13,7 @@ type BtActionsProps = {
 export default class BtActions extends Component<BtActionsProps> {
   static defaultProps = {
     onChange: () => true,
+    showDisable: true,
   };
 
   toggle = (val: boolean): void => {
@@ -20,7 +22,7 @@ export default class BtActions extends Component<BtActionsProps> {
   };
 
   render() {
-    const {status, t} = this.props;
+    const {status, t, showDisable} = this.props;
     return (
       <div class="gdpr_element-action">
         <Button
@@ -34,17 +36,21 @@ export default class BtActions extends Component<BtActionsProps> {
         >
           {t('service_accept')}
         </Button>
-        <Button
-          onClick={e => {
-            e.preventDefault();
-            this.toggle(false);
-          }}
-          className={`gdpr_btn-round ${
-            status === false ? 'gdpr_btn-error' : 'gdpr_btn-default'
-          }`}
-        >
-          {t('service_bloc')}
-        </Button>
+        {showDisable === true ? (
+          <Button
+            onClick={e => {
+              e.preventDefault();
+              this.toggle(false);
+            }}
+            className={`gdpr_btn-round ${
+              status === false ? 'gdpr_btn-error' : 'gdpr_btn-default'
+            }`}
+          >
+            {t('service_bloc')}
+          </Button>
+        ) : (
+          ''
+        )}
       </div>
     );
   }

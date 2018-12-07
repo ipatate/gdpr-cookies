@@ -42,6 +42,7 @@ declare type AppProps = {
   t: Function,
   store: Object,
   showModal: boolean,
+  showBanner: boolean,
   listService: ServiceList,
   isFirstVisit: boolean,
   toggleModal: Function,
