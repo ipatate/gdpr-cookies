@@ -18,6 +18,7 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
   const initialState: StoreType = {
     gdpr: gdpr,
     showModal: false,
+    showBanner: isFirstVisit,
     locale,
     messages,
     // previous state list service for compare on save
@@ -53,15 +54,20 @@ const listenClick = store => {
 
   // function for accept cookie
   const acceptCookie = () => {
-    // active service
-    gdpr.toggleService();
-    // save cookie
-    gdpr.updateCookie();
-    // close all
-    store.setState({
-      showModal: false,
-      isFirstVisit: false,
-    });
+    const {isFirstVisit} = store.getState();
+    // prevent click on allow button mask
+    if (isFirstVisit === true) {
+      // active service
+      gdpr.toggleService();
+      // save cookie
+      gdpr.updateCookie();
+      // close all
+      store.setState({
+        showModal: false,
+        showBanner: false,
+        isFirstVisit: false,
+      });
+    }
     // remove listener
     elementListen.forEach(val => {
       val.removeEventListener('click', acceptCookie);

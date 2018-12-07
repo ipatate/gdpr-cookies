@@ -6,7 +6,7 @@ import Mask from './components/Mask';
 
 export const createMask = (store: Object) => {
   const maskElement = document.getElementsByClassName('gdpr-mask');
-  const {listService} = store.getState();
+  const {listService, isFirstVisit} = store.getState();
   for (const key in maskElement) {
     const element = maskElement[+key];
     if (element !== undefined) {
@@ -14,7 +14,7 @@ export const createMask = (store: Object) => {
       const service = listService.find(
         serviceState => serviceState.name === name,
       );
-      if (service && service.state === false) {
+      if (service && (service.state === false || isFirstVisit === true)) {
         render(
           <Provider store={store}>
             <Mask service={service} />

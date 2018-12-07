@@ -2,8 +2,15 @@ import Mask from './Mask';
 import {connect} from 'redux-zero/preact';
 import actions from '../../Store/Actions';
 
-const mapToProps = ({showModal, listService, messages, locale}) => ({
+const mapToProps = ({
   showModal,
+  isFirstVisit,
+  listService,
+  messages,
+  locale,
+}) => ({
+  showModal,
+  isFirstVisit,
   listService,
   messages,
   locale,
