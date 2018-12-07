@@ -55,8 +55,8 @@ _gdpr.push([
 
 First element is object:
 - name : string (unique and required)
-- type : string (type of service) default: Stats | Ads | Others
-- description : string (text for describe service)
+- type : string (type of service) required, default: Stats | Ads | Others
+- description : string (text for describe service) optional
 
 Second element is Array of Functions
 
