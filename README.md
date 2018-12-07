@@ -179,7 +179,7 @@ class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;
 
 # Exemple
 
-[https://gdpr-cookies-exemple-7yiutwt8p.now.sh](https://gdpr-cookies-exemple-7yiutwt8p.now.sh])
+[https://gdpr-cookies.goodmotion.fr/](https://gdpr-cookies.goodmotion.fr/#)
 
 # 🤓 Dev
 
