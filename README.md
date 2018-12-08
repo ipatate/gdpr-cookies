@@ -8,20 +8,20 @@
 
 ### Use files in dist directory
 
-gdpr-cookie.css 5ko (~1ko gzip)
+gdpr-cookies.css 5ko (~1ko gzip)
 
-gdpr-cookie.js 45ko (~11ko gzip)
+gdpr-cookies.js 45ko (~11ko gzip)
 
 ## Add script in page
 
 ```html
-<script src="path/gdpr-cookie.js" async></script>
+<script src="path/gdpr-cookies.js" async></script>
 ```
 
 ## Add style in page
 
 ```html
-<link href="path/gdpr-cookie.css" rel="stylesheet">
+<link href="path/gdpr-cookies.css" rel="stylesheet">
 ```
 
 ## Init Gdpr Cookie
