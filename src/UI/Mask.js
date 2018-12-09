@@ -5,10 +5,10 @@ import {Provider} from 'redux-zero/preact';
 import Mask from './components/Mask';
 
 export const createMask = (store: Object) => {
-  const maskElement = document.getElementsByClassName('gdpr-mask');
+  let maskElement = document.getElementsByClassName('gdpr-mask');
+  maskElement = Array.from(maskElement);
   const {listService, isFirstVisit} = store.getState();
-  for (const key in maskElement) {
-    const element = maskElement[+key];
+  maskElement.forEach(element => {
     if (element !== undefined) {
       const name = element.dataset.gdpr;
       const service = listService.find(
@@ -23,5 +23,5 @@ export const createMask = (store: Object) => {
         );
       }
     }
-  }
+  });
 };

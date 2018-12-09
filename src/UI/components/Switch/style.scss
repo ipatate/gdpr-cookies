@@ -1,0 +1,89 @@
+@import '../../variables.scss';
+
+$switch-width: 1.7rem;
+
+.gdpr_switch {
+    display: inline-flex;
+    position: relative;
+}
+
+.gdpr_switch > input {
+    appearance: none;
+    display: flex;
+    position: absolute;
+    margin: 0;
+    outline: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gdpr_switch > span {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.gdpr_switch > span::before {
+    content: '';
+    display: inline-flex;
+    width: $switch-width;
+    height: .8rem;
+    margin-right: .8rem;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, .38);
+    vertical-align: top;
+    transition: background-color .2s, opacity .2s;
+}
+
+.gdpr_switch > span::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    transition: background-color .2s, transform .2s;
+}
+
+.gdpr_switch > input:checked {
+    left: $switch-width;
+    background-color: $color-success;
+}
+
+.gdpr_switch > input:checked + span::before {
+    background-color: $color-success;
+}
+
+.gdpr_switch > input:checked + span::after {
+    background-color: rgb(184, 201, 216);
+    transform: translateX($switch-width);
+}
+
+.gdpr_switch:hover > input {
+    opacity: .04;
+}
+
+.gdpr_switch > input:focus {
+    opacity: .12;
+}
+
+.gdpr_switch > input:active {
+    opacity: 1;
+    transform: scale(0);
+    transition: transform 0s, opacity 0s;
+}
+
+.gdpr_switch:hover > input:focus {
+    opacity: .16;
+}
+
+.gdpr_switch > input:active + span::before {
+    background-color: rgba(33, 150, 243, .6);
+}
+
+.gdpr_switch > input:checked:active + span::before {
+    background-color: rgba(0, 0, 0, .38);
+}

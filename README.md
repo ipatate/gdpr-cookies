@@ -197,6 +197,21 @@ For UI :
 - Sass
 - Jest
 
+# Browsers Compatibility
+
+- Desktop:
+  - Chrome 🆗
+  - Firefox 🆗
+  - Edge 🆗
+  - Opera 🆗
+  - IE11 ⛔ (take charge IE11 adds too much weight. I decided not to take charge.)
+
+- Mobile
+  - Iphone Safari (ios7 ⛔ , ios8 ⛔ , ios9 🆗)
+  - Iphone Chrome (ios7 ⛔ , ios8 ⛔ , ios9 🆗)
+  - Android Chrome (Android 4.4 🆗, Android 5 🆗)
+  - Android < 5 UC Browser ⛔
+
 ## Browsers tested with [https://www.browserstack.com](https://www.browserstack.com)
 
 [![browserstack](https://raw.githubusercontent.com/ipatate/gdpr-cookies/master/Browserstack-logo@2x.png)](https://www.browserstack.com)
