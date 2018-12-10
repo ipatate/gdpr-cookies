@@ -24,7 +24,7 @@ export default {
     banner_custom_bt: 'Personnaliser',
     modal_header_txt: 'Préférence pour tous les services',
     service_accept: 'Activer',
-    service_accept_all: 'Activé tout',
+    service_accept_all: 'Activer tout',
     service_bloc_all: 'Bloquer tout',
     service_activated: 'Service activé',
     service_blocked: 'Service bloqué',
