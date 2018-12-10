@@ -1,24 +1,91 @@
-<!doctype html><html><head><meta charset="utf-8"><title>GDPR System</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    }</style><link href="gdpr-cookie.css" rel="stylesheet"><link href="gdpr-cookie.source.css" rel="stylesheet"></head><body><a href="#">Un lien</a> <button>Un button</button><script>var _gdpr = _gdpr || [];
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Document</title><link rel="stylesheet" href="dist/style.css"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><style>/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    padding: 1rem;
+  }
+  .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+  }
+  .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1000px) {
+        max-width: 100vw;
+        max-width: 100%;
+    }
+  }</style><link href="gdpr-cookie.css" rel="stylesheet"><link href="gdpr-cookie.source.css" rel="stylesheet"></head><body><script>var _gdpr = _gdpr || [];
     var _gdpr_lang = 'fr';
     var _gdpr_options = {
-      keepCookies: ['TEST'],
+      keepCookies: ['__cfduid'],
+      types: ['ads', 'stats', 'video']
     };
-    /** var _gdpr_messages = {
-      es: {
-        alert_text:
-          'Si continúa navegando en este sitio web, está permitiendo todos los servicios de terceros.',
-        banner_ok_bt: 'Ok acepta todo',
-        banner_custom_bt: 'Personalizar',
-        modal_header_txt: 'Preferencia por todos los servicios.',
-        service_accept: 'Permiso',
-        service_bloc: 'Prohibir',
-        modal_valid: 'Guardar',
-      },
-    }*/</script><script>var fbVideo = [];
-      _gdpr.push([{ type: 'others', name: 'Facebook Video'}, fbVideo]);
-      _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, [function(helpers) {
+
+   var fbVideo = [];
+      _gdpr.push([{ type: 'video', name: 'Facebook test'}, [function(){}]]);
+      _gdpr.push([{ type: 'video', name: 'Facebook Video'}, fbVideo]);
+      var gVideo = [];
+      _gdpr.push([{ type: 'video', name: 'Youtube Video'}, gVideo]);
+_gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Service pour statistique des visites'}, [function(helpers) {
         helpers.createScript('https://www.googletagmanager.com/gtag/js?id=UA-130600368-1');
 
       window.dataLayer = window.dataLayer || [];
@@ -26,20 +93,9 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-130600368-1');
-
       }
-      ]]);</script><div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%;height:400px"></div><script>var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-      _gdpr.push([{ type: 'others', name: 'Google Map'}, [function(helpers) {
-        helpers.createScript('https://maps.googleapis.com/maps/api/js?key=' + keys_api.map + '&callback=initMap');
-    }]]);
-
-    fbVideo.push((helpers) => {
+      ]]);
+  fbVideo.push(function(helpers) {
       helpers.createIframe('video-fb', {
         src:"https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fspecializedfrance%2Fvideos%2F342893482955428%2F&width=500&show_text=false&appId=416327418410138&height=280",
         width: "500",
@@ -51,4 +107,16 @@
         allow:"encrypted-media",
         allowFullScreen:"true"
       })
-    });</script><div id="video-fb" class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;"></div><a href="#" onclick="window.showModal();return false;">Show modal</a><div id="gdpr-cookie"></div><script src="gdpr-cookies.js"></script></body></html>
+    });
+
+    gVideo.push(function(helpers) {
+        helpers.createIframe('video-g', {
+          src:"https://www.youtube.com/embed/XqmDRRZjaeU",
+          width: "560",
+          height:"315",
+          frameborder:"0",
+          allowTransparency:"true",
+          allow :"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+          allowFullScreen:"true"
+        })
+      });</script><div class="content"><h1>Example for library Gdpr cookies 1.0.6<br><a href="https://github.com/ipatate/gdpr-cookies" target="_blank">https://github.com/ipatate/gdpr-cookies</a></h1><br><br><a href="#">Link</a><br><br><button>Button</button><br><br><h2>Vidéo FaceBook</h2><div id="video-fb" class="videoWrapper gdpr-mask" data-gdpr="Facebook Video"></div><br><h2>Vidéo YouTube</h2><div id="video-g" class="videoWrapper gdpr-mask" data-gdpr="Youtube Video"></div><br><br><a href="#" onclick="window.showModal();return false;">Open modal cookies settings</a><div id="gdpr-cookie"></div></div><script src="gdpr-cookies.js"></script></body></html>

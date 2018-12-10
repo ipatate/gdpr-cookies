@@ -8,9 +8,9 @@
 
 ### Use files in dist directory
 
-gdpr-cookies.css 5ko (~1ko gzip)
+gdpr-cookies.css 7ko (~2ko gzip)
 
-gdpr-cookies.js 45ko (~11ko gzip)
+gdpr-cookies.js 60ko (~19ko gzip)
 
 ## Add script in page
 
@@ -204,13 +204,14 @@ For UI :
   - Firefox 🆗
   - Edge 🆗
   - Opera 🆗
-  - IE11 ⛔ (take charge IE11 adds too much weight. I decided not to take charge.)
+  - IE11 🆗
 
 - Mobile
-  - Iphone Safari (ios7 ⛔ , ios8 ⛔ , ios9 🆗)
-  - Iphone Chrome (ios7 ⛔ , ios8 ⛔ , ios9 🆗)
+  - Iphone Safari (ios7 ⛔ , ios8 🆗 , ios9 🆗, ios10 🆗)
+  - Iphone Chrome (ios7 ⛔ , ios8 🆗 , ios9 🆗, ios10 🆗)
+  - Iphone webview (ios7 ⛔ , ios8 🆗 , ios9 🆗, ios10 🆗)
   - Android Chrome (Android 4.4 🆗, Android 5 🆗)
-  - Android < 5 UC Browser ⛔
+  - Android UC Browser (Android 4.4 ⛔)
 
 ## Browsers tested with [https://www.browserstack.com](https://www.browserstack.com)
 

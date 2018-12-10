@@ -1,11 +1,11 @@
 // @flow @jsx h
-// test for old browser
-// require('core-js/fn/array/from');
-// require('core-js/fn/array/find');
-// require('core-js/fn/object/assign');
-// import 'core-js/es6/symbol';
-// import 'core-js/es6/map';
-// import 'core-js/es6/set';
+// polyfill for fucking old browser !
+import 'core-js/fn/array/from';
+import 'core-js/fn/array/find';
+import 'core-js/fn/object/assign';
+import 'core-js/es6/symbol';
+import 'core-js/es6/map';
+import 'core-js/es6/set';
 
 import {h, render} from 'preact';
 import {Provider} from 'redux-zero/preact';
