@@ -1,39 +1,63 @@
 // @flow @jsx h
 import {h, Component} from 'preact';
+import {slugify} from '../../../utils/Slugify';
 import './style.scss';
 
 type SwitchProps = {
-  onClick: Function,
+  onChange: Function,
   className: string,
   children: Node,
   state: boolean,
+  name: string,
 };
 
 export default class Switch extends Component<SwitchProps> {
   static defaultProps = {
-    onClick: () => true,
+    onChange: () => true,
     className: '',
     state: false,
+    name: '',
   };
 
+  slug: string = '';
+
+  constructor(props: SwitchProps) {
+    super(props);
+    this.slug = slugify(props.name);
+  }
+
   onChange = (e: Event) => {
-    const {onClick} = this.props;
+    const {onChange, state} = this.props;
     e.preventDefault();
-    // $FlowFixMe
-    const checked = !this.state.checked;
-    onClick(checked);
-    // $FlowFixMe
-    this.setState({checked});
+    const checked = !state;
+    onChange(checked);
   };
 
   render() {
-    const {className, children} = this.props;
-    // $FlowFixMe
-    const {checked} = this.state;
+    const {className, children, state} = this.props;
+
     return (
-      <label className={`gdpr_switch ${className}`}>
-        <input onChange={this.onChange} checked={checked} type="checkbox" />
-        <span>{children}</span>
+      <label for={this.slug} className={`gdpr_switch ${className}`}>
+        <input
+          id={this.slug}
+          onChange={this.onChange}
+          checked={state}
+          type="checkbox"
+        />
+        <span
+          className="gdpr_switch"
+          title={children}
+          aria-label={children}
+          role="switch"
+          aria-checked={state}
+        />
+        <span
+          className={`gdpr_children ${
+            state === true ? 'switch_activated' : ''
+          }`}
+        >
+          {children}
+        </span>
       </label>
     );
   }
