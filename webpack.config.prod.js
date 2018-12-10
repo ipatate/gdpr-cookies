@@ -62,10 +62,10 @@ module.exports = {
       template: 'src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: `gdpr-cookie.css`,
+      filename: `gdpr-cookies.css`,
     }),
     new MiniCssExtractPlugin({
-      filename: `gdpr-cookie.source.css`,
+      filename: `gdpr-cookies.source.css`,
     }),
     new UglifyjsWebpackPlugin({
       sourceMap: true,
