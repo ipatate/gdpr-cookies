@@ -24,6 +24,27 @@ gdpr-cookies.js 64ko (~19ko gzip)
 <link href="path/gdpr-cookies.css" rel="stylesheet">
 ```
 
+## For npm user
+
+install package
+
+```bash
+npm install gdpr-cookies -S
+```
+
+import in your javascript file
+
+```js
+import 'gdpr-cookies';
+```
+
+import sass files
+
+```scss
+@import 'path-to-your-node_modules/gdpr-cookies/dist/gdpr-cookies.css';
+```
+
+
 ## Init Gdpr Cookie
 
 Set this code in the head of your html
