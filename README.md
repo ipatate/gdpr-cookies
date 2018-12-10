@@ -24,6 +24,27 @@ gdpr-cookies.js 64ko (~19ko gzip)
 <link href="path/gdpr-cookies.css" rel="stylesheet">
 ```
 
+## For npm user
+
+install package
+
+```bash
+npm install gdpr-cookies -S
+```
+
+import in your javascript file
+
+```js
+import 'gdpr-cookies';
+```
+
+import sass files
+
+```scss
+@import 'path-to-your-node_modules/gdpr-cookies/dist/gdpr-cookies.css';
+```
+
+
 ## Init Gdpr Cookie
 
 Set this code in the head of your html
@@ -32,7 +53,7 @@ Set this code in the head of your html
 <script>var _gdpr = _gdpr || [];</script>
 ```
 
-## Add this tag just before end tag </body>
+## Add this tag in page <body>
 
 ```html
 <div id="gdpr-cookie"></div>
@@ -75,7 +96,7 @@ _gdpr.push([
   {
     type: 'stats',
     name: 'Google Tag',
-    description: 'Service pour statistique des visites'},
+    description: 'Service pour statistiques des visites'},
     [
       function(helpers) {
         // use helpers
@@ -102,7 +123,7 @@ _gdpr.push([
   {
     type: 'stats',
     name: 'Google Tag',
-    description: 'Service pour statistique des visites'},
+    description: 'Service pour statistiques des visites'},
     myCB
   }
 ]);

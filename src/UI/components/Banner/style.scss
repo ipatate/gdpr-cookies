@@ -23,7 +23,7 @@
     max-width: 100vw;
     padding: 0;
     background: $bg-banner;
-    font-size: 1rem;
+    font-size: 16px;
     color: $font-white;
     text-align: center;
     z-index: 2147483645;
@@ -45,7 +45,7 @@
 .gdpr_banner-text {
     display: flex;
     align-items: center;
-    padding: 1rem 1rem;
+    padding: 16px;
     text-align: left;
 
     @media screen and (max-width: $medium) {
@@ -62,12 +62,12 @@
 
     button {
         white-space: nowrap;
-        padding: .5rem 1rem;
-        font-size: 1.1rem;
+        padding: 8px 30px;
+        font-size: 16px;
 
         @media screen and (max-width: $medium) {
             flex: 1;
-            padding: 1rem;
+            padding: 16px;
         }
     }
 }

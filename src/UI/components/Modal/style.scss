@@ -21,6 +21,7 @@
     left: 0;
     animation: show .4s;
     background: $bg-mask;
+    z-index: 2147483645;
 }
 
 .gdpr_modal_content {
@@ -44,22 +45,22 @@
 
 .gdpr_modal_list header {
     display: flex;
-    max-height: 3rem;
-    padding: 1rem .5rem;
+    min-height: 40px;
+    padding: 16px 8px;
     background: none;
-    font-size: 1.2rem;
+    font-size: 20px;
     border-bottom: 1px solid lighten($color-border, 5%);
 
     strong {
         display: flex;
         flex: 1;
         align-items: center;
-        padding: 0 .5rem;
+        padding: 0 8px;
         text-transform: uppercase;
     }
 
     .gdpr_btn {
-        padding: .5rem .3rem;
+        padding: 8px 5px;
         justify-self: flex-end;
         background: none;
     }
@@ -69,10 +70,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    min-height: 2rem;
-    padding: .3rem .5rem;
+    min-height: 32px;
+    padding: 5px 8px;
     background: $bg-head-modal;
-    font-size: 1.4rem;
+    font-size: 20px;
     font-weight: bold;
     color: $font-gray;
     text-transform: capitalize;
@@ -96,13 +97,13 @@
 .gdpr_modal_list-content {
     flex: 1;
     max-width: 100%;
-    max-height: calc(70vh - 7rem);
+    max-height: calc(70vh - 110px);
     overflow-y: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     background: #FFF;
 
     @media screen and (max-width: $small) {
-        max-height: calc(80vh - 7rem);
+        max-height: calc(80vh - 110px);
         padding-bottom: 2rem;
     }
 }
@@ -112,17 +113,16 @@
     flex: 1;
     position: relative;
     justify-content: flex-end;
-    height: 3rem;
-    min-height: 2.5rem;
-    padding: .5rem;
+    min-height: 50px;
+    padding: 12px 8px;
     border-top: 1px solid lighten($color-border, 5%);
     background: #FFF;
     z-index: 1;
 
     button {
         border-radius: $radius-bt;
-        margin-right: .5rem;
-        font-size: 1.1rem;
-        min-height: 2rem;
+        margin-right: 8px;
+        font-size: 18px;
+        min-height: 40px;
     }
 }
