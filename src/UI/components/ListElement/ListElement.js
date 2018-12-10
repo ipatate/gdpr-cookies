@@ -1,6 +1,6 @@
 // @flow @jsx h
 import {h, Component} from 'preact';
-import BtActions from '../BtActions';
+import SwitchActions from '../SwitchActions';
 import './style.scss';
 
 type ListElementProps = {
@@ -15,17 +15,22 @@ export default class ListElement extends Component<ListElementProps> {
     const {name, description, state} = service;
     return (
       <div className="gdpr_list_element">
-        <div className="gdpr_list_element-desc">
+        <div className="gdpr_list_element-title">
           <strong>{name}</strong>
-          {description ? <p>{description}</p> : null}
+          <SwitchActions
+            name={name}
+            status={state}
+            onChange={state => {
+              return toggleServiceByName({name: name, state});
+            }}
+            t={t}
+          />
         </div>
-        <BtActions
-          status={state}
-          onChange={state => {
-            return toggleServiceByName({name: name, state});
-          }}
-          t={t}
-        />
+        {description ? (
+          <div className="gdpr_list_element-desc">
+            <p>{description}</p>
+          </div>
+        ) : null}
       </div>
     );
   }

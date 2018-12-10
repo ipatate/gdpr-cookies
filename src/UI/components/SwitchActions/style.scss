@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+.gdpr_element-action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .gdpr_btn {
+        margin: .5rem;
+    }
+}

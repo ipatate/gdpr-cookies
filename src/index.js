@@ -14,12 +14,6 @@ import messagesDefault from '../locales/messages';
 import App from './UI/App';
 import {createMask} from './UI/Mask';
 
-if (process.env.NODE_ENV === 'development') {
-  const keys_api = require('./keys_api').default;
-
-  global.keys_api = keys_api;
-}
-
 // language
 const locale = window._gdpr_lang || 'en';
 const options = window._gdpr_options || {};

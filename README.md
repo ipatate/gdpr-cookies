@@ -10,7 +10,7 @@
 
 gdpr-cookies.css 7ko (~2ko gzip)
 
-gdpr-cookies.js 60ko (~19ko gzip)
+gdpr-cookies.js 64ko (~19ko gzip)
 
 ## Add script in page
 
@@ -143,28 +143,36 @@ If you want to add or define your messages, you can create a messages in your ht
 
 ```js
 var _gdpr_messages = {
-    fr: { // lang key
-      alert_text:
-        "En poursuivant votre navigation, vous acceptez l'utilisation de services tiers pouvant installer des cookies",
-      banner_ok_bt: 'Ok, tout accepter',
-      banner_custom_bt: 'Personnaliser',
-      modal_header_txt: 'Préférence pour tous les services',
-      service_accept: 'Autoriser',
-      service_bloc: 'Interdire',
-      modal_valid: 'Sauvegarder',
-      ads: 'Publicités',
-      stats: 'Statistiques',
-      others: 'Autres services',
-      mask_text_start: 'The service',
-      mask_text_end: 'is disabled',
-    },
+    fr: {
+    alert_text:
+      "En poursuivant votre navigation, vous acceptez l'utilisation de services tiers pouvant installer des cookies",
+    banner_ok_bt: 'Ok, tout accepter',
+    banner_custom_bt: 'Personnaliser',
+    modal_header_txt: 'Préférence pour tous les services',
+    service_accept: 'Activer',
+    service_accept_all: 'Activé tout',
+    service_bloc_all: 'Bloquer tout',
+    service_activated: 'Service activé',
+    service_blocked: 'Service bloqué',
+    modal_valid: 'Sauvegarder',
+    ads: 'Publicités',
+    stats: 'Statistiques',
+    others: 'Autres services',
+    mask_text_start: 'Le service',
+    mask_text_end: 'est désactivé',
+  },
   }
 ```
 
 ## Add link for open modal (sorry for the onclick 😅)
 
+```js
+window._gdpr_showModal();
+```
+ex:
+
 ```html
-<a href="#" onclick="window.showModal();return false;">Show modal</a>
+<a href="#" onclick="window._gdpr_showModal();return false;">Show modal</a>
 ```
 
 ## Add Mask with buttons for service disabled
@@ -174,8 +182,6 @@ Add just class (gdpr-mask) and name of service with data-grpd. Ex:
 ```html
  <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
  ```
-
-class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;"
 
 # Exemple
 

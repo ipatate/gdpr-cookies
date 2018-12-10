@@ -16,7 +16,7 @@ export default class Banner extends Component<AppProps> {
     if (showBanner === false) return null;
     const {t, toggleModal, toggleBanner} = this.props;
     return (
-      <div className="gdpr_banner">
+      <div role="alert" className="gdpr_banner">
         <div className="gdpr_banner-content">
           <div className="gdpr_banner-text">{t('alert_text')}</div>
           <div className="gdpr_banner-actions">

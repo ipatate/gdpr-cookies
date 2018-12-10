@@ -1,6 +1,6 @@
 // @flow @jsx h
 import {h, Component} from 'preact';
-import BtActions from '../BtActions';
+import Button from '../Button';
 import './style.scss';
 
 type ListElementProps = {
@@ -56,7 +56,6 @@ export default class Mask extends Component<ListElementProps> {
     ) {
       return null;
     }
-    const {state} = serviceState;
     return (
       <div className="gdpr_mask-content">
         <div className="gdpr_mask-desc">
@@ -64,12 +63,17 @@ export default class Mask extends Component<ListElementProps> {
           {` ${name} `}
           {t(`mask_text_end`)}
         </div>
-        <BtActions
-          showDisable={false}
-          status={state}
-          onChange={state => this.onChange(name, state)}
-          t={t}
-        />
+        <div className="gdpr_mask-action">
+          <Button
+            onClick={e => {
+              e.preventDefault();
+              this.onChange(name, true);
+            }}
+            className="gdpr_btn-round gdpr_btn-success"
+          >
+            {t('service_accept')}
+          </Button>
+        </div>
       </div>
     );
   }

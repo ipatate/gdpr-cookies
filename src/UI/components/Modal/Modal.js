@@ -68,7 +68,7 @@ export default class Modal extends Component<AppProps> {
     if (showModal === false) return null;
     const {t} = this.props;
     return (
-      <div className="gdpr_modal">
+      <div role="dialog" aria-modal="true" className="gdpr_modal">
         <div className="gdpr_modal_content">
           <div className="gdpr_modal_list">
             <header>
