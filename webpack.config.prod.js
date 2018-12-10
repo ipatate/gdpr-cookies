@@ -78,7 +78,7 @@ module.exports = {
       },
     }),
     new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /gdpr-cookie\.css$/g,
+      assetNameRegExp: /gdpr-cookies\.css$/g,
     }),
   ],
 };

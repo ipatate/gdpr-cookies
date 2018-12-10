@@ -1,19 +1,19 @@
 @import '../../variables.scss';
 
-$switch-width: 2rem;
+$switch-width: 40px;
 
 // switch container
 .gdpr_switch {
     display: inline-flex;
     align-items: center;
-    height: 2rem;
-    margin: 0 .5rem;
+    height: 32px;
+    margin: 0 8px;
 }
 
 .gdpr_children {
     text-align: center;
-    min-width: 7rem;
-    font-size: .9rem;
+    min-width: 110px;
+    font-size: 14px;
     color: $font-gray;
 
     &.switch_activated {
@@ -39,8 +39,8 @@ $switch-width: 2rem;
     position: relative;
     align-items: center;
     width: $switch-width;
-    margin: 0 .5rem 0 0;
-    padding: 0 1rem;
+    margin: 0 8px 0 0;
+    padding: 0 0;
     cursor: pointer;
 }
 
@@ -49,7 +49,7 @@ $switch-width: 2rem;
     content: '';
     display: inline-flex;
     width: 100%;
-    height: .8rem;
+    height: 12px;
     margin: 0;
     padding: 0;
     border-radius: 7px;
@@ -63,7 +63,7 @@ $switch-width: 2rem;
     content: '';
     position: absolute;
     top: 5px;
-    left: 5px;
+    left: 0;
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -83,5 +83,5 @@ $switch-width: 2rem;
 .gdpr_switch > input:checked + span.gdpr_switch::after {
     background-color: $font-white;
     box-shadow: 0 0 5px 1px $color-success;
-    transform: translateX($switch-width);
+    transform: translateX($switch-width - 20px);
 }
