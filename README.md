@@ -10,7 +10,7 @@
 
 gdpr-cookies.css 7ko (~2ko gzip)
 
-gdpr-cookies.js 60ko (~19ko gzip)
+gdpr-cookies.js 64ko (~19ko gzip)
 
 ## Add script in page
 
@@ -143,21 +143,24 @@ If you want to add or define your messages, you can create a messages in your ht
 
 ```js
 var _gdpr_messages = {
-    fr: { // lang key
-      alert_text:
-        "En poursuivant votre navigation, vous acceptez l'utilisation de services tiers pouvant installer des cookies",
-      banner_ok_bt: 'Ok, tout accepter',
-      banner_custom_bt: 'Personnaliser',
-      modal_header_txt: 'Préférence pour tous les services',
-      service_accept: 'Autoriser',
-      service_bloc: 'Interdire',
-      modal_valid: 'Sauvegarder',
-      ads: 'Publicités',
-      stats: 'Statistiques',
-      others: 'Autres services',
-      mask_text_start: 'The service',
-      mask_text_end: 'is disabled',
-    },
+    fr: {
+    alert_text:
+      "En poursuivant votre navigation, vous acceptez l'utilisation de services tiers pouvant installer des cookies",
+    banner_ok_bt: 'Ok, tout accepter',
+    banner_custom_bt: 'Personnaliser',
+    modal_header_txt: 'Préférence pour tous les services',
+    service_accept: 'Activer',
+    service_accept_all: 'Activé tout',
+    service_bloc_all: 'Bloquer tout',
+    service_activated: 'Service activé',
+    service_blocked: 'Service bloqué',
+    modal_valid: 'Sauvegarder',
+    ads: 'Publicités',
+    stats: 'Statistiques',
+    others: 'Autres services',
+    mask_text_start: 'Le service',
+    mask_text_end: 'est désactivé',
+  },
   }
 ```
 
