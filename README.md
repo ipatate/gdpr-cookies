@@ -177,7 +177,7 @@ ex:
 
 ## Add Mask with buttons for service disabled
 
-Add just class (gdpr-mask) and name of service with data-grpd. Ex:
+Add just class (gdpr-mask) and name of service with data-gdpr. Ex:
 
 ```html
  <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
