@@ -48,7 +48,7 @@
     padding: 1rem .5rem;
     background: none;
     font-size: 1.2rem;
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid lighten($color-border, 5%);
 
     strong {
         display: flex;
@@ -63,7 +63,6 @@
         justify-self: flex-end;
         background: none;
     }
-
 }
 
 .gdpr_modal_list-head {
@@ -77,9 +76,11 @@
     font-weight: bold;
     color: $font-gray;
     text-transform: capitalize;
+    border-top: 1px solid $color-border;
 
-    // @media screen and (max-width: $small) {
-    // }
+    &:first-child {
+        border-top: none;
+    }
 
     svg {
         fill: $font-gray;
@@ -95,24 +96,28 @@
 .gdpr_modal_list-content {
     flex: 1;
     max-width: 100%;
-    max-height: calc(70vh - 6rem);
+    max-height: calc(70vh - 7rem);
     overflow-y: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    background: $color-border;
+    background: #FFF;
 
     @media screen and (max-width: $small) {
-        max-height: calc(80vh - 6rem);
+        max-height: calc(80vh - 7rem);
+        padding-bottom: 2rem;
     }
 }
 
 .gdpr_modal_action {
     display: flex;
     flex: 1;
+    position: relative;
     justify-content: flex-end;
     height: 3rem;
-    min-height: 2rem;
+    min-height: 2.5rem;
     padding: .5rem;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid lighten($color-border, 5%);
+    background: #FFF;
+    z-index: 1;
 
     button {
         border-radius: $radius-bt;
