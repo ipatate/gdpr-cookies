@@ -163,8 +163,13 @@ var _gdpr_messages = {
 
 ## Add link for open modal (sorry for the onclick 😅)
 
+```js
+window._gdpr_showModal();
+```
+ex:
+
 ```html
-<a href="#" onclick="window.showModal();return false;">Show modal</a>
+<a href="#" onclick="window._gdpr_showModal();return false;">Show modal</a>
 ```
 
 ## Add Mask with buttons for service disabled
@@ -174,8 +179,6 @@ Add just class (gdpr-mask) and name of service with data-grpd. Ex:
 ```html
  <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
  ```
-
-class="gdpr-mask" data-gdpr="Facebook Video" style="width: 500px; height: 280px;"
 
 # Exemple
 
