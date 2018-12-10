@@ -2,7 +2,9 @@
 
 exports[`test button with click and class name 1`] = `
 <button
+  aria-label="My Button"
   class="gdpr_btn test"
+  title="My Button"
 >
   My Button
 </button>

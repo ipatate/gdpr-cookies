@@ -21,8 +21,13 @@
     margin: 1rem 0;
 }
 
-.gdpr_list_element .gdpr_element-action {
+.gdpr_mask-action {
     @media screen and (max-width: $small) {
         justify-content: center;
+    }
+
+    .gdpr_btn {
+        background: lighten($color-success, 20%);
+        color: #333;
     }
 }

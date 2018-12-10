@@ -25,17 +25,6 @@ export default class BtActions extends Component<BtActionsProps> {
     const {status, t, showDisable} = this.props;
     return (
       <div class="gdpr_element-action">
-        <Button
-          onClick={e => {
-            e.preventDefault();
-            this.toggle(true);
-          }}
-          className={`gdpr_btn-round ${
-            status === true ? 'gdpr_btn-success' : 'gdpr_btn-default'
-          }`}
-        >
-          {t('service_accept')}
-        </Button>
         {showDisable === true ? (
           <Button
             onClick={e => {
@@ -46,11 +35,22 @@ export default class BtActions extends Component<BtActionsProps> {
               status === false ? 'gdpr_btn-error' : 'gdpr_btn-default'
             }`}
           >
-            {t('service_bloc')}
+            {t('service_bloc_all')}
           </Button>
         ) : (
           ''
         )}
+        <Button
+          onClick={e => {
+            e.preventDefault();
+            this.toggle(true);
+          }}
+          className={`gdpr_btn-round ${
+            status === true ? 'gdpr_btn-success' : 'gdpr_btn-default'
+          }`}
+        >
+          {t('service_accept_all')}
+        </Button>
       </div>
     );
   }
