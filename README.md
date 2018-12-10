@@ -32,7 +32,7 @@ Set this code in the head of your html
 <script>var _gdpr = _gdpr || [];</script>
 ```
 
-## Add this tag just before end tag </body>
+## Add this tag in page <body>
 
 ```html
 <div id="gdpr-cookie"></div>
@@ -75,7 +75,7 @@ _gdpr.push([
   {
     type: 'stats',
     name: 'Google Tag',
-    description: 'Service pour statistique des visites'},
+    description: 'Service pour statistiques des visites'},
     [
       function(helpers) {
         // use helpers
@@ -102,7 +102,7 @@ _gdpr.push([
   {
     type: 'stats',
     name: 'Google Tag',
-    description: 'Service pour statistique des visites'},
+    description: 'Service pour statistiques des visites'},
     myCB
   }
 ]);
