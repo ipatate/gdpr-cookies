@@ -8,20 +8,20 @@
 
 ### Use files in dist directory
 
-gdpr-cookie.css 5ko (~1ko gzip)
+gdpr-cookies.css 7ko (~2ko gzip)
 
-gdpr-cookie.js 45ko (~11ko gzip)
+gdpr-cookies.js 60ko (~19ko gzip)
 
 ## Add script in page
 
 ```html
-<script src="path/gdpr-cookie.js" async></script>
+<script src="path/gdpr-cookies.js" async></script>
 ```
 
 ## Add style in page
 
 ```html
-<link href="path/gdpr-cookie.css" rel="stylesheet">
+<link href="path/gdpr-cookies.css" rel="stylesheet">
 ```
 
 ## Init Gdpr Cookie
@@ -196,6 +196,22 @@ For UI :
 - Redux Zero
 - Sass
 - Jest
+
+# Browsers Compatibility
+
+- Desktop:
+  - Chrome 🆗
+  - Firefox 🆗
+  - Edge 🆗
+  - Opera 🆗
+  - IE11 🆗
+
+- Mobile
+  - Iphone Safari (ios7 ⛔ , ios8 🆗 , ios9 🆗, ios10 🆗)
+  - Iphone Chrome (ios7 ⛔ , ios8 🆗 , ios9 🆗, ios10 🆗)
+  - Iphone webview (ios7 ⛔ , ios8 🆗 , ios9 🆗, ios10 🆗)
+  - Android Chrome (Android 4.4 🆗, Android 5 🆗)
+  - Android UC Browser (Android 4.4 ⛔)
 
 ## Browsers tested with [https://www.browserstack.com](https://www.browserstack.com)
 

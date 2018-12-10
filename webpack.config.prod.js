@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'gdpr-cookie.js',
+    filename: 'gdpr-cookies.js',
   },
   module: {
     rules: [

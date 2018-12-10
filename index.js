@@ -1,1 +1,1 @@
-module.exports = require('./dist/gdpr-cookie.js');
+module.exports = require('./dist/gdpr-cookies.js');

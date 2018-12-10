@@ -55,7 +55,10 @@
 
 .gdpr_banner-actions {
     display: flex;
-    flex: 1;
+
+    @media screen and (max-width: $medium) {
+        flex: 1;
+    }
 
     button {
         white-space: nowrap;
