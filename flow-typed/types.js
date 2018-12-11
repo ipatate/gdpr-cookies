@@ -49,4 +49,5 @@ declare type AppProps = {
   toggleBanner: Function,
   toggleServiceByType: Function,
   saveStateInGdpr: Function,
+  toggleAllService: Function,
 };

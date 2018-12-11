@@ -14,12 +14,19 @@ export default class ListElement extends Component<ListElementProps> {
     const {t, service, toggleServiceByName} = this.props;
     const {name, description, state} = service;
     return (
-      <div className="gdpr_list_element">
+      <div
+        className={`gdpr_list_element ${
+          state === true
+            ? 'gdpr_list_element-activate'
+            : 'gdpr_list_element-disabled'
+        }`}
+      >
         <div className="gdpr_list_element-title">
           <strong>{name}</strong>
           <SwitchActions
             name={name}
             status={state}
+            showChildren={false}
             onChange={state => {
               return toggleServiceByName({name: name, state});
             }}

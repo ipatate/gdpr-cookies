@@ -32,6 +32,15 @@ const actions = () => ({
     );
     return {listService};
   },
+  toggleAllService: (state: StoreType, payload: boolean) => {
+    const listService: ServiceList = state.listService.map(
+      (value: Service): Service => {
+        value.state = payload;
+        return value;
+      },
+    );
+    return {listService};
+  },
   saveStateInGdpr: (state: StoreType) => {
     const {gdpr, listService, isFirstVisit, prevListService} = state;
     // update activated in gdpr class

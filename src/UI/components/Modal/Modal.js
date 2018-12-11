@@ -15,28 +15,8 @@ export default class Modal extends Component<AppProps> {
     saveStateInGdpr();
   };
 
-  getStatusForType = (type: string): boolean | null => {
-    const {listService} = this.props;
-    const ok = [];
-    const ko = [];
-    listService.forEach(service => {
-      if (service.type === type && service.state === true) {
-        ok.push(service);
-      } else if (service.type === type && service.state === false) {
-        ko.push(service);
-      }
-    });
-    let status = null;
-    if (ok.length > 0 && ko.length === 0) {
-      status = true;
-    } else if (ok.length === 0 && ko.length > 0) {
-      status = false;
-    }
-    return status;
-  };
-
   getListElement = (): Array<any> => {
-    const {listService, toggleServiceByType, t} = this.props;
+    const {listService, t} = this.props;
     let type = '';
     return listService.map(service => {
       let r = [];
@@ -47,13 +27,6 @@ export default class Modal extends Component<AppProps> {
               <Arrow width="24px" height="24px" />
               {t(service.type)}
             </div>
-            <BtActions
-              t={t}
-              // status={this.getStatusForType(service.type)}
-              onChange={state => {
-                return toggleServiceByType({type: service.type, state});
-              }}
-            />
           </div>,
         );
       }
@@ -64,7 +37,7 @@ export default class Modal extends Component<AppProps> {
   };
 
   render() {
-    const {showModal} = this.props;
+    const {showModal, toggleAllService} = this.props;
     if (showModal === false) return null;
     const {t} = this.props;
     return (
@@ -77,6 +50,14 @@ export default class Modal extends Component<AppProps> {
                 <Close width="20px" height="20px" />
               </Button>
             </header>
+            <div className="gdpr_modal_button-all">
+              <BtActions
+                t={t}
+                onChange={state => {
+                  return toggleAllService(state);
+                }}
+              />
+            </div>
             <div className="gdpr_modal_list-content">
               {this.getListElement()}
             </div>

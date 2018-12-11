@@ -6,6 +6,7 @@ import './style.scss';
 type BtActionsProps = {
   onChange: Function,
   showDisable: boolean,
+  showChildren: boolean,
   t: Function,
   status: ?boolean,
   name: string,
@@ -15,6 +16,7 @@ export default class BtActions extends Component<BtActionsProps> {
   static defaultProps = {
     onChange: () => true,
     showDisable: true,
+    showChildren: true,
     name: '',
   };
 
@@ -24,10 +26,11 @@ export default class BtActions extends Component<BtActionsProps> {
   };
 
   render() {
-    const {t, status, name} = this.props;
+    const {t, status, showChildren, name} = this.props;
     return (
       <div class="gdpr_element-action">
         <Switch
+          showChildren={showChildren}
           name={name}
           state={status}
           onChange={state => {

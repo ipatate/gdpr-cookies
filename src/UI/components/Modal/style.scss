@@ -33,23 +33,31 @@
     box-shadow: 0 0 15px $shadow-modal;
 
     @media screen and (max-width: $medium) {
-        width: 85%;
+        width: 85vh;
         max-height: 85vh;
     }
 
     @media screen and (max-width: $small) {
-        width: 95%;
+        width: 90vh;
         max-height: 90vh;
+    }
+}
+
+.gdpr_modal_button-all {
+    border-top: 1px solid lighten($color-border, 5%);
+    border-bottom: 1px solid lighten($color-border, 5%);
+
+    .gdpr_btn {
+        font-size: 12px;
     }
 }
 
 .gdpr_modal_list header {
     display: flex;
-    min-height: 40px;
+    height: 40px;
     padding: 16px 8px;
     background: none;
     font-size: 20px;
-    border-bottom: 1px solid lighten($color-border, 5%);
 
     strong {
         display: flex;
@@ -97,14 +105,14 @@
 .gdpr_modal_list-content {
     flex: 1;
     max-width: 100%;
-    max-height: calc(70vh - 110px);
+    max-height: calc(80vh - 190px);
     overflow-y: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     background: #FFF;
 
     @media screen and (max-width: $small) {
-        max-height: calc(80vh - 110px);
-        padding-bottom: 2rem;
+        max-height: calc(90vh - 190px);
+        // padding-bottom: 50px;
     }
 }
 
@@ -113,8 +121,10 @@
     flex: 1;
     position: relative;
     justify-content: flex-end;
+    align-items: center;
     min-height: 50px;
-    padding: 12px 8px;
+    height: 50px;
+    padding: 10px 8px;
     border-top: 1px solid lighten($color-border, 5%);
     background: #FFF;
     z-index: 1;
@@ -122,7 +132,7 @@
     button {
         border-radius: $radius-bt;
         margin-right: 8px;
+        height: 40px;
         font-size: 18px;
-        min-height: 40px;
     }
 }
