@@ -46,13 +46,7 @@ export default class Switch extends Component<SwitchProps> {
           checked={state}
           type="checkbox"
         />
-        <span
-          className="gdpr_switch"
-          title={children}
-          aria-label={children}
-          role="switch"
-          aria-checked={state}
-        >
+        <span className="gdpr_switch" role="switch" aria-checked={state}>
           <span className="gdpr_shadow" />
         </span>
         {showChildren === true ? (
