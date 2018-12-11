@@ -15,12 +15,7 @@ export default class Button extends Component<BtProps> {
   render() {
     const {className, onClick, children} = this.props;
     return (
-      <button
-        title={children}
-        aria-label={children}
-        className={`gdpr_btn ${className}`}
-        onClick={onClick}
-      >
+      <button className={`gdpr_btn ${className}`} onClick={onClick}>
         {children}
       </button>
     );
