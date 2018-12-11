@@ -10,6 +10,14 @@
     border-top: 1px solid $color-border;
 }
 
+.gdpr_list_element-activate {
+    border-left: 7px solid $color-success;
+}
+
+.gdpr_list_element-disabled {
+    border-left: 7px solid $color-danger;
+}
+
 .gdpr_list_element-title {
     display: flex;
     align-items: center;

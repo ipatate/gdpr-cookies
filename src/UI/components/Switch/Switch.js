@@ -7,6 +7,7 @@ type SwitchProps = {
   onChange: Function,
   className: string,
   children: Node,
+  showChildren: boolean,
   state: boolean,
   name: string,
 };
@@ -14,6 +15,7 @@ type SwitchProps = {
 export default class Switch extends Component<SwitchProps> {
   static defaultProps = {
     onChange: () => true,
+    showChildren: true,
     className: '',
     state: false,
     name: '',
@@ -34,7 +36,7 @@ export default class Switch extends Component<SwitchProps> {
   };
 
   render() {
-    const {className, children, state} = this.props;
+    const {className, children, showChildren, state} = this.props;
 
     return (
       <label for={this.slug} className={`gdpr_switch ${className}`}>
@@ -50,14 +52,18 @@ export default class Switch extends Component<SwitchProps> {
           aria-label={children}
           role="switch"
           aria-checked={state}
-        />
-        <span
-          className={`gdpr_children ${
-            state === true ? 'switch_activated' : ''
-          }`}
         >
-          {children}
+          <span className="gdpr_shadow" />
         </span>
+        {showChildren === true ? (
+          <span
+            className={`gdpr_children ${
+              state === true ? 'switch_activated' : ''
+            }`}
+          >
+            {children}
+          </span>
+        ) : null}
       </label>
     );
   }

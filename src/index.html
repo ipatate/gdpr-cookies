@@ -95,7 +95,16 @@ body {
     };
 
    var fbVideo = [];
-      _gdpr.push([{ type: 'video', name: 'Facebook test'}, [function(){}]]);
+      _gdpr.push([{ type: 'stats', name: 'Hotjar'}, [function(){
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1123611,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      }]]);
       _gdpr.push([{ type: 'video', name: 'Facebook Video'}, fbVideo]);
       var gVideo = [];
       _gdpr.push([{ type: 'video', name: 'Youtube Video'}, gVideo]);
