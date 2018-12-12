@@ -33,28 +33,35 @@
 .gdpr_banner-content {
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
     max-width: 990px;
+    width: 100%;
+    // margin: 0 auto;
 
     @media screen and (max-width: $medium) {
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
+        flex-direction: column;
     }
 }
 
 .gdpr_banner-text {
     display: flex;
+    flex: 1;
     align-items: center;
     padding: 16px;
     text-align: left;
 
     @media screen and (max-width: $medium) {
+        flex: none;
+        max-width: 100%;
         text-align: center;
     }
 }
 
 .gdpr_banner-actions {
     display: flex;
+    min-height: 50px;
 
     @media screen and (max-width: $medium) {
         flex: 1;
@@ -62,12 +69,18 @@
 
     button {
         white-space: nowrap;
-        padding: 8px 30px;
+        // padding: 8px 30px;
         font-size: 16px;
 
         @media screen and (max-width: $medium) {
             flex: 1;
-            padding: 16px;
+            min-height: 60px;
         }
+    }
+
+    button::before,
+    button::after {
+        content: '';
+        flex: 1 0 auto;
     }
 }

@@ -43,13 +43,15 @@ export default class Modal extends Component<AppProps> {
     return (
       <div role="dialog" aria-modal="true" className="gdpr_modal">
         <div className="gdpr_modal_content">
-          <div className="gdpr_modal_list">
-            <header>
-              <strong>{t('modal_header_txt')}</strong>
-              <Button className="" onClick={this.closeAndSave}>
-                <Close width="20px" height="20px" />
-              </Button>
-            </header>
+          <div className="gdpr_modal_head">
+            <div className="gdpr_modal_head-content">
+              <header>
+                <strong>{t('modal_header_txt')}</strong>
+                <Button className="" onClick={this.closeAndSave}>
+                  <Close width="20px" height="20px" />
+                </Button>
+              </header>
+            </div>
             <div className="gdpr_modal_button-all">
               <BtActions
                 t={t}
@@ -58,10 +60,8 @@ export default class Modal extends Component<AppProps> {
                 }}
               />
             </div>
-            <div className="gdpr_modal_list-content">
-              {this.getListElement()}
-            </div>
           </div>
+          <div className="gdpr_modal_list-content">{this.getListElement()}</div>
           <div className="gdpr_modal_action">
             <Button className="gdpr_btn-success" onClick={this.closeAndSave}>
               {t('modal_valid')}
