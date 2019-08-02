@@ -89,8 +89,11 @@ export default class Gdpr {
    */
   initCookie(): void {
     const _c = this.cookie.getCookie();
-    // if not cookie rgpd clear cookie
-    this.cookieExist = _c.size === 0;
+    // list of services
+    const services = this.globalGdpr;
+
+    // if not cookie rgpd clear cookie and services exists
+    this.cookieExist = services.length > 0 && _c.size === 0;
     if (this.cookieExist) {
       this.clearCookies();
     }
