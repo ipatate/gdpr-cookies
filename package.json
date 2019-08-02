@@ -12,8 +12,7 @@
     "lint": "eslint src",
     "flow": "flow",
     "format": "prettier --write \"**/*.+(js|jsx||json|yml|yaml|css|scss|ts|tsx|graphql|vue|mjs)\" ",
-    "validate": "npm run lint && npm run test && npm run flow",
-    "precommit": "lint-staged && npm run test && npm run flow"
+    "validate": "npm run lint && npm run test && npm run flow"
   },
   "keywords": [],
   "author": "",
@@ -78,6 +77,11 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run test && npm run flow"
+    }
   }
 }
