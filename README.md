@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/ipatate/gdpr-cookies.svg?branch=develop)](https://travis-ci.org/ipatate/gdpr-cookies)
 
+# Breaking change => use initGdprCookie for init system now
+
 ### 🍪 System GDPR cookie for website. Informs the visitor of the use of cookies and gives the possibility to refuse cookies
 
 ### ℹ️ On the first visit, the banner is show. If visitor click on link or button for navigate, the cookie is accepted by default.
@@ -14,6 +16,12 @@ gdpr-cookies.js 64ko (~19ko gzip)
 
 ```html
 <script src="path/gdpr-cookies.js" async></script>
+```
+
+And use global function for init GdprCookie
+
+```js
+window.initGdprCookie('fr');
 ```
 
 ## Add style in page
@@ -33,7 +41,13 @@ npm install gdpr-cookies -S
 import in your javascript file
 
 ```js
-import 'gdpr-cookies';
+import initGdprCookie from 'gdpr-cookies';
+```
+
+And use function for init GdprCookie
+
+```js
+initGdprCookie('fr');
 ```
 
 import sass files
