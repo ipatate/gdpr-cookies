@@ -36,7 +36,7 @@ const main = locale => {
   }
 };
 
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   main(locale);
 });
 
