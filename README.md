@@ -125,7 +125,6 @@ _gdpr.push([
     name: 'Google Tag',
     description: 'Service pour statistiques des visites'},
     myCB
-  }
 ]);
 
 // ...
