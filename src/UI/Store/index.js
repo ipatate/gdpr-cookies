@@ -34,7 +34,7 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
     listenClick(store);
   }
   // set global method for change setting cookie with click on link
-  window._gdpr_showModal = () => {
+  global._gdpr_showModal = () => {
     store.setState({showModal: true});
   };
 
