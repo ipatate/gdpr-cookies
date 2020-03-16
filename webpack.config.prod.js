@@ -11,6 +11,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'gdpr-cookies.js',
+    library: 'initGdprCookie',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
