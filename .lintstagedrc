@@ -1,12 +1,8 @@
 {
-    "linters": {
-        "*.js": [
-            "eslint"
-        ],
-        "**/*.+(js|jsx||json|yml|yaml|ts|tsx|graphql|vue|mjs)": [
-            "prettier --write",
-            "git add",
-        ]
-    },
-    "ignore": ["**/dist/*"]
+  "src/*.{js}": [
+    "eslint",
+  ],
+  "src/*.+(js|jsx||json|yml|yaml|ts|tsx|graphql|vue|mjs)": [
+      "prettier --write",
+  ]
 }
