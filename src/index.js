@@ -36,9 +36,7 @@ const main = locale => {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  main(locale);
-});
+main(locale);
 
 // change lang
 global.changeLangGdpr = locale => {
