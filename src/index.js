@@ -15,7 +15,7 @@ import App from './UI/App';
 import {createMask} from './UI/Mask';
 
 // language
-const locale = window._gdpr_lang || 'en';
+// const locale = window._gdpr_lang || 'en';
 const options = window._gdpr_options || {};
 const messages = window._gdpr_messages || messagesDefault;
 
@@ -23,9 +23,10 @@ const messages = window._gdpr_messages || messagesDefault;
 const target = document.getElementById('gdpr-cookie');
 
 // init app
-const main = locale => {
+const main = (locale: string) => {
+  const _locale = locale || window._gdpr_lang || 'en';
   if (target) {
-    const store = initStore(options, locale, messages);
+    const store = initStore(options, _locale, messages);
     render(
       <Provider store={store}>
         <App />
@@ -36,7 +37,11 @@ const main = locale => {
   }
 };
 
-main(locale);
+// set to window
+global.initGdprCookie = main;
+
+// export for npm user
+export default main;
 
 // change lang
 global.changeLangGdpr = locale => {
