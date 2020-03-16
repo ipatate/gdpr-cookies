@@ -1,5 +1,5 @@
 import {h} from 'preact';
-import {render, fireEvent} from 'preact-testing-library';
+import {render, fireEvent} from '@testing-library/preact';
 import Button from './Button';
 
 test('test button with click and class name', () => {
