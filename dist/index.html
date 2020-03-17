@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -146,7 +146,7 @@ _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Lorem ipsum dolor
     </script>
     <div class="content">
     <h1>
-    Example for library Gdpr cookies 1.0.6
+    Example for library Gdpr cookies 1.1.0 beta
     <br /><a href="https://github.com/ipatate/gdpr-cookies" target="_blank">https://github.com/ipatate/gdpr-cookies</a>
     </h1>    <br />
     <br />
@@ -164,7 +164,10 @@ _gdpr.push([{ type: 'stats', name: 'Google Tag', description: 'Lorem ipsum dolor
     <br />
     <br />
     <a href="#" onclick="window._gdpr_showModal();return false;">Open modal cookies settings</a>
-    <div id="gdpr-cookie"></div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() { window.initGdprCookie()
+    });
+    </script>
     <script type="text/javascript" src="gdpr-cookies.js"></script></body>
 </html>

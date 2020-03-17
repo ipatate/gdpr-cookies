@@ -1,47 +1,76 @@
 // @flow @jsx h
-import {h, Component} from 'preact';
+import {h} from 'preact';
+import {useLayoutEffect, useRef} from 'preact/hooks';
 import Button from '../Button';
 import './style.scss';
 
-export default class Banner extends Component<AppProps> {
-  closeAndSave = (): void => {
-    const {toggleModal, toggleBanner, saveStateInGdpr} = this.props;
+const Banner = ({
+  t,
+  toggleModal,
+  toggleBanner,
+  showBanner,
+  saveStateInGdpr,
+}: AppProps) => {
+  const closeAndSave = (): void => {
     toggleBanner(false);
     toggleModal(false);
     saveStateInGdpr();
   };
+  if (showBanner === false) return null;
+  const containerBtn = useRef(null);
+  // set focus on first btn on mount
+  useLayoutEffect(() => {
+    if (containerBtn.current) {
+      const firstBtn = containerBtn.current.children[0];
+      const lastBtn = containerBtn.current.children[1];
+      // set Focus to first btn
+      firstBtn.focus();
+      // listen last btn, on key tab press, focus on first btn
+      lastBtn.addEventListener('keydown', e => {
+        if (e.code === 'Tab') {
+          firstBtn.focus();
+          return e.preventDefault();
+        }
+      });
+    }
+  }, []);
 
-  render() {
-    const {showBanner} = this.props;
-    if (showBanner === false) return null;
-    const {t, toggleModal, toggleBanner} = this.props;
-    return (
-      <div role="alert" className="gdpr_banner">
-        <div className="gdpr_banner-content">
-          <div className="gdpr_banner-text">{t('alert_text')}</div>
-          <div className="gdpr_banner-actions">
-            <Button
-              className="gdpr_btn-success"
-              onClick={e => {
-                e.preventDefault();
-                this.closeAndSave();
-              }}
-            >
-              {t('banner_ok_bt')}
-            </Button>
-            <Button
-              className="gdpr_btn-default"
-              onClick={e => {
-                e.preventDefault();
-                toggleModal(true);
-                toggleBanner(false);
-              }}
-            >
-              {t('banner_custom_bt')}
-            </Button>
-          </div>
+  return (
+    <div
+      role="alertdialog"
+      aria-modal="true"
+      aria-label={t('banner_title')}
+      aria-describedby="gdpr_text"
+      className="gdpr_banner"
+    >
+      <div className="gdpr_banner-content" role="document">
+        <div id="gdpr_text" className="gdpr_banner-text">
+          {t('alert_text')}
+        </div>
+        <div className="gdpr_banner-actions" ref={containerBtn}>
+          <Button
+            className="gdpr_btn-success"
+            onClick={e => {
+              e.preventDefault();
+              closeAndSave();
+            }}
+          >
+            {t('banner_ok_bt')}
+          </Button>
+          <Button
+            className="gdpr_btn-default"
+            onClick={e => {
+              e.preventDefault();
+              toggleModal(true);
+              toggleBanner(false);
+            }}
+          >
+            {t('banner_custom_bt')}
+          </Button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Banner;

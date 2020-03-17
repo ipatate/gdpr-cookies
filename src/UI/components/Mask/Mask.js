@@ -1,5 +1,5 @@
 // @flow @jsx h
-import {h, Component} from 'preact';
+import {h} from 'preact';
 import Button from '../Button';
 import './style.scss';
 
@@ -15,9 +15,18 @@ type ListElementProps = {
   isFirstVisit: boolean,
 };
 
-export default class Mask extends Component<ListElementProps> {
-  translate = (string: string) => {
-    const {messages, locale} = this.props;
+const Mask = ({
+  messages,
+  locale,
+  service,
+  listService,
+  isFirstVisit,
+  toggleServiceByName,
+  toggleModal,
+  toggleBanner,
+  saveStateInGdpr,
+}: ListElementProps) => {
+  const t = (string: string) => {
     if (
       messages === undefined ||
       locale === undefined ||
@@ -27,14 +36,7 @@ export default class Mask extends Component<ListElementProps> {
     return messages[locale][string] || string;
   };
 
-  onChange = (name: string, state: boolean): void => {
-    const {
-      toggleServiceByName,
-      toggleModal,
-      toggleBanner,
-      saveStateInGdpr,
-      isFirstVisit,
-    } = this.props;
+  const onChange = (name: string, state: boolean): void => {
     toggleServiceByName({name: name, state});
     saveStateInGdpr();
 
@@ -44,37 +46,35 @@ export default class Mask extends Component<ListElementProps> {
     }
   };
 
-  render() {
-    const {service, listService, isFirstVisit} = this.props;
-    const t = this.translate;
-    const {name} = service;
-    // find service for update
-    const serviceState = listService.find(service => service.name === name);
-    if (
-      !serviceState ||
-      (serviceState.state === true && isFirstVisit === false)
-    ) {
-      return null;
-    }
-    return (
-      <div className="gdpr_mask-content">
-        <div className="gdpr_mask-desc">
-          {t(`mask_text_start`)}
-          {` ${name} `}
-          {t(`mask_text_end`)}
-        </div>
-        <div className="gdpr_mask-action">
-          <Button
-            onClick={e => {
-              e.preventDefault();
-              this.onChange(name, true);
-            }}
-            className="gdpr_btn-round gdpr_btn-success"
-          >
-            {t('service_accept')}
-          </Button>
-        </div>
-      </div>
-    );
+  const {name} = service;
+  // find service for update
+  const serviceState = listService.find(service => service.name === name);
+  if (
+    !serviceState ||
+    (serviceState.state === true && isFirstVisit === false)
+  ) {
+    return null;
   }
-}
+  return (
+    <div className="gdpr_mask-content">
+      <div className="gdpr_mask-desc">
+        {t(`mask_text_start`)}
+        {` ${name} `}
+        {t(`mask_text_end`)}
+      </div>
+      <div className="gdpr_mask-action">
+        <Button
+          onClick={e => {
+            e.preventDefault();
+            onChange(name, true);
+          }}
+          className="gdpr_btn-round gdpr_btn-success"
+        >
+          {t('service_accept')}
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Mask;

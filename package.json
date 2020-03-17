@@ -7,7 +7,7 @@
     "test": "jest",
     "build:clean": "rimraf ./dist",
     "build": "webpack --config webpack.config.prod.js",
-    "start": "npm run build:clean && webpack-dev-server",
+    "start": "npm run build:clean & NODE_ENV=development webpack-dev-server",
     "prepublishOnly": "npm run build",
     "lint": "eslint src",
     "flow": "flow",

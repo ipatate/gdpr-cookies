@@ -65,12 +65,6 @@ Set this code in the head of your html
 <script>var _gdpr = _gdpr || [];</script>
 ```
 
-## Add this tag in page <body>
-
-```html
-<div id="gdpr-cookie"></div>
-```
-
 ## Declare external script
 
 Push array in _gdpr array.
