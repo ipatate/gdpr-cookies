@@ -22,7 +22,7 @@ And use global function for init GdprCookie
 
 ```js
 document.addEventListener('DOMContentLoaded', function() {
-   window.initGdprCookie('fr');
+   window.initGdprCookie.default('fr');
 });
 ```
 

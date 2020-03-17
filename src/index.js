@@ -51,14 +51,13 @@ const main = (locale: string) => {
   }
 };
 
-// set to window
-global.initGdprCookie = main;
-
 // export for npm user
 export default main;
 
+// set to window
+window.initGdprCookie = locale => main(locale);
 // change lang
-global.changeLangGdpr = locale => {
+window.changeLangGdpr = locale => {
   const target = document.getElementById('gdpr-cookie');
   if (target) {
     target.innerHTML = '';
