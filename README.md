@@ -2,6 +2,8 @@
 
 # Breaking change => use initGdprCookie for init system now
 
+# New => A11y optimization
+
 ### 🍪 System GDPR cookie for website. Informs the visitor of the use of cookies and gives the possibility to refuse cookies
 
 ### ℹ️ On the first visit, the banner is show. If visitor click on link or button for navigate, the cookie is accepted by default.
