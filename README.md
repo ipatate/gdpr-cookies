@@ -21,7 +21,9 @@ gdpr-cookies.js 64ko (~19ko gzip)
 And use global function for init GdprCookie
 
 ```js
-window.initGdprCookie('fr');
+document.addEventListener('DOMContentLoaded', function() {
+   window.initGdprCookie('fr');
+});
 ```
 
 ## Add style in page
@@ -209,9 +211,6 @@ Add just class (gdpr-mask) and name of service with data-gdpr. Ex:
  <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
  ```
 
-# Exemple
-
-[https://gdpr-cookies.goodmotion.fr/](https://gdpr-cookies.goodmotion.fr/)
 
 # 🤓 Dev
 
