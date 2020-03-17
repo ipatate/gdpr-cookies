@@ -26,6 +26,7 @@ const BtActions = ({status, t, onChange, showDisable}: BtActionsProps) => {
           className={`gdpr_btn-round ${
             status === false ? 'gdpr_btn-error' : 'gdpr_btn-default'
           }`}
+          aria-label={t('service_bloc_all')}
         >
           {t('service_bloc_all')}
         </Button>
@@ -40,6 +41,7 @@ const BtActions = ({status, t, onChange, showDisable}: BtActionsProps) => {
         className={`gdpr_btn-round ${
           status === true ? 'gdpr_btn-success' : 'gdpr_btn-default'
         }`}
+        aria-label={t('service_accept_all')}
       >
         {t('service_accept_all')}
       </Button>

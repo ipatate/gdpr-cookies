@@ -43,27 +43,26 @@ const Switch = ({
       <label for={slug} className={`gdpr_switch ${className}`}>
         <input
           id={slug}
-          aria-describeBy={showChildren === false ? `desc_${slug}` : null}
           onChange={_onChange}
           checked={_state}
           type="checkbox"
         />
-        <span className="gdpr_switch" role="switch" aria-checked={_state}>
+        <span
+          className="gdpr_switch"
+          aria-label={`${
+            _state === false ? t('activate') : t('deactivate')
+          } ${name}`}
+          role="switch"
+          aria-checked={_state}
+        >
           <span className="gdpr_shadow" />
         </span>
-        {showChildren === true ? (
-          <span
-            className={`gdpr_children ${
-              _state === true ? 'switch_activated' : ''
-            }`}
-          >
-            {children}
-          </span>
-        ) : (
-          <div className="gdpr_describe_switch" id={`desc_${slug}`}>
-            {`${_state === false ? t('activate') : t('deactivate')} ${name}`}
-          </div>
-        )}
+        <span
+          className={`gdpr_children ${_state === true ? 'switch_activated' : ''}
+            ${showChildren === false ? 'gdpr_text_switch' : ''}`}
+        >
+          {children}
+        </span>
       </label>
     </Fragment>
   );

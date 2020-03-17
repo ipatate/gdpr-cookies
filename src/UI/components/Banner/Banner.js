@@ -54,6 +54,7 @@ const Banner = ({
               e.preventDefault();
               closeAndSave();
             }}
+            aria-label={t('banner_ok_bt')}
           >
             {t('banner_ok_bt')}
           </Button>
@@ -64,6 +65,7 @@ const Banner = ({
               toggleModal(true);
               toggleBanner(false);
             }}
+            aria-label={t('banner_custom_bt')}
           >
             {t('banner_custom_bt')}
           </Button>

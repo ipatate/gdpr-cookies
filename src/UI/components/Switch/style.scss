@@ -11,7 +11,7 @@ $switch-width: 45px;
     margin: 0 8px;
 }
 
-.gdpr_describe_switch {
+.gdpr_text_switch {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -25,7 +25,7 @@ $switch-width: 45px;
     text-align: center;
     min-width: 110px;
     font-size: 14px;
-    color: $font-gray;
+    color: $font-black;
 
     &.switch_activated {
         color: $color-success;
@@ -42,6 +42,12 @@ $switch-width: 45px;
     opacity: 0;
     pointer-events: none;
     z-index: -1;
+}
+
+.gdpr_switch > input:focus,
+.gdpr_switch > input:focus + span,
+.gdpr_switch > input + span:focus {
+    border: 1px dotted $font-black;
 }
 
 .gdpr_shadow {
@@ -85,6 +91,7 @@ $switch-width: 45px;
 .gdpr_switch:hover > input:focus + span > .gdpr_shadow {
     opacity: .16;
 }
+
 
 // span for switch
 .gdpr_switch > span.gdpr_switch {
