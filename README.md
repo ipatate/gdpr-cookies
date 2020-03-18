@@ -1,31 +1,21 @@
 [![Build Status](https://travis-ci.org/ipatate/gdpr-cookies.svg?branch=develop)](https://travis-ci.org/ipatate/gdpr-cookies)
 
-# Breaking change => use initGdprCookie for init system now
+### 🍪 System GDPR cookie for website. A11y
 
-# New => A11y optimization
+### Informs the visitor on the services used in your website and gives the possibility of disabling services
 
-### 🍪 System GDPR cookie for website. Informs the visitor of the use of cookies and gives the possibility to refuse cookies
+ℹ️ On the first visit, the banner is show. If the visitor click a link or a button in page, the cookies are accepted by default.
 
-### ℹ️ On the first visit, the banner is show. If visitor click on link or button for navigate, the cookie is accepted by default.
-
-### Use files in dist directory
+#### Use the files in dist directory for include on your site
 
 gdpr-cookies.css 7ko (~2ko gzip)
 
-gdpr-cookies.js 64ko (~19ko gzip)
+gdpr-cookies.js 69ko (~19ko gzip)
 
 ## Add script in page
 
 ```html
 <script src="path/gdpr-cookies.js" async></script>
-```
-
-And use global function for init GdprCookie
-
-```js
-document.addEventListener('DOMContentLoaded', function() {
-   window.initGdprCookie.default('fr');
-});
 ```
 
 ## Add style in page
@@ -34,12 +24,33 @@ document.addEventListener('DOMContentLoaded', function() {
 <link href="path/gdpr-cookies.css" rel="stylesheet">
 ```
 
+## Init Gdpr Cookie
+
+Set this code in the head of your page
+
+```js
+<script>var _gdpr = _gdpr || [];</script>
+```
+Add your script service (see example google tag bellow )
+
+```js
+_gdpr.push([.....]);
+```
+
+And use global function for init GdprCookie (footer)
+
+```js
+document.addEventListener('DOMContentLoaded', function() {
+   window.initGdprCookie.default('fr');
+});
+```
+
 ## For npm user
 
 install package
 
 ```bash
-npm install gdpr-cookies -S
+npm install gdpr-cookies
 ```
 
 import in your javascript file
@@ -58,15 +69,6 @@ import sass files
 
 ```scss
 @import 'path-to-your-node_modules/gdpr-cookies/dist/gdpr-cookies.css';
-```
-
-
-## Init Gdpr Cookie
-
-Set this code in the head of your html
-
-```js
-<script>var _gdpr = _gdpr || [];</script>
 ```
 
 ## Declare external script
@@ -98,7 +100,7 @@ You can use argument helpers in function.
 - ```createStyle(href)``` for create style tag in head
 - ```createIframe('id', {href: '', width: '200px'});``` for create iframe tag in target element. Add attribute for iframe with second argument options object
 
-#### Exemple for google tag
+#### Example for google tag
 
 ```js
 <script type="text/javascript">
@@ -106,7 +108,8 @@ _gdpr.push([
   {
     type: 'stats',
     name: 'Google Tag',
-    description: 'Service pour statistiques des visites'},
+    description: 'Service pour statistiques des visites'
+  },
     [
       function(helpers) {
         // use helpers
@@ -133,7 +136,8 @@ _gdpr.push([
   {
     type: 'stats',
     name: 'Google Tag',
-    description: 'Service pour statistiques des visites'},
+    description: 'Service pour statistiques des visites'
+  },
     myCB
 ]);
 
@@ -174,24 +178,28 @@ If you want to add or define your messages, you can create a messages in your ht
 ```js
 var _gdpr_messages = {
     fr: {
+    banner_title: "Information sur l'utilisation de cookies sur le site",
     alert_text:
       "En poursuivant votre navigation, vous acceptez l'utilisation de services tiers pouvant installer des cookies",
     banner_ok_bt: 'Ok, tout accepter',
-    banner_custom_bt: 'Personnaliser',
+    banner_custom_bt: 'Personnaliser les cookies',
     modal_header_txt: 'Préférence pour tous les services',
+    close_modale_label: 'Fermer la fenêtre',
     service_accept: 'Activer',
-    service_accept_all: 'Activer tout',
-    service_bloc_all: 'Bloquer tout',
+    service_accept_all: 'Activer tous les services',
+    service_bloc_all: 'Bloquer tous les services',
     service_activated: 'Service activé',
     service_blocked: 'Service bloqué',
-    modal_valid: 'Sauvegarder',
+    modal_valid: 'Appliquer les reglages',
     ads: 'Publicités',
     stats: 'Statistiques',
     others: 'Autres services',
     mask_text_start: 'Le service',
     mask_text_end: 'est désactivé',
+    activate: 'activer',
+    deactivate: 'désactiver',
   },
-  }
+}
 ```
 
 ## Add link for open modal (sorry for the onclick 😅)
@@ -211,7 +219,7 @@ Add just class (gdpr-mask) and name of service with data-gdpr. Ex:
 
 ```html
  <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
- ```
+```
 
 
 # 🤓 Dev

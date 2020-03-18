@@ -1,6 +1,6 @@
 export default {
   en: {
-    banner_title: "Information sur l'utilisation de cookies sur le site",
+    banner_title: 'Information on the use of cookies on the site',
     alert_text:
       'If you continue to browse this website, you are allowing all third-party services',
     banner_ok_bt: 'Ok, accept everything',
@@ -44,7 +44,7 @@ export default {
     deactivate: 'désactiver',
   },
   es: {
-    banner_title: "Information sur l'utilisation de cookies sur le site",
+    banner_title: 'Información sobre la utilización de cookies en el sitio',
     alert_text:
       'Si continúa navegando en este sitio web, está permitiendo todos los servicios de terceros.',
     banner_ok_bt: 'Ok acepta todo',
@@ -60,11 +60,11 @@ export default {
     others: 'Otros servicios',
     mask_text_start: 'El servicio',
     mask_text_end: 'esta deshabilitado',
-    activate: 'activate',
-    deactivate: 'deactivate',
+    activate: 'activar',
+    deactivate: 'desactivar',
   },
   de_formal: {
-    banner_title: "Information sur l'utilisation de cookies sur le site",
+    banner_title: 'Informationen zur Verwendung von Cookies auf der Website',
     alert_text:
       'Wenn Sie weiter auf der Seite surfen, stimmen Sie der Nutzung aller Drittanbieter-Cookies zu.',
     banner_ok_bt: 'Ok, alles akzeptieren',
@@ -82,11 +82,11 @@ export default {
     others: 'Andere Services',
     mask_text_start: 'Der Service',
     mask_text_end: 'ist blockiert.',
-    activate: 'activate',
-    deactivate: 'deactivate',
+    activate: 'aktiviere',
+    deactivate: 'deaktivieren',
   },
   de: {
-    banner_title: "Information sur l'utilisation de cookies sur le site",
+    banner_title: 'Informationen zur Verwendung von Cookies auf der Website',
     alert_text:
       'Wenn du weiter auf der Seite surfst, stimmst du der Nutzung aller Drittanbieter-Cookies zu.',
     banner_ok_bt: 'Ok, alles akzeptieren',
@@ -104,7 +104,7 @@ export default {
     others: 'Andere Services',
     mask_text_start: 'Der Service',
     mask_text_end: 'ist blockiert.',
-    activate: 'activate',
-    deactivate: 'deactivate',
+    activate: 'aktiviere',
+    deactivate: 'deaktivieren',
   },
 };
