@@ -2,7 +2,7 @@
 import {h, Fragment} from 'preact';
 import {useEffect, useState} from 'preact/hooks';
 import {slugify} from '../../../utils/Slugify';
-import './style.scss';
+import './style.css';
 
 type SwitchProps = {
   onChange: Function,

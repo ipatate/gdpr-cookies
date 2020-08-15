@@ -1,3 +1,11 @@
 module.exports = {
-  plugins: [require('precss'), require('autoprefixer')], // eslint-disable-line
+  // module: true,
+  syntax: 'postcss-scss',
+  plugins: [
+    require('precss'),
+    require(`postcss-preset-env`)({
+      stage: 3,
+      autoprefixer: {grid: true},
+    }),
+  ],
 };

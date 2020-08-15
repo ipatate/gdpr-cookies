@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
 .gdpr_element-action {
     display: flex;

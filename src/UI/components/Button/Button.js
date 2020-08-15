@@ -1,6 +1,6 @@
 // @flow @jsx h
 import {h} from 'preact';
-import './style.scss';
+import './style.css';
 
 type BtProps = {
   onClick: ?Function,

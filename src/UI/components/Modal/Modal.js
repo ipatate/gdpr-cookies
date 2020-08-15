@@ -6,7 +6,7 @@ import ListElement from '../ListElement';
 import BtActions from '../BtActions';
 import Close from './close.svg';
 import Arrow from './arrow-left.svg';
-import './style.scss';
+import './style.css';
 
 const Modal = ({
   toggleModal,

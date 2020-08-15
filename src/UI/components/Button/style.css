@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
 .gdpr_btn {
     display: flex;
@@ -8,26 +8,26 @@
     padding: 8px 16px;
     border: 0;
     font-size: 14px;
-    color: $font-black;
+    color: var(--gdpr-font-black);
     cursor: pointer;
     text-decoration: none;
     text-align: center;
 
     &-round {
-        border-radius: $radius-bt;
+        border-radius: var(--gdpr-radius-bt);
     }
 
     &-success {
-        background: $color-success;
+        background: var(--gdpr-color-success);
     }
 
     &-error {
-        background: $color-danger;
+        background: var(--gdpr-color-danger);
     }
 
     &-default {
-        background: darken($color-muted, 5%);
-        color: $font-black;
+        background: var(--gdpr-color-muted);
+        color: var(--gdpr-font-black);
     }
 
     &:hover {
@@ -35,6 +35,6 @@
     }
 
     &:focus {
-        border: 1px dotted $font-black;
+        border: 1px dotted var(--gdpr-font-black);
     }
 }

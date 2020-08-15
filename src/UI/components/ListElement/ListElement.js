@@ -1,7 +1,7 @@
 // @flow @jsx h
 import {h} from 'preact';
 import SwitchActions from '../SwitchActions';
-import './style.scss';
+import './style.css';
 
 type ListElementProps = {
   toggleServiceByName: Function,

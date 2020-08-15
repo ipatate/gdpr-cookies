@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
 @keyframes slide {
     from {
@@ -22,9 +22,9 @@
     left: 0;
     max-width: 100vw;
     padding: 0;
-    background: $bg-banner;
+    background: var(--gdpr-bg-banner);
     font-size: 16px;
-    color: $font-white;
+    color: var(--gdpr-font-white);
     text-align: center;
     z-index: 2147483645;
     animation: slide .5s;
@@ -37,10 +37,8 @@
     flex-direction: row;
     max-width: 990px;
     width: 100%;
-    // margin: 0 auto;
 
-    @media screen and (max-width: $medium) {
-        // flex-wrap: wrap;
+    @mixin medium {
         flex-direction: column;
     }
 }
@@ -52,7 +50,7 @@
     padding: 16px;
     text-align: left;
 
-    @media screen and (max-width: $medium) {
+    @mixin medium {
         flex: none;
         max-width: 100%;
         text-align: center;
@@ -63,16 +61,15 @@
     display: flex;
     min-height: 50px;
 
-    @media screen and (max-width: $medium) {
+    @mixin medium {
         flex: 1;
     }
 
     button {
         white-space: nowrap;
-        // padding: 8px 30px;
         font-size: 16px;
 
-        @media screen and (max-width: $medium) {
+        @mixin medium {
             flex: 1;
             min-height: 60px;
         }

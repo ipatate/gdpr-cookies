@@ -1,7 +1,7 @@
 // @flow @jsx h
 import {h} from 'preact';
 import Switch from '../Switch';
-import './style.scss';
+import './style.css';
 
 type BtActionsProps = {
   onChange: Function,

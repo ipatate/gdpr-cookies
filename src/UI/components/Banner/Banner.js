@@ -2,7 +2,7 @@
 import {h} from 'preact';
 import {useLayoutEffect, useRef} from 'preact/hooks';
 import Button from '../Button';
-import './style.scss';
+import './style.css';
 
 const Banner = ({
   t,
