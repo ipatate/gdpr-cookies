@@ -21,7 +21,7 @@ gdpr-cookies.js 69ko (~19ko gzip)
 ## Add style in page
 
 ```html
-<link href="path/gdpr-cookies.css" rel="stylesheet">
+<link href="path/gdpr-cookies.css" rel="stylesheet" />
 ```
 
 ## Init Gdpr Cookie
@@ -31,6 +31,7 @@ Set this code in the head of your page
 ```js
 <script>var _gdpr = _gdpr || [];</script>
 ```
+
 Add your script service (see example google tag bellow )
 
 ```js
@@ -40,8 +41,8 @@ _gdpr.push([.....]);
 And use global function for init GdprCookie (footer)
 
 ```js
-document.addEventListener('DOMContentLoaded', function() {
-   window.initGdprCookie.default('fr');
+document.addEventListener('DOMContentLoaded', function () {
+  window.initGdprCookie.default('fr');
 });
 ```
 
@@ -73,7 +74,7 @@ import sass files
 
 ## Declare external script
 
-Push array in _gdpr array.
+Push array in \_gdpr array.
 
 ```js
 _gdpr.push([
@@ -87,6 +88,7 @@ _gdpr.push([
 ```
 
 First element is object:
+
 - name : string (unique and required)
 - type : string (type of service) required, default: Stats | Ads | Others
 - description : string (text for describe service) optional
@@ -96,9 +98,10 @@ Second element is Array of Functions
 All the callback function called if service is allowed
 
 You can use argument helpers in function.
-- ```createScript(src)``` for create script tag in head
-- ```createStyle(href)``` for create style tag in head
-- ```createIframe('id', {href: '', width: '200px'});``` for create iframe tag in target element. Add attribute for iframe with second argument options object
+
+- `createScript(src)` for create script tag in head
+- `createStyle(href)` for create style tag in head
+- `createIframe('id', {href: '', width: '200px'});` for create iframe tag in target element. Add attribute for iframe with second argument options object
 
 #### Example for google tag
 
@@ -148,7 +151,6 @@ myCB.push(function(helpers){ return true;});
 </script>
 ```
 
-
 # Options for init Gdpr Cookie
 
 ## language
@@ -162,12 +164,13 @@ var _gdpr_lang = 'fr';
 ## options Gdpr Service
 
 ```js
-  var _gdpr_options = {
-      name: 'gdpr_cookie', // name of cookie gdpr
-      keepCookies: ['TEST'], // cookie not to delete
-      types: ['ads', 'stats', 'others'], // type of services
-      expires: 395, // cookie duration (in days)
-  };
+var _gdpr_options = {
+  name: 'gdpr_cookie', // name of cookie gdpr
+  keepCookies: ['TEST'], // cookie not to delete
+  types: ['ads', 'stats', 'others'], // type of services
+  expires: 395, // cookie duration (in days)
+  optout: true, // default undefined. If true, the services is optout.
+};
 ```
 
 ## i18n messages
@@ -177,7 +180,7 @@ If you want to add or define your messages, you can create a messages in your ht
 
 ```js
 var _gdpr_messages = {
-    fr: {
+  fr: {
     banner_title: "Information sur l'utilisation de cookies sur le site",
     alert_text:
       "En poursuivant votre navigation, vous acceptez l'utilisation de services tiers pouvant installer des cookies",
@@ -199,7 +202,7 @@ var _gdpr_messages = {
     activate: 'activer',
     deactivate: 'désactiver',
   },
-}
+};
 ```
 
 ## Add link for open modal (sorry for the onclick 😅)
@@ -207,6 +210,7 @@ var _gdpr_messages = {
 ```js
 window._gdpr_showModal();
 ```
+
 ex:
 
 ```html
@@ -218,18 +222,22 @@ ex:
 Add just class (gdpr-mask) and name of service with data-gdpr. Ex:
 
 ```html
- <div id="map" class="gdpr-mask" data-gdpr="Google Map" style="width: 100%; height: 400px;"></div>
+<div
+  id="map"
+  class="gdpr-mask"
+  data-gdpr="Google Map"
+  style="width: 100%; height: 400px;"
+></div>
 ```
-
 
 # 🤓 Dev
 
 The code use :
+
 - ES2018
 - Webpack
 - Flow
 - Babel
-
 
 For UI :
 
@@ -241,6 +249,7 @@ For UI :
 # Browsers Compatibility
 
 - Desktop:
+
   - Chrome 🆗
   - Firefox 🆗
   - Edge 🆗

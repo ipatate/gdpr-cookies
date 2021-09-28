@@ -15,6 +15,14 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
     gdpr.toggleService();
   }
 
+  // if mode optout, install cookie before accept or refuse
+  if (isFirstVisit === true && options.optout === true) {
+    // active service allowed
+    gdpr.toggleService();
+    // save cookie
+    gdpr.updateCookie();
+  }
+
   const initialState: StoreType = {
     gdpr,
     showModal: false,
@@ -25,6 +33,7 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
     prevListService: gdpr.getListServices(),
     listService: gdpr.getListServices(),
     isFirstVisit,
+    optout: options.optout || false,
   };
 
   const store = createStore(initialState);
