@@ -16,7 +16,7 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
   }
 
   const initialState: StoreType = {
-    gdpr: gdpr,
+    gdpr,
     showModal: false,
     showBanner: isFirstVisit,
     locale,

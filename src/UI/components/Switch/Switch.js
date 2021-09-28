@@ -28,7 +28,7 @@ const Switch = ({
 
   useEffect(() => {
     setSlug(slugify(name));
-  }, []);
+  }, [name]);
 
   useEffect(() => {
     setState(state);

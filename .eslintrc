@@ -7,7 +7,7 @@
   "extends": [
     "eslint:recommended",
     "eslint-config-prettier",
-    "standard-preact",
+    "preact",
     "plugin:flowtype/recommended",
     "plugin:jest/recommended"
   ],
@@ -18,6 +18,7 @@
     "es6": true
   },
   "rules": {
-    "jsx-quotes": ["error", "prefer-double"]
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/jsx-key": [0]
   }
 }

@@ -44,7 +44,6 @@ const Modal = ({
       return r;
     });
   };
-  if (showModal === false) return null;
 
   // set focus on first btn on mount
   useLayoutEffect(() => {
@@ -62,6 +61,7 @@ const Modal = ({
       });
     }
   }, []);
+  if (showModal === false) return null;
   return (
     <div
       role="dialog"

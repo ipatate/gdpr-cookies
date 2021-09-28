@@ -37,7 +37,7 @@ const Mask = ({
   };
 
   const onChange = (name: string, state: boolean): void => {
-    toggleServiceByName({name: name, state});
+    toggleServiceByName({name, state});
     saveStateInGdpr();
 
     if (isFirstVisit === true) {

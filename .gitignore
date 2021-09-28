@@ -17,3 +17,6 @@ src/keys_api.js
 
 coverage
 # dist/
+
+yarn.lock
+package-lock.json

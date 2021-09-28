@@ -1,5 +1,6 @@
 // @flow
 import typeof Cookie from 'js-cookie';
+// eslint-disable-next-line no-duplicate-imports
 import JSCookie from 'js-cookie';
 
 class CookieWrapper {

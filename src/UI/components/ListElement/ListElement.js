@@ -26,7 +26,7 @@ const ListElement = ({t, service, toggleServiceByName}: ListElementProps) => {
           status={state}
           showChildren={false}
           onChange={state => {
-            return toggleServiceByName({name: name, state});
+            return toggleServiceByName({name, state});
           }}
           t={t}
         />

@@ -16,7 +16,6 @@ const Banner = ({
     toggleModal(false);
     saveStateInGdpr();
   };
-  if (showBanner === false) return null;
   const containerBtn = useRef(null);
   // set focus on first btn on mount
   useLayoutEffect(() => {
@@ -34,6 +33,7 @@ const Banner = ({
       });
     }
   }, []);
+  if (showBanner === false) return null;
 
   return (
     <div
