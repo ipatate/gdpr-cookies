@@ -1,10 +1,12 @@
 // @flow @jsx h
-import {h, Component} from 'preact';
+import {h, Fragment} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 import {slugify} from '../../../utils/Slugify';
-import './style.scss';
+import './style.css';
 
 type SwitchProps = {
   onChange: Function,
+  t: Function,
   className: string,
   children: Node,
   showChildren: boolean,
@@ -12,53 +14,66 @@ type SwitchProps = {
   name: string,
 };
 
-export default class Switch extends Component<SwitchProps> {
-  static defaultProps = {
-    onChange: () => true,
-    showChildren: true,
-    className: '',
-    state: false,
-    name: '',
-  };
+const Switch = ({
+  className,
+  name,
+  children,
+  showChildren,
+  onChange,
+  state,
+  t,
+}: SwitchProps) => {
+  const [_state, setState] = useState(state);
+  const [slug, setSlug] = useState('');
 
-  slug: string = '';
+  useEffect(() => {
+    setSlug(slugify(name));
+  }, [name]);
 
-  constructor(props: SwitchProps) {
-    super(props);
-    this.slug = slugify(props.name);
-  }
+  useEffect(() => {
+    setState(state);
+  }, [state]);
 
-  onChange = (e: Event) => {
-    const {onChange, state} = this.props;
+  const _onChange = (e: Event) => {
     e.preventDefault();
-    const checked = !state;
-    onChange(checked);
+    onChange(!_state);
   };
-
-  render() {
-    const {className, children, showChildren, state} = this.props;
-
-    return (
-      <label for={this.slug} className={`gdpr_switch ${className}`}>
+  return (
+    <Fragment>
+      <label for={slug} className={`gdpr_switch ${className}`}>
         <input
-          id={this.slug}
-          onChange={this.onChange}
-          checked={state}
+          id={slug}
+          onChange={_onChange}
+          checked={_state}
           type="checkbox"
         />
-        <span className="gdpr_switch" role="switch" aria-checked={state}>
+        <span
+          className="gdpr_switch"
+          aria-label={`${
+            _state === false ? t('activate') : t('deactivate')
+          } ${name}`}
+          role="switch"
+          aria-checked={_state}
+        >
           <span className="gdpr_shadow" />
         </span>
-        {showChildren === true ? (
-          <span
-            className={`gdpr_children ${
-              state === true ? 'switch_activated' : ''
-            }`}
-          >
-            {children}
-          </span>
-        ) : null}
+        <span
+          className={`gdpr_children ${_state === true ? 'switch_activated' : ''}
+            ${showChildren === false ? 'gdpr_text_switch' : ''}`}
+        >
+          {children}
+        </span>
       </label>
-    );
-  }
-}
+    </Fragment>
+  );
+};
+
+Switch.defaultProps = {
+  onChange: () => true,
+  showChildren: true,
+  className: '',
+  state: false,
+  name: '',
+};
+
+export default Switch;

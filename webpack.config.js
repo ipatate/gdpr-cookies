@@ -10,6 +10,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    library: 'initGdprCookie',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -31,9 +33,9 @@ module.exports = {
         },
       },
       {
-        test: /\.(scss|css)/,
+        test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.svg$/,
@@ -43,17 +45,12 @@ module.exports = {
   },
   resolve: {
     alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat',
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
     },
     extensions: ['*', '.js', '.json', '.svg'],
   },
   devServer: {
-    hot: true,
-    inline: true,
-    stats: {
-      colors: true,
-    },
     headers: {
       'Access-Control-Allow-Origin': '*',
     },

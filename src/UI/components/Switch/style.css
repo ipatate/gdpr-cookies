@@ -1,8 +1,5 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
-$switch-width: 45px;
-
-// switch container
 .gdpr_switch {
     display: inline-flex;
     position: relative;
@@ -11,18 +8,27 @@ $switch-width: 45px;
     margin: 0 8px;
 }
 
+.gdpr_text_switch {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+}
+
 .gdpr_children {
     text-align: center;
     min-width: 110px;
     font-size: 14px;
-    color: $font-gray;
+    color: var(--gdpr-font-black);
 
     &.switch_activated {
-        color: $color-success;
+        color: var(--gdpr-color-success);
     }
 }
 
-// input checkbox hidden
 .gdpr_switch > input {
     appearance: none;
     display: block;
@@ -32,6 +38,12 @@ $switch-width: 45px;
     opacity: 0;
     pointer-events: none;
     z-index: -1;
+}
+
+.gdpr_switch > input:focus,
+.gdpr_switch > input:focus + span,
+.gdpr_switch > input + span:focus {
+    border: 1px dotted var(--gdpr-font-black);
 }
 
 .gdpr_shadow {
@@ -53,7 +65,7 @@ $switch-width: 45px;
 }
 
 .gdpr_switch > input:checked + span > .gdpr_shadow {
-    transform: translateX($switch-width - 20px);
+    transform: translateX(20px);
     background-color: rgba(0, 0, 0, .3);
 }
 
@@ -76,18 +88,16 @@ $switch-width: 45px;
     opacity: .16;
 }
 
-// span for switch
 .gdpr_switch > span.gdpr_switch {
     display: flex;
     position: relative;
     align-items: center;
-    width: $switch-width;
+    width: 40px;
     margin: 0 8px 0 0;
     padding: 0 0;
     cursor: pointer;
 }
 
-// line switch
 .gdpr_switch > span.gdpr_switch::before {
     content: '';
     display: inline-flex;
@@ -96,12 +106,11 @@ $switch-width: 45px;
     margin: 0;
     padding: 0;
     border-radius: 7px;
-    background-color: $color-disabled;
+    background-color: var(--gdpr-color-disabled);
     vertical-align: top;
     transition: all .2s;
 }
 
-// button switch
 .gdpr_switch > span.gdpr_switch::after {
     content: '';
     position: absolute;
@@ -112,19 +121,17 @@ $switch-width: 45px;
     height: 20px;
     margin: 0;
     padding: 0;
-    background-color: $font-white;
-    box-shadow: 0 0 5px 1px $shadow-modal;
+    background-color: var(--gdpr-font-white);
+    box-shadow: 0 0 5px 1px var(--gdpr-shadow-modal);
     transition: all .2s;
 }
 
-// checked change color line
 .gdpr_switch > input:checked + span.gdpr_switch::before {
-    background-color: $color-success;
+    background-color: var(--gdpr-color-success);
 }
 
-// checked change color shadow button
 .gdpr_switch > input:checked + span.gdpr_switch::after {
-    background-color: $font-white;
-    box-shadow: 0 0 5px 1px $color-success;
-    transform: translateX($switch-width - 20px);
+    background-color: var(--gdpr-font-white);
+    box-shadow: 0 0 5px 1px var(--gdpr-color-success);
+    transform: translateX(20px);
 }

@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
 .gdpr_list_element {
     display: flex;
@@ -7,7 +7,7 @@
     padding: 8px;
     min-height: 32px;
     background: #FFF;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid var(--gdpr-color-border);
 
     &::before,
     &::after {
@@ -17,11 +17,11 @@
 }
 
 .gdpr_list_element-activate {
-    border-left: 7px solid $color-success;
+    border-left: 7px solid var(--gdpr-color-success);
 }
 
 .gdpr_list_element-disabled {
-    border-left: 7px solid $color-danger;
+    border-left: 7px solid var(--gdpr-color-danger);
 }
 
 .gdpr_list_element-title {
@@ -38,7 +38,7 @@
 .gdpr_list_element-desc {
     padding: 8px;
     font-size: 14px;
-    color: $font-gray;
+    color: var(--gdpr-font-gray);
 }
 
 .gdpr_list_element .gdpr_element-action {

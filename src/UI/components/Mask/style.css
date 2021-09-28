@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
 .gdpr-mask {
     position: relative;
@@ -14,7 +14,7 @@
     bottom: 0;
     left: 0;
     flex-direction: column;
-    background: #F7F7F7;
+    background: var(--gdpr-bg-mask);
 }
 
 .gdpr_mask-desc {
@@ -22,12 +22,12 @@
 }
 
 .gdpr_mask-action {
-    @media screen and (max-width: $small) {
+    @mixin small {
         justify-content: center;
     }
 
     .gdpr_btn {
-        background: lighten($color-success, 20%);
-        color: #333;
+        background: var(--gdpr-color-success);
+        color: var(--gdpr-font-black);
     }
 }

@@ -137,7 +137,7 @@ export default class Gdpr {
       return {
         name,
         description: description || '',
-        type: type,
+        type,
         state: state !== undefined ? state : true,
       };
     });

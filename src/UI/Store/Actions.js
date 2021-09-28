@@ -42,7 +42,7 @@ const actions = () => ({
     return {listService};
   },
   saveStateInGdpr: (state: StoreType) => {
-    const {gdpr, listService, isFirstVisit, prevListService} = state;
+    const {gdpr, listService, isFirstVisit, prevListService, optout} = state;
     // update activated in gdpr class
     listService.forEach((value: Service) => {
       gdpr.updateServiceByName(value.name, value.state);
@@ -54,7 +54,10 @@ const actions = () => ({
     // if state pass to true to false in service => reload page for delete cookie
     const reload = reloadIsNeeded(prevListService, listService);
     // if fist visit, not reload because cookie not exist
-    if (reload === true && isFirstVisit === false) {
+    if (
+      (reload === true && isFirstVisit === false) ||
+      (isFirstVisit === true && optout === true)
+    ) {
       window.location.reload();
     } else {
       gdpr.toggleService(prevListService, isFirstVisit);

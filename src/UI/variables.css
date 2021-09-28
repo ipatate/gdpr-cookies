@@ -1,0 +1,35 @@
+:root {
+    --gdpr-bg-banner: #454D5D;
+    --gdpr-bg-modal: #FEFEFE;
+    --gdpr-shadow-modal: #454D5D;
+    --gdpr-bg-mask: rgba(0,0,0, .1);
+    --gdpr-color-primary: #0275D8;
+    --gdpr-color-success: rgb(82, 221, 184);
+    --gdpr-color-info: #5BC0DE;
+    --gdpr-color-warning: #F0AD4E;
+    --gdpr-color-danger: #D9534F;
+    --gdpr-color-disabled: #E3E3E3;
+    --gdpr-color-inverse: #333;
+    --gdpr-color-muted: #E3E3E3;
+    --gdpr-color-base: #111;
+    --gdpr-font-black: --gdpr-color-base;
+    --gdpr-font-white: #FFF;
+    --gdpr-font-gray: #666;
+    --gdpr-bg-head-modal: #F9F9F9;
+    --gdpr-bg-list-modal: #c52f2f;
+    --gdpr-bg-action-modal: #F9F9F9;
+    --gdpr-color-border: #E3E3E3;
+    --gdpr-radius-bt: 5px;
+}
+
+@define-mixin small {
+    @media (min-width: 576px) {
+        @mixin-content;
+    }
+}
+
+@define-mixin medium {
+    @media (min-width: 768px) {
+        @mixin-content;
+    }
+}

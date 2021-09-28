@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables.css';
 
 @keyframes show {
     from {
@@ -20,7 +20,7 @@
     bottom: 0;
     left: 0;
     animation: show .4s;
-    background: $bg-mask;
+    background: var(--gdpr-bg-mask);
     z-index: 2147483645;
 }
 
@@ -29,14 +29,14 @@
     flex-direction: column;
     width: 80%;
     max-height: 85vh;
-    background: $bg-modal;
-    box-shadow: 0 0 15px $shadow-modal;
+    background: var(--gdpr-bg-modal);
+    box-shadow: 0 0 15px var(--gdpr-shadow-modal);
 
-    @media screen and (max-width: $medium) {
+    @mixin medium {
         width: 85%;
     }
 
-    @media screen and (max-width: $small) {
+    @mixin small {
         width: 95%;
     }
 }
@@ -45,8 +45,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    border-top: 1px solid lighten($color-border, 5%);
-    border-bottom: 1px solid lighten($color-border, 5%);
+    border-top: 1px solid var(--gdpr-color-border);
+    border-bottom: 1px solid var(--gdpr-color-border);
 
     .gdpr_element-action {
         padding: 5px 0;
@@ -88,7 +88,6 @@
             flex: 1;
             align-items: center;
             padding: 0 8px;
-            // text-transform: uppercase;
         }
 
         .gdpr_btn {
@@ -106,19 +105,19 @@
     align-items: center;
     min-height: 32px;
     padding: 5px 8px;
-    background: $bg-head-modal;
+    background: var(--gdpr-bg-head-modal);
     font-size: 20px;
     font-weight: bold;
-    color: $font-gray;
+    color: var(--gdpr-font-gray);
     text-transform: capitalize;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid var(--gdpr-color-border);
 
     &:first-child {
         border-top: none;
     }
 
     svg {
-        fill: $font-gray;
+        fill: var(--gdpr-font-gray);
     }
 }
 
@@ -133,7 +132,7 @@
     max-height: calc(85vh - 190px);
     overflow-y: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    background: #FFF;
+    background: var(--gdpr-bg-list-modal);
 }
 
 .gdpr_modal_action {
@@ -144,8 +143,8 @@
     justify-content: flex-start;
     align-items: flex-end;
     min-height: 60px;
-    border-top: 1px solid lighten($color-border, 5%);
-    background: #FFF;
+    border-top: 1px solid var(--gdpr-color-border);
+    background: var(--gdpr-bg-action-modal);
 
     &::before,
     &::after {
@@ -155,9 +154,8 @@
 
     button {
         flex: 1;
-        border-radius: $radius-bt;
+        border-radius: var(--gdpr-radius-bt);
         margin-right: 8px;
-        // height: 40px;
         font-size: 18px;
     }
 }

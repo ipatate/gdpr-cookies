@@ -19,12 +19,26 @@ import {createMask} from './UI/Mask';
 const options = window._gdpr_options || {};
 const messages = window._gdpr_messages || messagesDefault;
 
-// target element
-const target = document.getElementById('gdpr-cookie');
+/**
+ * create main container
+ */
+const createContainer = () => {
+  const target = document.getElementById('gdpr-cookie');
+  if (target) return target;
+  const container = document.createElement('div');
+  container.id = 'gdpr-cookie';
+  const {body} = document;
+  if (body) {
+    body.appendChild(container);
+    return container;
+  }
+  return null;
+};
 
 // init app
 const main = (locale: string) => {
   const _locale = locale || window._gdpr_lang || 'en';
+  const target = createContainer();
   if (target) {
     const store = initStore(options, _locale, messages);
     render(
@@ -37,14 +51,14 @@ const main = (locale: string) => {
   }
 };
 
-// set to window
-global.initGdprCookie = main;
-
 // export for npm user
 export default main;
 
+// set to window
+window.initGdprCookie = locale => main(locale);
 // change lang
-global.changeLangGdpr = locale => {
+window.changeLangGdpr = locale => {
+  const target = document.getElementById('gdpr-cookie');
   if (target) {
     target.innerHTML = '';
   }
