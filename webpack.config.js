@@ -51,11 +51,6 @@ module.exports = {
     extensions: ['*', '.js', '.json', '.svg'],
   },
   devServer: {
-    hot: true,
-    inline: true,
-    stats: {
-      colors: true,
-    },
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
