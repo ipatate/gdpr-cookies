@@ -30,7 +30,6 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
 
   const store = createStore(initialState);
 
-  console.log(options, 'index');
   // if mode optout, install cookie before accept or refuse
   if (isFirstVisit === true && options.optout === true) {
     store.setState({optout: options.optout});
