@@ -7,7 +7,7 @@ import 'core-js/stable/symbol';
 import 'core-js/stable/map';
 import 'core-js/stable/set';
 
-import {h, render} from 'preact';
+import {h, render} from 'preact';// eslint-disable-line no-unused-vars
 import {Provider} from 'redux-zero/preact';
 import initStore from './UI/Store';
 import messagesDefault from '../locales/messages';
@@ -16,8 +16,6 @@ import {createMask} from './UI/Mask';
 
 // language
 // const locale = window._gdpr_lang || 'en';
-const options = window._gdpr_options || {};
-const messages = window._gdpr_messages || messagesDefault;
 
 /**
  * create main container
@@ -37,6 +35,8 @@ const createContainer = () => {
 
 // init app
 const main = (locale: string) => {
+  const options = window._gdpr_options || {};
+  const messages = window._gdpr_messages || messagesDefault;
   const _locale = locale || window._gdpr_lang || 'en';
   const target = createContainer();
   if (target) {

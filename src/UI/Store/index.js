@@ -15,14 +15,6 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
     gdpr.toggleService();
   }
 
-  // if mode optout, install cookie before accept or refuse
-  if (isFirstVisit === true && options.optout === true) {
-    // active service allowed
-    gdpr.toggleService();
-    // save cookie
-    gdpr.updateCookie();
-  }
-
   const initialState: StoreType = {
     gdpr,
     showModal: false,
@@ -38,6 +30,15 @@ export default (options: ?OptionsGdpr, locale: string, messages: Object) => {
 
   const store = createStore(initialState);
 
+  console.log(options, 'index');
+  // if mode optout, install cookie before accept or refuse
+  if (isFirstVisit === true && options.optout === true) {
+    store.setState({optout: options.optout});
+    // active service allowed
+    gdpr.toggleService();
+    // save cookie
+    gdpr.updateCookie();
+  }
   // if first visit detect click change page or action
   if (isFirstVisit === true) {
     listenClick(store);
