@@ -34,7 +34,7 @@ export const createIframe = (
   for (let key in options) {
     tag.setAttribute(key, options[key]);
   }
-  const t = document.getElementById(target);
+  const t = document.querySelector(target);
   if (t) {
     t.appendChild(tag);
   }

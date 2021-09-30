@@ -101,7 +101,8 @@ You can use argument helpers in function.
 
 - `createScript(src)` for create script tag in head
 - `createStyle(href)` for create style tag in head
-- `createIframe('id', {href: '', width: '200px'});` for create iframe tag in target element. Add attribute for iframe with second argument options object
+- `createIframe('target', {href: '', width: '200px'});` for create iframe tag in target element. Add attribute for 
+  iframe with second argument options object. target is used with document.querySelector
 
 #### Example for google tag
 
